@@ -9,5 +9,5 @@ class Robot:
         self.neighbors_list = neighbors_list
 
 
-p = Point(4,5)
+p = Point(4,3)
 print(p.toString())
