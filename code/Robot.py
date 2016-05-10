@@ -8,5 +8,3 @@ class Robot:
         self.neighbors_list = neighbors_list
 
 
-
-

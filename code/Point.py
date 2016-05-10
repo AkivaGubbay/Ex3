@@ -5,12 +5,12 @@ class Point:
         self.y = y
 
     def toString(self):
-        #return str(3)
-        #return '('+ str(x) + ', '+str(y)+')'
+        return '('+str(self.x)+', '+str(self.y)+')'
 
 
-x = 3
-s = str(1)
-print(s)
+
+#testing..
+p = Point(2,3)
+print(p.toString())
 
 
