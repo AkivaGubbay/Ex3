@@ -1,4 +1,5 @@
-# robot_type  -  use inheratence for it
+from code.Point import Point
+
 class Robot:
 
     def __init__(self, id, battery_status,message_history,neighbors_list):
@@ -8,3 +9,5 @@ class Robot:
         self.neighbors_list = neighbors_list
 
 
+p = Point(4,5)
+print(p.toString())

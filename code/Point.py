@@ -8,9 +8,3 @@ class Point:
         return '('+str(self.x)+', '+str(self.y)+')'
 
 
-
-#testing..
-p = Point(2,3)
-print(p.toString())
-
-
