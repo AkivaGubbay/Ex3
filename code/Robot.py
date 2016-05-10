@@ -1,13 +1,12 @@
-from code.Point import Point
+from code.Global_Parameters import *
 
+#Will add inheritace for differante types of robots.
 class Robot:
 
-    def __init__(self, id, battery_status,message_history,neighbors_list):
+    def __init__(self, id):
         self.id = id
-        self.battery_status = battery_status
-        self.message_history = message_history     #All received messages
-        self.neighbors_list = neighbors_list
+        self.battery_status = BATTARY_CAPACITY()
+        self.messages = []         #All received messages
+        self.isTransmitting = True      #Robot is either transmitting or receiving
+        self.neighbors_list = []
 
-
-p = Point(4,3)
-print(p.toString())
