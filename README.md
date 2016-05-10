@@ -2,3 +2,6 @@
 Robot Arean
 
 hello!
+
+
+Link to the presentation of the project: https://drive.google.com/folderview?id=0B3ALaSWJaKjoRDJkZ0U4SGZiWlU&usp=sharing 
