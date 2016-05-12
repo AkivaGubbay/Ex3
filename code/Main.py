@@ -1,7 +1,6 @@
 from code.Point import Point
 from code.Zone import Zone
 from code.Robot import Robot
-from code.Global_Parameters import *
 
 
 
