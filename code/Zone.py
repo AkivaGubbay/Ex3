@@ -1,13 +1,15 @@
 from code.Global_Parameters import *
 from code.Robot import Robot
 from random import randint
+from code.log import log
 
 
 #white = 0    gray = 1     black = 2
 class Zone:
-    def __init__(self):
+    def __init__(self, Mylog):
         self.Robot_By_XY = []
         self.Type_by_XY = []
+        self.Mylog = Mylog
 
         for i in range(AREANA_X()):
             self.Robot_By_XY.append(AREANA_Y()*[-1])
@@ -16,6 +18,7 @@ class Zone:
         # Mark gray areas
         Gray_area_point = GRAY_AREA()
         for b in range(len(Gray_area_point)):
+            Mylog.addLine("create gray area point between: "+str(Gray_area_point[b]))
             for i in range(Gray_area_point[b][0], Gray_area_point[b][2]+1):
                 for j in range(Gray_area_point[b][1], Gray_area_point[b][3]+1):
                     self.Type_by_XY[i][j] = 1
@@ -24,6 +27,7 @@ class Zone:
         # Mark black areas
         black_area_point = BLACK_AREA()
         for b in range(len(black_area_point)):
+            Mylog.addLine("create black area point between: " + str(black_area_point[b]))
             for i in range(black_area_point[b][0], black_area_point[b][2]+1):
                 for j in range(black_area_point[b][1], black_area_point[b][3]+1):
                     self.Type_by_XY[i][j] = 2
@@ -40,6 +44,8 @@ class Zone:
 
             self.Robots.append(Robot(s))
             self.Robot_By_XY[x][y] = self.Robots[s].id
+            Mylog.addLine(
+                "create new Robot- " + self.Robots[s].toString() + " in [" + str(x) + "," + str(y) + "]")
 
         for s in range(0, Robots_not_move()):
             x = randint(1, AREANA_X() - 2)
@@ -53,6 +59,7 @@ class Zone:
             self.Robots.append(Robot(s+Robots_move()))
             self.Robots[s + Robots_move()].CanMove = False
             self.Robot_By_XY[x][y] = self.Robots[s+Robots_move()].id
+            Mylog.addLine("create new Robot- " + self.Robots[s+Robots_move()].toString()+" in ["+str(x)+","+str(y)+"]")
 
     def PrintRobot_By_XY(self):
 

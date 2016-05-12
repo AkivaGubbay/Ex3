@@ -1,6 +1,6 @@
 from code.Global_Parameters import *
 
-#TODO:
+# TO-DO:
 #Add inheritace for differante types of robots.
 #Add Field so that robot knows what area he is in(white,black,gray).
 class Robot:
@@ -11,6 +11,7 @@ class Robot:
         self.messages = []         #All received messages
         self.isTransmitting = True      #Robot is either transmitting or receiving
         self.neighbors_list = []
+        self.CanMove = True
 
     def haveMessage(self, message):
         for i in self.messages:
@@ -21,3 +22,6 @@ class Robot:
     def addNeighbor(self,neighbor):
         if(neighbor in self.neighbors_list): return
         self.neighbors_list.append(neighbor)
+
+    def toString(self):
+        return "ID:"+str(self.id)+" ,battery_status:"+str(self.battery_status)+" ,messages:"+str(self.messages)+" ,isTransmitting:"+str(self.isTransmitting)+" ,neighbors_list:"+str(self.neighbors_list)+" ,CanMove:"+str(self.CanMove)
