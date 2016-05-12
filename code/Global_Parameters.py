@@ -19,16 +19,20 @@ def AREANA_Y():
     return 1000
 
 def BLACK_AREA():
-        # x1 = 0
-        #y1 = 0
-        # x2 = 999
-        #y2 = 0
+    # format: [X Top][Y Top][X Bottom][Y Bottom]
+    p1 = [0, 0, 999,0]
+    p2 = [0, 0, 0, 999]
+    p3 = [999, 0, 999, 999]
+    p4 = [0, 999, 999, 999]
+    p5 = [2, 2, 3, 6]
+    p6 = [31, 32, 33, 36]
 
-        #b = [[x1][y1][x2][y2]][[x1][y1][y2][x2]]
-    black = [[0][0][999][0]][[0][0][0][999]][[999][0][999][999]][[0][999][999][999]][[2][2][3][6]][[2][3][4][6]]
+    black = [p1, p2,p3,p4,p5,p6]
+
     return black
 
 def GRAY_AREA():
-    gray = [[20][20][50][50]]
+    # format: [X Top][Y Top][X Bottom][Y Bottom]
+    gray = [[20,20,30,30]]
     return gray
 
