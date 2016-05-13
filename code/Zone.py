@@ -3,6 +3,8 @@ from code.Robot import Robot
 from random import randint
 from code.log import log
 
+#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 
 #white = 0    gray = 1     black = 2
 class Zone:
