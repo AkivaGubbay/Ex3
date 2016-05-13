@@ -2,8 +2,9 @@ from code.Point import Point
 from code.Zone import Zone
 from code.Robot import Robot
 from code.log import log
+from code.Global_Parameters import *
 
-
+"""
 #Test Point:
 print('Test Point:')
 p = Point(4,3)
@@ -32,3 +33,16 @@ z.PrintRobot_By_XY()
 Mylog.close()
 
 
+#String test:
+s1 = "akiva = 24"
+s2 = s1.rsplit('=', 1)[0]
+print (s1.rsplit('=', 1)[0])
+print ( s1[len(s2)+2:])
+readParameters()
+print(BATTARY_CAPACITY())
+print(TRANSMISSION_RANGE())   """
+
+
+readParameters()
+s = "246800"
+#print(int(s[2]))
