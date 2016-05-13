@@ -8,11 +8,15 @@ __arena_x = -1
 __arena_y = -1
 __black_area = []
 __gray_area = []
-__log_file_directory = ""
+__log_file_directory = "original"
 
 
 #Reads data from Parameters.txt file:
 def readParameters():
+    global __battary_capacity,__transmission_range
+    global __robots_not_move, __robots_move, __arena_x
+    global __arena_y,__black_area, __gray_area, __log_file_directory
+
     f = open("Parameters.txt","r")
 
     #battary_capacity:

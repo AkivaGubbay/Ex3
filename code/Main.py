@@ -44,5 +44,17 @@ print(TRANSMISSION_RANGE())   """
 
 
 readParameters()
-s = "246800"
+print(BATTARY_CAPACITY())
+print(ARENA_X())
+print(TRANSMISSION_RANGE())
+print(ROBOTS_NOT_MOVE())
+print(ROBOTS_MOVE())
+print(ARENA_X())
+print(ARENA_Y())
+print(BLACK_AREA())
+print(GRAY_AREA())
+print(LOG_FILE_DIRECTORY())
+
+
+#s = "246800"
 #print(int(s[2]))
