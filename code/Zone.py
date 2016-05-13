@@ -4,13 +4,16 @@ from random import randint
 from code.log import log
 
 
+
+#bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 #white = 0    gray = 1     black = 2
 class Zone:
     def __init__(self, Mylog):
-        self.Robot_By_XY = []
-        self.Type_by_XY = []
+        self.Robot_By_XY = []   #id of robots on matrix
+        self.Type_by_XY = []    #Areas in Zone
         self.Mylog = Mylog
 
+        #Building Zone:
         for i in range(AREANA_X()):
             self.Robot_By_XY.append(AREANA_Y()*[-1])
             self.Type_by_XY.append(AREANA_Y() * [0])

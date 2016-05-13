@@ -26,7 +26,7 @@ def BLACK_AREA():
     p5 = [2, 2, 3, 6]
     p6 = [31, 32, 33, 36]
 
-    black = [p1, p2,p3,p4,p5,p6]
+    black = [p1,p2,p3,p4,p5,p6]
 
     return black
 
