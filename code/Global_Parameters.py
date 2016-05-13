@@ -22,38 +22,38 @@ def readParameters():
     #battary_capacity:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __battary_capacity = s[len(sub)+2:]
-    print("battary_capacity: "+__battary_capacity)
+    __battary_capacity = int(s[len(sub)+2:])
+    print("battary_capacity: "+str(__battary_capacity))
 
     #transmission_range:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __transmission_range = s[len(sub)+2:]
-    print("transmission_range: "+__transmission_range)
+    __transmission_range = int(s[len(sub)+2:])
+    print("transmission_range: "+str(__transmission_range))
 
     #robots_not_move:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __robots_not_move = s[len(sub) + 2:]
-    print("robots_not_move: "+__robots_not_move)
+    __robots_not_move = int(s[len(sub) + 2:])
+    print("robots_not_move: "+str(__robots_not_move))
 
     #robots_move:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __robots_move = s[len(sub) + 2:]
-    print("robots_move: "+__robots_move)
+    __robots_move = int(s[len(sub) + 2:])
+    print("robots_move: "+str(__robots_move))
 
     #arena_x:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __arena_x = s[len(sub) + 2:]
-    print("arena_x: "+__arena_x)
+    __arena_x = int(s[len(sub) + 2:])
+    print("arena_x: "+str(__arena_x))
 
     #arena_y:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
-    __arena_y = s[len(sub) + 2:]
-    print("arena_y: "+__arena_y)
+    __arena_y = int(s[len(sub) + 2:])
+    print("arena_y: "+str(__arena_y))
 
     #black_area:
     s = f.readline()

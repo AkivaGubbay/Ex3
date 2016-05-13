@@ -1,20 +1,67 @@
 from code.Global_Parameters import *
 from code.Robot import Robot
 from code.Zone import Zone
-
+from code.Message import Message
 
 class Simulation:
     def __init__(self, Mylog):
         Mylog.addLine("create Simulation")
-
+        self.Messages = []
         self.Robots = []
-        for s in range(0, Robots_move()):
+        self.Mylog = Mylog
+
+        # Creates a new robot that can move to variable "Robots"
+        for s in range(0, int(ROBOTS_MOVE())):
             self.Robots.append(Robot(s))
             Mylog.addLine("create new Robot- " + self.Robots[s].toString())
 
-        for s in range(Robots_move(), Robots_move()+Robots_not_move()):
+        # Creates a new robot that can't move to variable "Robots"
+        for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
             self.Robots.append(Robot(s))
             self.Robots[s].CanMove = False
             Mylog.addLine("create new Robot- " + self.Robots[s].toString())
 
+        # Creates Zone:
         self.Zone = Zone(Mylog, self.Robots)
+
+        """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
+
+
+
+    # Enter a new Message to X variable "Messages"
+    def transmit_Message(self, MyMessage):
+        NewMessage = Message(MyMessage.Id_Sender, MyMessage.Message)
+        NewMessage.Id_message = len(self.Messages)
+
+        self.Messages.append(NewMessage)
+        return NewMessage
+
+    # Reenter a Message to X variable "Messages"
+    def transmit_Message_again(self, MyMessage):
+        NewMessage = self.transmit_Message(MyMessage)
+
+        NewMessage.Version = MyMessage.Version+1
+        return NewMessage
+
+    # Do self.Messages[i].Life--
+    # deletes the message when Life==0 equal to zero
+    def Deleting_old_messages(self):
+        MySize = len(self.Messages)
+        i=0
+        mone=0
+        while(i<MySize):
+            self.Messages[i].Life = self.Messages[i].Life - 1
+            if (self.Messages[i].Life == 0):
+                self.Messages.remove(self.Messages[i])
+                MySize = MySize - 1
+                mone=mone+1
+            else:
+                i = i + 1
+
+        self.Mylog.addLine("\"Deleting_old_messages\" function Delete "+str(mone)+" Posts")
+
+    def toString_Messages(self):
+        MyStr="toString_Messages [size="+str(len(self.Messages))+"]:"
+        for i in range(len(self.Messages)):
+            MyStr+="\n"+self.Messages[i].toString()
+        return MyStr

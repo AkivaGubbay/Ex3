@@ -12,10 +12,11 @@ class Zone:
         self.Robot_By_XY = []
         self.Type_by_XY = []
         self.Mylog = Mylog
+        print(ARENA_X())
 
-        for i in range(AREANA_X()):
-            self.Robot_By_XY.append(AREANA_Y()*[-1])
-            self.Type_by_XY.append(AREANA_Y() * [0])
+        for i in range(int(float(1000))):
+            self.Robot_By_XY.append(int(float(1000))*[-1])
+            self.Type_by_XY.append(int(float(1000))*[0])
 
         # Mark gray areas
         Gray_area_point = GRAY_AREA()
@@ -36,18 +37,16 @@ class Zone:
 
 
         for s in range(0, len(Robots)):
-            x = randint(1, AREANA_X() - 2)
-            y = randint(1, AREANA_Y() - 2)
+            x = randint(1, int(ARENA_X()) - 2)
+            y = randint(1, int(ARENA_Y()) - 2)
             while(self.Robot_By_XY[x][y]!=-1 | (self.Type_by_XY[x][y] == 2|(Robots[s].CanMove == False & self.Type_by_XY[x][y] != 0))):
-                x = randint(1, AREANA_X() - 2)
-                y = randint(1, AREANA_Y() - 2)
+                x = randint(1, ARENA_X() - 2)
+                y = randint(1, ARENA_Y() - 2)
                 print("swap XY")
 
             Robots.append(Robot(s))
             self.Robot_By_XY[x][y] = Robots[s].id
-            Mylog.addLine(
-                "put Robot_" + str(Robots[s].id) + " in [" + str(x) + "," + str(y) + "]")
-
+            Mylog.addLine("put Robot_" + str(Robots[s].id) + " in [" + str(x) + "," + str(y) + "]")
 
     def PrintRobot_By_XY(self):
         print("PrintRobot_By_XY:")
@@ -56,8 +55,6 @@ class Zone:
                 id =self.Robot_By_XY[i][j]
                 if(id !=-1):
                     print("["+str(i)+","+str(j)+"]= Robot_"+str(id)+": canMove-"+ str(self.Robots[id].CanMove))
-
-
 
     def PrintType_by_XY(self):
         print("PrintType_by_XY:")
