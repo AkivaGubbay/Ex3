@@ -1,5 +1,4 @@
 
-
 def BATTARY_CAPACITY():
     return 50
 
@@ -33,6 +32,8 @@ def BLACK_AREA():
 
 def GRAY_AREA():
     # format: [X Top][Y Top][X Bottom][Y Bottom]
-    gray = [[20,20,30,30]]
+    p1=[20,20,30,30]
+    p2=[20,20,30,30]
+    gray = [p1,p2]
     return gray
 

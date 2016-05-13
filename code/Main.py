@@ -25,7 +25,7 @@ Mylog = log()
 #Test Zone:
 print('Test Zone:')
 z=Zone(Mylog)
-#z.PrintRobot_By_XY()
+z.PrintRobot_By_XY()
 #z.PrintType_by_XY()
 
 #close log

@@ -35,11 +35,11 @@ class Zone:
         self.Robots = []
         for s in range(0, Robots_move()):
             x = randint(1, AREANA_X()-2)
-            y = randint(1, AREANA_X()-2)
+            y = randint(1, AREANA_Y()-2)
 
-            while(self.Robot_By_XY[x][y]==-1 | self.Type_by_XY[x][y] == 2):
+            while(self.Robot_By_XY[x][y]!=-1 | self.Type_by_XY[x][y] == 2):
                 x = randint(1, AREANA_X() - 2)
-                y = randint(1, AREANA_X() - 2)
+                y = randint(1, AREANA_Y() - 2)
                 print("swap XY")
 
             self.Robots.append(Robot(s))
@@ -61,8 +61,8 @@ class Zone:
             self.Robot_By_XY[x][y] = self.Robots[s+Robots_move()].id
             Mylog.addLine("create new Robot- " + self.Robots[s+Robots_move()].toString()+" in ["+str(x)+","+str(y)+"]")
 
-    def PrintRobot_By_XY(self):
 
+    def PrintRobot_By_XY(self):
         print("PrintRobot_By_XY:")
         for i in range(0, len(self.Robot_By_XY)):
             for j in range(0, len(self.Robot_By_XY[i])):
