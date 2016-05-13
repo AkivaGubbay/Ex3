@@ -37,3 +37,6 @@ def GRAY_AREA():
     gray = [p1,p2]
     return gray
 
+def LOG_FILE_DIRECTORY ():
+    return "LogFile.txt"
+

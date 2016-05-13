@@ -1,14 +1,10 @@
-import time
+from code.Global_Parameters import *
 
 
 class log:
     def __init__(self):
         #self.file = open("LogFile - "+time.strftime("%H%M%S")+"_"+ time.strftime("%d.%m.%Y")+".txt", "w")
-        self.file = open("LogFile.txt", "w")
-
-    def __init__(self,directory):
-        # self.file = open("LogFile - "+time.strftime("%H%M%S")+"_"+ time.strftime("%d.%m.%Y")+".txt", "w")
-        self.file = open(directory, "w")
+        self.file = open(LOG_FILE_DIRECTORY(), "w")
 
     def addLine(self, line):
         self.file.write(line +"\n")

@@ -3,11 +3,7 @@ from code.Robot import Robot
 from random import randint
 from code.log import log
 
-#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
-
-
-#bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 #white = 0    gray = 1     black = 2
 class Zone:
     def __init__(self, Mylog):
