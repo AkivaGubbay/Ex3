@@ -10,12 +10,12 @@ class Simulation:
         self.Robots = []
         self.Mylog = Mylog
 
-        # Creates a new robot that can move to variable "Robots"
+        # Creates a new robot 'that can move' to variable "Robots"
         for s in range(0, int(ROBOTS_MOVE())):
             self.Robots.append(Robot(s))
             Mylog.addLine("create new Robot- " + self.Robots[s].toString())
 
-        # Creates a new robot that can't move to variable "Robots"
+        # Creates a new robot 'that can't move' to variable "Robots"
         for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
             self.Robots.append(Robot(s))
             self.Robots[s].CanMove = False

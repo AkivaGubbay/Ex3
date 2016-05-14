@@ -23,37 +23,37 @@ def readParameters():
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __battary_capacity = int(s[len(sub)+2:])
-    print("battary_capacity: "+str(__battary_capacity))
+    #print("battary_capacity: "+str(__battary_capacity))
 
     #transmission_range:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __transmission_range = int(s[len(sub)+2:])
-    print("transmission_range: "+str(__transmission_range))
+    #print("transmission_range: "+str(__transmission_range))
 
     #robots_not_move:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __robots_not_move = int(s[len(sub) + 2:])
-    print("robots_not_move: "+str(__robots_not_move))
+    #print("robots_not_move: "+str(__robots_not_move))
 
     #robots_move:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __robots_move = int(s[len(sub) + 2:])
-    print("robots_move: "+str(__robots_move))
+    #print("robots_move: "+str(__robots_move))
 
     #arena_x:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __arena_x = int(s[len(sub) + 2:])
-    print("arena_x: "+str(__arena_x))
+    #print("arena_x: "+str(__arena_x))
 
     #arena_y:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __arena_y = int(s[len(sub) + 2:])
-    print("arena_y: "+str(__arena_y))
+    #print("arena_y: "+str(__arena_y))
 
     #black_area:
     s = f.readline()
@@ -66,7 +66,7 @@ def readParameters():
         x1,y1,x2,y2 = int(cordi[0]),int(cordi[1]),int(cordi[2]),int(cordi[3])
         area = [x1,y1,x2,y2]
         __black_area.append(area)
-    print("black: ",__black_area)  #
+    #print("black: ",__black_area)
 
 
     # gray_area:
@@ -80,13 +80,13 @@ def readParameters():
         x1, y1, x2, y2 = int(cordi[0]), int(cordi[1]), int(cordi[2]), int(cordi[3])
         area = [x1, y1, x2, y2]
         __gray_area.append(area)
-    print("gray: ",__gray_area)
+    #print("gray: ",__gray_area)
 
     #log_file_directory:
     s = f.readline()
     sub = s.rsplit('=', 1)[0]
     __log_file_directory = s[len(sub) + 2:]
-    print("log_file_directory: "+__log_file_directory)
+    #print("log_file_directory: "+__log_file_directory)
 
     f.close()
 
@@ -116,6 +116,6 @@ def BLACK_AREA():
 def GRAY_AREA():
    return __gray_area
 
-def LOG_FILE_DIRECTORY ():
+def LOG_FILE_DIRECTORY():
     return __log_file_directory
 

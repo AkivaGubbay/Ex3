@@ -14,14 +14,14 @@ class Robot:
         self.CanMove = True
 
     def haveMessage(self, message):
-        for i in self.messages:
-            if(message is self.messages[i]):   #'is' compares id's of strings
-                return True
-        return False
+        return message in self.messages
 
     def addNeighbor(self,neighbor):
-        if(neighbor in self.neighbors_list): return
+        if(self.hasNeighbor()): return
         self.neighbors_list.append(neighbor)
+
+    def hasNeighbor(self, neighbor):
+        return neighbor in self.neighbors_list
 
     def toString(self):
         return "ID:"+str(self.id)+" ,battery_status:"+str(self.battery_status)+" ,messages:"+str(self.messages)+" ,isTransmitting:"+str(self.isTransmitting)+" ,neighbors_list:"+str(self.neighbors_list)+" ,CanMove:"+str(self.CanMove)

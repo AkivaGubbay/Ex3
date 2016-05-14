@@ -1,3 +1,5 @@
+from tkinter import Radiobutton
+
 from code.Point import Point
 from code.Zone import Zone
 from code.Robot import Robot
@@ -49,3 +51,10 @@ s.Deleting_old_messages()
 #z.PrintType_by_XY()
 
 Mylog.close()
+print()
+print("*******************************************************")
+r1 = Robot(860)
+m1 = Message(000,"Joey: Hey, how you do'n..")
+r1.messages.append(m1)
+print("have message? ",r1.haveMessage(m1))
+print("have message? ",r1.haveMessage("see the bombers.."))
