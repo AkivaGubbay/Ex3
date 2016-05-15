@@ -1,7 +1,6 @@
 from code.Global_Parameters import *
 
 # TO-DO:
-#Add inheritace for differante types of robots.
 #Add Field so that robot knows what area he is in(white,black,gray).
 class Robot:
 
@@ -13,7 +12,7 @@ class Robot:
         self.neighbors_list = []
         self.CanMove = True
 
-    def haveMessage(self, message):
+    def haveMessage(self, message): #differant versions..
         return message in self.messages
 
     def addNeighbor(self,neighbor):
