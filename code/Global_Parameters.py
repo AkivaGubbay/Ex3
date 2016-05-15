@@ -12,9 +12,10 @@ def getVar(var):
     while(var != line_var):
         s = f.readline()
         line_var = s.rsplit(" =", 1)[0]
+    f.close()
     return  s[len(line_var) + 3:-1]
 
-    f.close()
+
 
 #Reads the black zone from 'Parameters.txt' file:
 def getBlackZone():
