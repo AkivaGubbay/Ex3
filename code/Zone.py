@@ -14,9 +14,9 @@ class Zone:
         self.Mylog = Mylog
         print(ARENA_X())
 
-        for i in range(int(float(1000))):
-            self.Robot_By_XY.append(int(float(1000))*[-1])
-            self.Type_by_XY.append(int(float(1000))*[0])
+        for i in range(int(float(ARENA_X()))):
+            self.Robot_By_XY.append(int(ARENA_Y())*[-1])
+            self.Type_by_XY.append(int(ARENA_Y())*[0])
 
         # Mark gray areas
         Gray_area_point = GRAY_AREA()
@@ -47,6 +47,8 @@ class Zone:
             Robots.append(Robot(s))
             self.Robot_By_XY[x][y] = Robots[s].id
             Mylog.addLine("put Robot_" + str(Robots[s].id) + " in [" + str(x) + "," + str(y) + "]")
+
+
 
     def PrintRobot_By_XY(self):
         print("PrintRobot_By_XY:")

@@ -3,6 +3,10 @@ from code.Robot import Robot
 from code.Zone import Zone
 from code.Message import Message
 
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+
 class Simulation:
     def __init__(self, Mylog):
         Mylog.addLine("create Simulation")
@@ -25,8 +29,6 @@ class Simulation:
         self.Zone = Zone(Mylog, self.Robots)
 
         """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
-
-
 
     # Enter a new Message to X variable "Messages"
     def transmit_Message(self, MyMessage):
@@ -65,3 +67,33 @@ class Simulation:
         for i in range(len(self.Messages)):
             MyStr+="\n"+self.Messages[i].toString()
         return MyStr
+
+
+    def gui(self):
+        X = []
+        for i in range(int(ARENA_X())):
+            line = int(ARENA_Y())*[0]
+            for j in range(int(ARENA_Y())):
+                if(self.Zone.Robot_By_XY[i][j]!=-1):
+                    line[j] = -1000
+                elif (self.Zone.Type_by_XY[i][j] == 2):
+                    line[j] = 1000
+                elif (self.Zone.Type_by_XY[i][j] == 1):
+                    line[j] = 500
+                elif (self.Zone.Type_by_XY[i][j] == 0):
+                    line[j] = 0
+                    """if (i > 0 & i<ARENA_Y()-1 & j> 0 & j<ARENA_Y()-1):
+                        if((self.Zone.Robot_By_XY[i][j-1]!=-1)|(self.Zone.Robot_By_XY[i][j+1]!=-1)|(self.Zone.Robot_By_XY[i-1][j]!=-1)|(self.Zone.Robot_By_XY[i+1][j]!=-1)):
+                            line[j] = -1000
+                        elif ((self.Zone.Robot_By_XY[i-1][j - 1] != -1) | (self.Zone.Robot_By_XY[i+1][j + 1] != -1) | (
+                            self.Zone.Robot_By_XY[i - 1][j+1] != -1) | (self.Zone.Robot_By_XY[i + 1][j-1] != -1)):
+                            line[j] = -1000"""
+
+
+
+
+
+            X.append(line)
+        fig, ax = plt.subplots()
+        ax.imshow(X, cmap='RdGy', interpolation='nearest')
+        plt.show()
