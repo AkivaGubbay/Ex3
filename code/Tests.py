@@ -22,6 +22,4 @@ def globalParametersTest():
 
 
 globalParametersTest()
-readParameters()
-print(BATTARY_CAPACITY())
 

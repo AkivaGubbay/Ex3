@@ -9,7 +9,7 @@ def getVar(var):
     f = open("Parameters.txt", "r")
     s = f.readline()
     line_var = s.rsplit(" =", 1)[0]
-    while(var != line_var):
+    while(var != line_var.upper() and line_var.lower()):
         s = f.readline()
         line_var = s.rsplit(" =", 1)[0]
     f.close()
@@ -23,7 +23,7 @@ def getBlackZone():
     f = open("Parameters.txt", "r")
     s = f.readline()
     line_var = s.rsplit(" =", 1)[0]
-    while ("BLACK_AREA" != line_var):
+    while ("BLACK_AREA" != line_var.upper() and line_var.lower()):
         s = f.readline()
         line_var = s.rsplit(" =", 1)[0]
     s = s[len(line_var) + 3:-1]
@@ -42,7 +42,7 @@ def getGrayZone():
     f = open("Parameters.txt", "r")
     s = f.readline()
     line_var = s.rsplit(" =", 1)[0]
-    while ("GRAY_AREA" != line_var):
+    while ("GRAY_AREA" != line_var.upper() and line_var.lower()):
         s = f.readline()
         line_var = s.rsplit(" =", 1)[0]
     s = s[len(line_var) + 3:-1]

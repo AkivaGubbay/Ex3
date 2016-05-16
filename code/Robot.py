@@ -24,3 +24,5 @@ class Robot:
 
     def toString(self):
         return "ID:"+str(self.id)+" ,battery_status:"+str(self.battery_status)+" ,messages:"+str(self.messages)+" ,isTransmitting:"+str(self.isTransmitting)+" ,neighbors_list:"+str(self.neighbors_list)+" ,CanMove:"+str(self.CanMove)
+
+
