@@ -42,6 +42,7 @@ Message3 = s.transmit_Message_again(Message2)
 print(s.toString_Messages())
 s.Deleting_old_messages()
 s.Deleting_old_messages()
+s.gui()
 
 
 #Test Zone:

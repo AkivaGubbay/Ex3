@@ -89,124 +89,352 @@ create new Robot- ID:86 ,battery_status:50 ,messages:[] ,isTransmitting:True ,ne
 create new Robot- ID:87 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
 create new Robot- ID:88 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
 create new Robot- ID:89 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
-create new Robot- ID:90 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:91 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:92 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:93 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:94 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:95 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:96 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:97 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:98 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create new Robot- ID:99 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
-create gray area point between: [20, 20, 30, 30]
-create gray area point between: [20, 20, 30, 30]
+create new Robot- ID:90 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:91 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:92 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:93 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:94 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:95 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:96 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:97 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:98 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:99 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:100 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:101 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:102 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:103 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:104 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:105 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:106 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:107 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:108 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:109 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:110 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:111 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:112 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:113 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:114 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:115 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:116 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:117 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:118 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:119 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:120 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:121 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:122 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:123 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:124 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:125 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:126 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:127 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:128 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:129 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:130 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:131 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:132 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:133 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:134 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:135 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:136 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:137 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:138 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:139 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:140 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:141 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:142 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:143 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:144 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:145 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:146 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:147 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:148 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:149 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:150 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:151 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:152 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:153 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:154 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:155 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:156 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:157 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:158 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:159 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:160 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:161 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:162 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:163 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:164 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:165 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:166 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:167 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:168 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:169 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:170 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:171 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:172 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:173 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:174 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:175 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:176 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:177 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:178 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:179 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:180 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:181 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:182 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:183 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:184 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:185 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:186 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:187 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:188 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:189 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:190 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:191 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:192 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:193 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:194 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:195 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:196 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:197 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:198 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:199 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:True
+create new Robot- ID:200 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:201 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:202 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:203 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:204 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:205 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:206 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:207 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:208 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create new Robot- ID:209 ,battery_status:50 ,messages:[] ,isTransmitting:True ,neighbors_list:[] ,CanMove:False
+create gray area point between: [800, 800, 990, 990]
+create gray area point between: [1, 1, 2, 2]
+create gray area point between: [800, 800, 990, 990]
+create gray area point between: [1, 1, 2, 2]
 create black area point between: [0, 0, 999, 0]
 create black area point between: [0, 0, 0, 999]
 create black area point between: [999, 0, 999, 999]
 create black area point between: [0, 999, 999, 999]
-create black area point between: [2, 2, 3, 6]
+create black area point between: [200, 200, 300, 600]
 create black area point between: [31, 32, 33, 36]
-put Robot_0 in [659,799]
-put Robot_1 in [348,714]
-put Robot_2 in [357,315]
-put Robot_3 in [757,896]
-put Robot_4 in [532,265]
-put Robot_5 in [42,852]
-put Robot_6 in [610,784]
-put Robot_7 in [931,930]
-put Robot_8 in [84,11]
-put Robot_9 in [945,116]
-put Robot_10 in [594,718]
-put Robot_11 in [567,322]
-put Robot_12 in [214,1]
-put Robot_13 in [622,665]
-put Robot_14 in [398,783]
-put Robot_15 in [606,828]
-put Robot_16 in [153,572]
-put Robot_17 in [208,545]
-put Robot_18 in [874,304]
-put Robot_19 in [255,340]
-put Robot_20 in [786,323]
-put Robot_21 in [483,457]
-put Robot_22 in [664,623]
-put Robot_23 in [469,355]
-put Robot_24 in [477,367]
-put Robot_25 in [782,513]
-put Robot_26 in [150,897]
-put Robot_27 in [458,27]
-put Robot_28 in [957,579]
-put Robot_29 in [177,104]
-put Robot_30 in [945,458]
-put Robot_31 in [261,819]
-put Robot_32 in [109,843]
-put Robot_33 in [739,277]
-put Robot_34 in [95,109]
-put Robot_35 in [162,192]
-put Robot_36 in [504,777]
-put Robot_37 in [685,548]
-put Robot_38 in [57,358]
-put Robot_39 in [14,504]
-put Robot_40 in [393,237]
-put Robot_41 in [877,268]
-put Robot_42 in [611,421]
-put Robot_43 in [755,530]
-put Robot_44 in [370,279]
-put Robot_45 in [492,298]
-put Robot_46 in [330,426]
-put Robot_47 in [516,621]
-put Robot_48 in [894,74]
-put Robot_49 in [876,973]
-put Robot_50 in [601,426]
-put Robot_51 in [836,383]
-put Robot_52 in [857,625]
-put Robot_53 in [96,640]
-put Robot_54 in [918,255]
-put Robot_55 in [222,573]
-put Robot_56 in [838,947]
-put Robot_57 in [830,302]
-put Robot_58 in [321,633]
-put Robot_59 in [131,300]
-put Robot_60 in [774,938]
-put Robot_61 in [603,928]
-put Robot_62 in [988,811]
-put Robot_63 in [951,796]
-put Robot_64 in [319,520]
-put Robot_65 in [25,823]
-put Robot_66 in [117,69]
-put Robot_67 in [332,721]
-put Robot_68 in [173,175]
-put Robot_69 in [827,85]
-put Robot_70 in [617,10]
-put Robot_71 in [878,644]
-put Robot_72 in [657,288]
-put Robot_73 in [113,104]
-put Robot_74 in [835,76]
-put Robot_75 in [767,896]
-put Robot_76 in [875,207]
-put Robot_77 in [152,665]
-put Robot_78 in [977,483]
-put Robot_79 in [202,100]
-put Robot_80 in [616,374]
-put Robot_81 in [251,979]
-put Robot_82 in [214,277]
-put Robot_83 in [57,211]
-put Robot_84 in [286,363]
-put Robot_85 in [74,422]
-put Robot_86 in [319,413]
-put Robot_87 in [815,666]
-put Robot_88 in [677,695]
-put Robot_89 in [309,723]
-put Robot_90 in [584,471]
-put Robot_91 in [508,109]
-put Robot_92 in [362,527]
-put Robot_93 in [84,883]
-put Robot_94 in [615,996]
-put Robot_95 in [89,720]
-put Robot_96 in [148,430]
-put Robot_97 in [842,568]
-put Robot_98 in [11,611]
-put Robot_99 in [428,962]
+create black area point between: [0, 0, 999, 0]
+create black area point between: [0, 0, 0, 999]
+create black area point between: [999, 0, 999, 999]
+create black area point between: [0, 999, 999, 999]
+create black area point between: [200, 200, 300, 600]
+create black area point between: [31, 32, 33, 36]
+put Robot_0 in [30,384]
+put Robot_1 in [976,108]
+put Robot_2 in [564,222]
+put Robot_3 in [490,861]
+put Robot_4 in [983,612]
+put Robot_5 in [246,496]
+put Robot_6 in [688,684]
+put Robot_7 in [169,604]
+put Robot_8 in [306,662]
+put Robot_9 in [525,542]
+put Robot_10 in [423,13]
+put Robot_11 in [742,513]
+put Robot_12 in [593,624]
+put Robot_13 in [571,132]
+put Robot_14 in [228,808]
+put Robot_15 in [152,969]
+put Robot_16 in [825,131]
+put Robot_17 in [305,835]
+put Robot_18 in [825,923]
+put Robot_19 in [600,348]
+put Robot_20 in [64,264]
+put Robot_21 in [144,944]
+put Robot_22 in [130,637]
+put Robot_23 in [421,389]
+put Robot_24 in [187,415]
+put Robot_25 in [112,477]
+put Robot_26 in [356,780]
+put Robot_27 in [913,37]
+put Robot_28 in [689,610]
+put Robot_29 in [976,332]
+put Robot_30 in [581,128]
+put Robot_31 in [257,885]
+put Robot_32 in [467,30]
+put Robot_33 in [554,170]
+put Robot_34 in [73,511]
+put Robot_35 in [140,10]
+put Robot_36 in [274,750]
+put Robot_37 in [387,220]
+put Robot_38 in [18,956]
+put Robot_39 in [533,992]
+put Robot_40 in [312,626]
+put Robot_41 in [143,254]
+put Robot_42 in [243,813]
+put Robot_43 in [659,382]
+put Robot_44 in [772,956]
+put Robot_45 in [608,913]
+put Robot_46 in [487,2]
+put Robot_47 in [643,868]
+put Robot_48 in [308,35]
+put Robot_49 in [544,594]
+put Robot_50 in [338,538]
+put Robot_51 in [533,349]
+put Robot_52 in [435,603]
+put Robot_53 in [688,96]
+put Robot_54 in [773,532]
+put Robot_55 in [643,174]
+put Robot_56 in [180,930]
+put Robot_57 in [510,814]
+put Robot_58 in [104,245]
+put Robot_59 in [91,924]
+put Robot_60 in [124,759]
+put Robot_61 in [918,680]
+put Robot_62 in [263,835]
+put Robot_63 in [672,292]
+put Robot_64 in [893,212]
+put Robot_65 in [795,959]
+put Robot_66 in [845,974]
+put Robot_67 in [515,551]
+put Robot_68 in [804,845]
+put Robot_69 in [704,119]
+put Robot_70 in [608,226]
+put Robot_71 in [366,637]
+put Robot_72 in [528,959]
+put Robot_73 in [56,885]
+put Robot_74 in [790,50]
+put Robot_75 in [371,963]
+put Robot_76 in [71,531]
+put Robot_77 in [951,177]
+put Robot_78 in [782,55]
+put Robot_79 in [722,771]
+put Robot_80 in [761,621]
+put Robot_81 in [832,493]
+put Robot_82 in [963,91]
+put Robot_83 in [673,422]
+put Robot_84 in [823,24]
+put Robot_85 in [942,494]
+put Robot_86 in [462,102]
+put Robot_87 in [533,486]
+put Robot_88 in [37,723]
+put Robot_89 in [724,66]
+put Robot_90 in [462,354]
+put Robot_91 in [286,808]
+put Robot_92 in [474,959]
+put Robot_93 in [621,620]
+put Robot_94 in [532,118]
+put Robot_95 in [155,974]
+put Robot_96 in [417,838]
+put Robot_97 in [777,281]
+put Robot_98 in [599,294]
+put Robot_99 in [233,870]
+put Robot_100 in [142,245]
+put Robot_101 in [88,973]
+put Robot_102 in [905,89]
+put Robot_103 in [967,208]
+put Robot_104 in [148,382]
+put Robot_105 in [933,668]
+put Robot_106 in [101,115]
+put Robot_107 in [534,583]
+put Robot_108 in [298,990]
+put Robot_109 in [858,756]
+put Robot_110 in [873,439]
+put Robot_111 in [326,302]
+put Robot_112 in [326,633]
+put Robot_113 in [728,918]
+put Robot_114 in [979,864]
+put Robot_115 in [8,115]
+put Robot_116 in [398,185]
+put Robot_117 in [812,252]
+put Robot_118 in [19,702]
+put Robot_119 in [957,765]
+put Robot_120 in [328,582]
+put Robot_121 in [544,787]
+put Robot_122 in [914,552]
+put Robot_123 in [945,977]
+put Robot_124 in [460,320]
+put Robot_125 in [145,291]
+put Robot_126 in [517,190]
+put Robot_127 in [330,90]
+put Robot_128 in [9,40]
+put Robot_129 in [492,907]
+put Robot_130 in [61,304]
+put Robot_131 in [930,796]
+put Robot_132 in [89,615]
+put Robot_133 in [671,199]
+put Robot_134 in [929,813]
+put Robot_135 in [267,115]
+put Robot_136 in [87,754]
+put Robot_137 in [927,380]
+put Robot_138 in [936,949]
+put Robot_139 in [902,907]
+put Robot_140 in [293,429]
+put Robot_141 in [630,66]
+put Robot_142 in [300,67]
+put Robot_143 in [671,653]
+put Robot_144 in [504,402]
+put Robot_145 in [20,205]
+put Robot_146 in [614,82]
+put Robot_147 in [110,270]
+put Robot_148 in [982,113]
+put Robot_149 in [339,629]
+put Robot_150 in [34,667]
+put Robot_151 in [382,89]
+put Robot_152 in [406,117]
+put Robot_153 in [634,786]
+put Robot_154 in [586,649]
+put Robot_155 in [928,870]
+put Robot_156 in [414,303]
+put Robot_157 in [425,99]
+put Robot_158 in [215,31]
+put Robot_159 in [982,336]
+put Robot_160 in [354,478]
+put Robot_161 in [479,361]
+put Robot_162 in [406,192]
+put Robot_163 in [377,340]
+put Robot_164 in [443,720]
+put Robot_165 in [50,913]
+put Robot_166 in [36,321]
+put Robot_167 in [88,570]
+put Robot_168 in [42,356]
+put Robot_169 in [335,111]
+put Robot_170 in [735,724]
+put Robot_171 in [377,556]
+put Robot_172 in [197,133]
+put Robot_173 in [350,971]
+put Robot_174 in [233,177]
+put Robot_175 in [773,585]
+put Robot_176 in [899,170]
+put Robot_177 in [790,952]
+put Robot_178 in [971,424]
+put Robot_179 in [771,554]
+put Robot_180 in [567,607]
+put Robot_181 in [353,574]
+put Robot_182 in [382,504]
+put Robot_183 in [662,79]
+put Robot_184 in [832,427]
+put Robot_185 in [810,446]
+put Robot_186 in [342,899]
+put Robot_187 in [529,789]
+put Robot_188 in [711,433]
+put Robot_189 in [326,463]
+put Robot_190 in [823,159]
+put Robot_191 in [676,257]
+put Robot_192 in [280,296]
+put Robot_193 in [857,8]
+put Robot_194 in [151,737]
+put Robot_195 in [228,968]
+put Robot_196 in [125,993]
+put Robot_197 in [479,710]
+put Robot_198 in [312,113]
+put Robot_199 in [761,406]
+put Robot_200 in [133,303]
+put Robot_201 in [612,430]
+put Robot_202 in [336,620]
+put Robot_203 in [174,839]
+put Robot_204 in [278,275]
+put Robot_205 in [70,753]
+put Robot_206 in [260,978]
+put Robot_207 in [228,870]
+put Robot_208 in [276,754]
+put Robot_209 in [936,142]
 "Deleting_old_messages" function Delete 0 Posts
 "Deleting_old_messages" function Delete 2 Posts
 "Deleting_old_messages" function Delete 1 Posts
