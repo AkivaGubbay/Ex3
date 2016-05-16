@@ -1,6 +1,6 @@
 from code.Global_Parameters import *
 
-
+#Tests parameter class:
 def globalParametersTest():
     readParameters()
     print("**********************globalParametersTest*****************************************")
