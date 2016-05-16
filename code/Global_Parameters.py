@@ -93,7 +93,6 @@ def readParameters():
     __message_life_time = int(getVar("MESSAGE_LIFE_TIME"))
 
 
-
 #Project Constants:
 def BATTARY_CAPACITY():
     return __battary_capacity
