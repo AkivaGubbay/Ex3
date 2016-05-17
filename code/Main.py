@@ -33,6 +33,7 @@ Mylog = Log()
 s = Simulation()
 
 s.showGUI()
+
 print(len(Message(111,"333").distance))
 
 
