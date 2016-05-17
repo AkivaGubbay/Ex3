@@ -6,16 +6,16 @@ from code.Global_Parameters import *
 class Point:
 
     def __init__(self, x, y):
-        self.x, self.y = x, y     #self.x = x,  self.y = y.
+        self._x, self._y = x, y     #self.x = x,  self.y = y.
 
     def toString(self):
-        return '('+str(self.x)+', '+str(self.y)+')'
+        return '('+str(self._x)+', '+str(self._y)+')'
 
     def airDistance(self, x2, y2):
-        x_dis = self.x - x2
+        x_dis = self._x - x2
         if(x_dis<0): x_dis = x_dis*-1
 
-        y_dis = self.y - y2
+        y_dis = self._y - y2
         if (y_dis < 0): y_dis = y_dis * -1
 
         return x_dis + y_dis
