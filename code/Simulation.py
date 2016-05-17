@@ -13,27 +13,10 @@ import matplotlib.cm as cm
 class Simulation:
     def __init__(self):
         Log.addLine("create Simulation")
-        self._Robots = []
         self._Air = Air()
-
-
-        # Creates a new robot 'that can move' to variable "Robots"
-        for s in range(0, int(ROBOTS_MOVE())):
-            self._Robots.append(Robot(s))
-            Log.addLine("create new Robot- " + self._Robots[s].toString())
-
-        # Creates a new robot 'that can't move' to variable "Robots"
-        for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
-            self._Robots.append(Robot(s))
-            self._Robots[s].CanMove = False
-            Log.addLine("create new Robot- " + self._Robots[s].toString())
-
-
-        # Creates Arena:
-        self._Arena = Arena(self._Robots)
+        self._Arena = Arena()
 
         """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
-
 
     def showGUI(self):
         X = []
