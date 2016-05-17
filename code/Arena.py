@@ -7,7 +7,7 @@ from code.log import log
 
 
 #white = 0    gray = 1     black = 2
-class Zone:
+class Arena:
     def __init__(self, Mylog, Robots):
         self.Robot_By_XY = []
         self.Type_by_XY = []
