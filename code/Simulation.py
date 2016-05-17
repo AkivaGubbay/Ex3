@@ -89,10 +89,6 @@ class Simulation:
                             self.Zone.Robot_By_XY[i - 1][j+1] != -1) | (self.Zone.Robot_By_XY[i + 1][j-1] != -1)):
                             line[j] = -1000"""
 
-
-
-
-
             X.append(line)
         fig, ax = plt.subplots()
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
