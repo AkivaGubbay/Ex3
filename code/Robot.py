@@ -1,6 +1,6 @@
 from code.Point import *
 from code.Global_Parameters import *
-
+#HI
 class Robot:
     static_arena = -1
 

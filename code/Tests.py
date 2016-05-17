@@ -34,8 +34,8 @@ def globalParametersTest():
 def RobotTest():
     r1 = Robot(0)
     Robot.static_arena = Arena()
-    env = r1.getEnv()
-    print("getEnv: ",env)
+    #env = r1.getEnv()
+    #print("getEnv: ",env)
 
 
 RobotTest()
