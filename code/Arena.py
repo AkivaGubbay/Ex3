@@ -124,7 +124,7 @@ class Arena:
             for i in range(int(float(ARENA_X()))):
                 message1.distance.append(int(ARENA_Y()) * [-1])
 
-
+            xc
         else:
             return message1.distance[point1._x][point1._y]
 
