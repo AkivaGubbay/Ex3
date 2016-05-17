@@ -1,8 +1,6 @@
 from code.Point import *
 from code.Global_Parameters import *
 
-
-
 class Robot:
 
     def __init__(self, id):

@@ -6,7 +6,8 @@ from code.Global_Parameters import *
 class Point:
 
     def __init__(self, x, y):
-        self._x, self._y = x, y     #self.x = x,  self.y = y.
+        self._x = x
+        self._y = y
 
     def toString(self):
         return '('+str(self._x)+', '+str(self._y)+')'
@@ -26,6 +27,9 @@ class Point:
         bo3 = y1>=0
         bo4 = y1<ARENA_Y()
         return (bo1 &bo2) & (bo3 & bo4)
+
+    def toString(self):
+        return "[" + str(self._x)+","+ str(self._y)+"]"
 
 
 

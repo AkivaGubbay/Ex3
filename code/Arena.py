@@ -9,7 +9,6 @@ class Arena:
         self._mat_robot_id = []
         self._Robots = []
         self._mat_zone = [] #by color (white = 0    gray = 1     black = 2)
-        print(ARENA_X())
 
         for i in range(int(float(ARENA_X()))):
             self._mat_robot_id.append(int(ARENA_Y())*[-1])
@@ -49,7 +48,7 @@ class Arena:
             y = randint(1, int(ARENA_Y()) - 2)
             bool1 = self._mat_robot_id[x][y]!=-1
             bool2 = self._mat_zone[x][y] == BLACK()
-            bool3 = self._Robots[s].CanMove == False
+            bool3 = self._Robots[s]._can_move == False
             bool4 = self._mat_zone[x][y] != WHITE()
             while((bool1 |bool2 ) | (bool3 & bool4)):
                 x = randint(1, ARENA_X() - 2)
@@ -57,12 +56,13 @@ class Arena:
                 print("swap XY")
                 bool1 = self._mat_robot_id[x][y] != -1
                 bool2 = self._mat_zone[x][y] == BLACK()
-                bool3 = self._Robots[s].CanMove == False
+                bool3 = self._Robots[s]._can_move == False
                 bool4 = self._mat_zone[x][y] != WHITE()
 
-                self._Robots.append(Robot(s))
-            self._mat_robot_id[x][y] = self._Robots[s].id
-            Log.addLine("put Robot_" + str(self._Robots[s].id) + " in [" + str(x) + "," + str(y) + "]")
+            self._Robots.append(Robot(s))
+            self._mat_robot_id[x][y] = self._Robots[s]._id
+            self._Robots[s]._real_location = Point(x, y)
+            Log.addLine("put Robot_" + str(self._Robots[s]._id) + self._Robots[s]._real_location.toString())
 
     """Returns the robot can he move forward(UP, DOWN, LEFT,RIGHT)
     Assumes that that the location of the robot's true, namely:  x>0, y>o, x<ARENA_X(), y<ARENA_Y()-1"""
