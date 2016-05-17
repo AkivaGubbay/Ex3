@@ -1,76 +1,41 @@
 from code.Global_Parameters import *
 from code.Robot import Robot
-from code.Zone import Zone
+from code.Arena import Arena
 from code.Message import Message
 from code.Point import Point
+from code.Air import Air
+from code.Log import Log
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 class Simulation:
-    def __init__(self, Mylog):
-        Mylog.addLine("create Simulation")
-        self.Messages = []
-        self.Robots = []
-        self.Mylog = Mylog
+    def __init__(self):
+        Log.addLine("create Simulation")
+        self._Robots = []
+        self._Air = Air()
+
 
         # Creates a new robot 'that can move' to variable "Robots"
         for s in range(0, int(ROBOTS_MOVE())):
-            self.Robots.append(Robot(s))
-            Mylog.addLine("create new Robot- " + self.Robots[s].toString())
+            self._Robots.append(Robot(s))
+            Log.addLine("create new Robot- " + self._Robots[s].toString())
 
         # Creates a new robot 'that can't move' to variable "Robots"
         for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
-            self.Robots.append(Robot(s))
-            self.Robots[s].CanMove = False
-            Mylog.addLine("create new Robot- " + self.Robots[s].toString())
+            self._Robots.append(Robot(s))
+            self._Robots[s].CanMove = False
+            Log.addLine("create new Robot- " + self._Robots[s].toString())
 
-        # Creates Zone:
-        self.Zone = Zone(Mylog, self.Robots)
+
+        # Creates Arena:
+        self._Arena = Arena(self._Robots)
 
         """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
 
-    # Enter a new Message to X variable "Messages"
-    def transmit_Message(self, MyMessage):
-        NewMessage = Message(MyMessage.Id_Sender, MyMessage.Message)
-        NewMessage.Id_message = len(self.Messages)
 
-        self.Messages.append(NewMessage)
-        return NewMessage
-
-    # Reenter a Message to X variable "Messages"
-    def transmit_Message_again(self, MyMessage):
-        NewMessage = self.transmit_Message(MyMessage)
-
-        NewMessage.Version = MyMessage.Version+1
-        return NewMessage
-
-    # Do self.Messages[i].Life--
-    # deletes the message when Life==0 equal to zero
-    def Deleting_old_messages(self):
-        MySize = len(self.Messages)
-        i=0
-        mone=0
-        while(i<MySize):
-            self.Messages[i].Life = self.Messages[i].Life - 1
-            if (self.Messages[i].Life == 0):
-                self.Messages.remove(self.Messages[i])
-                MySize = MySize - 1
-                mone=mone+1
-            else:
-                i = i + 1
-
-        self.Mylog.addLine("\"Deleting_old_messages\" function Delete "+str(mone)+" Posts")
-
-    def toString_Messages(self):
-        MyStr="toString_Messages [size="+str(len(self.Messages))+"]:"
-        for i in range(len(self.Messages)):
-            MyStr+="\n"+self.Messages[i].toString()
-        return MyStr
-
-
-    def gui(self):
+    def showGUI(self):
         X = []
         for i in range(int(ARENA_X())):
             line = int(ARENA_Y())*[-1]
@@ -80,18 +45,18 @@ class Simulation:
             for j in range(int(ARENA_Y())):
                 if(X[i][j] != -1): continue
 
-                if(self.Zone.Robot_By_XY[i][j]!=-1):
+                if(self._Arena.Robot_By_XY[i][j]!=-1):
                     X[i][j] = -1000
                     for i2 in range(i-ROBOT_LEANGHT(), i+ROBOT_LEANGHT()):
                         for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
                             if(Point.exists(i2,j2)):
                                 X[i2][j2] = -1000
 
-                elif (self.Zone.Type_by_XY[i][j] == 2):
+                elif (self._Arena.Type_by_XY[i][j] == 2):
                     X[i][j] = 1000
-                elif (self.Zone.Type_by_XY[i][j] == 1):
+                elif (self._Arena.Type_by_XY[i][j] == 1):
                     X[i][j] = 500
-                elif (self.Zone.Type_by_XY[i][j] == 0):
+                elif (self._Arena.Type_by_XY[i][j] == 0):
                     X[i][j] = 0
 
         fig, ax = plt.subplots()

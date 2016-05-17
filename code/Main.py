@@ -1,9 +1,9 @@
 from tkinter import Radiobutton
 
 from code.Point import Point
-from code.Zone import Zone
+from code.Arena import Arena
 from code.Robot import Robot
-from code.log import log
+from code.Log import Log
 from code.Simulation import Simulation
 from code.Message import Message
 from code.Global_Parameters import *
@@ -27,22 +27,22 @@ print("tostring: "+ r.toString())
 
 
 #log
-Mylog = log()
+Mylog = Log()
 
 #test Simulation:
-s = Simulation(Mylog)
+s = Simulation()
 
 Message1 = Message(33,"akiva3")
-s.transmit_Message(Message1)
+s._Air.transmit_Message(Message1)
 Message2 = Message(65,"zvika222")
-s.transmit_Message(Message2)
-print(s.toString_Messages())
-s.Deleting_old_messages()
-Message3 = s.transmit_Message_again(Message2)
-print(s.toString_Messages())
-s.Deleting_old_messages()
-s.Deleting_old_messages()
-s.gui()
+s._Air.transmit_Message(Message2)
+print(s._Air.toString_Messages())
+s._Air.Deleting_old_messages()
+Message3 = s._Air.transmit_Message_again(Message2)
+print(s._Air.toString_Messages())
+s._Air.Deleting_old_messages()
+s._Air.Deleting_old_messages()
+s.showGUI()
 
 
 #Test Zone:
