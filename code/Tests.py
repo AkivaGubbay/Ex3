@@ -34,6 +34,7 @@ def globalParametersTest():
 
 #Tests Robot class:
 def RobotTest():
+    print("**********************RobotTest*****************************************")
     r1 = Robot(0)
     print(r1._id)
     Robot.static_arena = Arena()
@@ -45,13 +46,28 @@ def RobotTest():
     r1.move(LEFT())
     r1.move(UP())
     r1.move(LEFT())
-    for i in r1._private_location_log: print(i.toString()+", ")
-    #when checkied this.. add random directions for move
+    print("private location log",end=" :")
+    for i in r1._private_location_log: print(i.toString(),end=", ")
+    print("\nRandom numbers",end=" :")
+    for i in range(0,20): print(Robot.getRandomDirection(),end=", ")
 
 
+#'__str__' is toString in python:
+"""
+class A:
+    def __init__(self,num):
+        self.a = num
 
-RobotTest()
+    def __str__(self):
+        return "a: "+str(self.a)
+
+ob = A(10)
+print(ob) """
 
 
+#globalParametersTest()
+#RobotTest()
 
+
+#MUST HAVE:
 Mylog.close()
