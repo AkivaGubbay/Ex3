@@ -28,23 +28,24 @@ def globalParametersTest():
     print("MAX_NUM_OF_VERSIONS", MAX_NUM_OF_VERSIONS())
     print("MESSAGE_LIFE_TIME", MESSAGE_LIFE_TIME())
 
+def testMes():
+    # log
+    Mylog = Log()
+    s = Simulation()
 
+    Message1 = Message(33, "akiva3")
+    s._Air.transmit_Message(Message1)
+    Message2 = Message(65, "zvika222")
+    s._Air.transmit_Message(Message2)
+    print(s._Air.toString_Messages())
+    s._Air.Deleting_old_messages()
+    Message3 = s._Air.transmit_Message_again(Message2)
+    print(s._Air.toString_Messages())
+    s._Air.Deleting_old_messages()
+    s._Air.Deleting_old_messages()
+
+    Mylog.close()
 
 
 globalParametersTest()
-#log
-Mylog = Log()
-s = Simulation()
-
-Message1 = Message(33,"akiva3")
-s._Air.transmit_Message(Message1)
-Message2 = Message(65,"zvika222")
-s._Air.transmit_Message(Message2)
-print(s._Air.toString_Messages())
-s._Air.Deleting_old_messages()
-Message3 = s._Air.transmit_Message_again(Message2)
-print(s._Air.toString_Messages())
-s._Air.Deleting_old_messages()
-s._Air.Deleting_old_messages()
-
-Mylog.close()
+#testMes()
