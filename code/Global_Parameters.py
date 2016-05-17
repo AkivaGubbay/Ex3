@@ -62,7 +62,7 @@ def readParameters():
     global __arena_y, __log_file_directory
     global __white,__gray,__black
     global __older,__same_age,__younger
-    global __current,__up,__left,__down, __right
+    global __up,__left,__down, __right
     global __instant_sending_chance,__max_num_of_versions,__message_life_time
     global __robot_leanght
 
@@ -84,15 +84,15 @@ def readParameters():
     __white,__gray,__black = int(getVar("WHITE")),int(getVar("GRAY")),int(getVar("BLACK"))
     # white:
     __older,__same_age,__younger = int(getVar("OLDER")),int(getVar("SAME_AGE")),int(getVar("YOUNGER"))
-    # current,up,left,down,right:
-    __current,__up,__left,__down,__right = int(getVar("CURRENT")),int(getVar("UP")),int(getVar("LEFT")),int(getVar("DOWN")),int(getVar("RIGHT"))
+    # up,left,down,right:
+    __up,__left,__down,__right = int(getVar("UP")),int(getVar("LEFT")),int(getVar("DOWN")),int(getVar("RIGHT"))
     # instant_sending_chance:
     __instant_sending_chance = float(getVar("INSTANT_SENDING_CHANCE"))
     # max_num_of_versions:
     __max_num_of_versions = int(getVar("MAX_NUM_OF_VERSIONS"))
     # message_life_time:
     __message_life_time = int(getVar("MESSAGE_LIFE_TIME"))
-    # robot leanght(for gui)
+    # robot length(for gui):
     __robot_leanght = int(getVar("ROBOT_LEANGHT"))
 
 
@@ -141,9 +141,6 @@ def SAME_AGE():
 
 def YOUNGER():
    return __younger
-
-def CURRENT():
-    return __current
 
 def UP():
     return __up

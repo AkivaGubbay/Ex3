@@ -2,6 +2,7 @@ from code.Point import *
 from code.Global_Parameters import *
 
 class Robot:
+    static_arena = -1
 
     def __init__(self, id):
         self._id = id
@@ -19,6 +20,13 @@ class Robot:
         self._currently_get_message = -1
         self._current_zone = -1
         self._distance_from = []#I want to fill the whole list with -1 but i dont knot how many neighbors..
+
+
+    def getEnv(self):
+        return Robot.glob_arena.getEnv(self._id)
+
+
+
 
     """
     def haveMessage(self, message): #differant versions..

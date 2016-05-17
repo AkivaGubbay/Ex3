@@ -93,7 +93,7 @@ class Arena:
 
         return self._mat_zone[x][y]
 
-    def moveRobot(self,id, direction):
+    def moveRobot(self,id,direction):
         array = self.getEnv(id)
         if(array[direction]==False):
             return False
