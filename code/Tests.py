@@ -7,7 +7,9 @@ from code.Log import Log
 from code.Simulation import Simulation
 from code.Message import Message
 from code.Global_Parameters import *
-readParameters()  #always strat with this..
+#MUST HAVE:
+readParameters()
+Mylog = Log()
 
 #Tests parameter class:
 def globalParametersTest():
@@ -33,9 +35,23 @@ def globalParametersTest():
 #Tests Robot class:
 def RobotTest():
     r1 = Robot(0)
+    print(r1._id)
     Robot.static_arena = Arena()
-    #env = r1.getEnv()
-    #print("getEnv: ",env)
+    #Env:
+    env = r1.getEnv()
+    print("getEnv: ",env)
+    #move:
+    r1.move(UP())
+    r1.move(LEFT())
+    r1.move(UP())
+    r1.move(LEFT())
+    for i in r1._private_location_log: print(i.toString()+", ")
+    #when checkied this.. add random directions for move
 
 
-globalParametersTest()
+
+RobotTest()
+
+
+
+Mylog.close()
