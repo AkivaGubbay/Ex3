@@ -16,6 +16,16 @@ class Simulation:
         self._Air = Air()
         self._Arena = Arena()
 
+
+        #test:
+        self._Air.transmit_Message(Message("abcde", 11))
+        self._Air._messages[0]._real_location = self._Arena._Robots[11]._real_location
+
+        """point0 = Point(500,500)
+
+        print(self._Arena.distance(self._Air._messages[0], point0))"""
+
+
         """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
 
     def showGUI(self):

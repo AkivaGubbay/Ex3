@@ -12,7 +12,6 @@ class Air:
     def transmit_Message(self, MyMessage):
         NewMessage = Message(MyMessage.Id_Sender, MyMessage.Message)
         NewMessage.Id_message = len(self._messages)
-
         self._messages.append(NewMessage)
         return NewMessage
 

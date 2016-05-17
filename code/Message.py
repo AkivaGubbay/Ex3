@@ -10,7 +10,6 @@ class Message:
         self._real_location = Point(0,0)
         self._mat_distance = []
 
-
     def toString(self):
         return "Id_Sender:" + str(self.Id_Sender) +",Id_message:" + str(self.Id_message)+",Version:" + str(self.Version)+",Message:" + str(self.Message)+ ",Life:"+str(self.Life)
 

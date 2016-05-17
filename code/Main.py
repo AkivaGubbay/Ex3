@@ -16,7 +16,9 @@ Mylog = Log()
 s = Simulation()
 s.showGUI()
 
-
+Message("222",11)
+Message("222",5)
+Message("222",1)
 
 
 

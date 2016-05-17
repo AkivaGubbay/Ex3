@@ -53,7 +53,6 @@ class Arena:
             while((bool1 |bool2 ) | (bool3 & bool4)):
                 x = randint(1, ARENA_X() - 2)
                 y = randint(1, ARENA_Y() - 2)
-                print("swap XY")
                 bool1 = self._mat_robot_id[x][y] != -1
                 bool2 = self._mat_zone[x][y] == BLACK()
                 bool3 = self._Robots[s]._can_move == False
@@ -128,6 +127,7 @@ class Arena:
             nextindex = index+1
             for i in range(0, len(array)):
                 for j in range(0, len(array[i])):
+                    print(str(i) + ","+str(j))
                     if(array[i][j] == index):
                         # UP:
                         if(Point.exists(i,j-1) & self._mat_zone[i][j-1]!=BLACK()):
@@ -154,8 +154,6 @@ class Arena:
                 message1._mat_distance.append(int(ARENA_Y()) * [-1])
             message1._mat_distance[message1._real_location._x][message1._real_location._y] = 0
             self.fillMatDistance(message1._mat_distance)
-            return message1.distance[point1._x][point1._y]
-        else:
-            return message1.distance[point1._x][point1._y]
+        return message1._mat_distance[point1._x][point1._y]
 
 
