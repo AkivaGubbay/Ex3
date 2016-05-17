@@ -1,6 +1,7 @@
 from code.Point import *
 from code.Global_Parameters import *
-#HI
+
+
 class Robot:
     static_arena = -1
 
@@ -23,8 +24,23 @@ class Robot:
 
 
     def getEnv(self):
-        return Robot.glob_arena.getEnv(self._id)
+        return Robot.static_arena.getEnv(self._id)
 
+    def move(self,direction):
+        if(direction == UP()):
+            self._private_location._y += 1
+        if (direction == LEFT()):
+            self._private_location._x += -1
+        if (direction == DOWN()):
+            self._private_location._y += -1
+
+        if (direction == RIGHT()):
+            self._private_location._x += 1
+
+        #Add to robots new posision to log:
+        self._private_location_log.append(self._private_location)
+        #Update real location:
+        Robot.static_arena.moveRobot(self._id,direction)
 
 
 

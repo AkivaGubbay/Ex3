@@ -8,8 +8,9 @@ from code.Simulation import Simulation
 from code.Message import Message
 from code.Global_Parameters import *
 
+#MUST HAVE:
 readParameters()
-
+Mylog = Log()
 """
 #Test Point:
 print('Test Point:')
@@ -36,4 +37,4 @@ s.showGUI()
 
 print(len(Message(111,"333").distance))
 
-
+Mylog.close()
