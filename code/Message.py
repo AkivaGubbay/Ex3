@@ -8,7 +8,7 @@ class Message:
         self.Message = Message
         self.Life = 2
         self._real_location = Point(0,0)
-        self.distance = []
+        self._mat_distance = []
 
 
     def toString(self):

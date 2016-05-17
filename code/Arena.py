@@ -120,12 +120,17 @@ class Arena:
 
             return True
 
-    def distance(self, message1,point1):
-        if(len(message1.distance)==0):
-            for i in range(int(float(ARENA_X()))):
-                message1.distance.append(int(ARENA_Y()) * [-1])
+    def fill_mat_distance(self,message1):
+        while(True):
+            x=3
 
-            xc
+
+    def distance(self, message1,point1):
+        if(len(message1._mat_distance)==0):
+            for i in range(int(float(ARENA_X()))):
+                message1._mat_distance.append(int(ARENA_Y()) * [-1])
+            message1._mat_distance[message1._real_location._x][message1._real_location._y] = 0
+
         else:
             return message1.distance[point1._x][point1._y]
 
