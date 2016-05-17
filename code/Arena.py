@@ -103,6 +103,7 @@ class Arena:
             self._mat_robot_id[x][y]=-1
 
             if(direction == UP()):
+                Log.addLine("move the Robot_" + str(id) + "UP")
                 y = y - 1
             elif(direction == DOWN()):
                 y = y + 1
@@ -113,6 +114,7 @@ class Arena:
             self._mat_robot_id[x][y] = id
 
             self._Robots[id]._real_location = Point(x,y)
+
             return True
 
     def Print_mat_robot_id(self):
