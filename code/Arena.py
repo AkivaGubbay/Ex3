@@ -120,9 +120,32 @@ class Arena:
 
             return True
 
-    def fill_mat_distance(self,message1):
-        while(True):
-            x=3
+    def fillMatDistance(self, array):
+        index = 0
+        exist_white_quare = True
+        while(exist_white_quare):
+            exist_white_quare = False
+            nextindex = index+1
+            for i in range(0, len(array)):
+                for j in range(0, len(array[i])):
+                    if(array[i][j] == index):
+                        # UP:
+                        if(Point.exists(i,j-1) & self._mat_zone[i][j-1]!=BLACK()):
+                            exist_white_quare = True
+                            array[i][j-1] = nextindex
+                        # DOWN:
+                        if(Point.exists(i,j+1) & self._mat_zone[i][j+1]!=BLACK()):
+                            exist_white_quare = True
+                            array[i][j-1] = nextindex
+                        # LEFT
+                        if(Point.exists(i-1,j) & self._mat_zone[i-1][j]!=BLACK()):
+                            exist_white_quare = True
+                            array[i][j-1] = nextindex
+                        # RIGHT
+                        if (Point.exists(i+1, j) & self._mat_zone[i+1][j] != BLACK()):
+                            exist_white_quare = True
+                            array[i][j-1] = nextindex
+            index =  nextindex
 
 
     def distance(self, message1,point1):
@@ -130,7 +153,8 @@ class Arena:
             for i in range(int(float(ARENA_X()))):
                 message1._mat_distance.append(int(ARENA_Y()) * [-1])
             message1._mat_distance[message1._real_location._x][message1._real_location._y] = 0
-
+            self.fillMatDistance(message1._mat_distance)
+            return message1.distance[point1._x][point1._y]
         else:
             return message1.distance[point1._x][point1._y]
 

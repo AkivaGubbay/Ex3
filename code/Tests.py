@@ -38,4 +38,4 @@ def RobotTest():
     #print("getEnv: ",env)
 
 
-RobotTest()
+globalParametersTest()

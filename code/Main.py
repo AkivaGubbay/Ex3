@@ -7,9 +7,9 @@ from code.Log import Log
 from code.Simulation import Simulation
 from code.Message import Message
 from code.Global_Parameters import *
-
-Mylog = Log()
 readParameters()
+Mylog = Log()
+
 
 
 #test Simulation:
