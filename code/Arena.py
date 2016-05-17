@@ -119,17 +119,13 @@ class Arena:
 
             return True
 
-    def Print_mat_robot_id(self):
-        print("Print_mat_robot_id:")
-        for i in range(0, len(self._mat_robot_id)):
-            for j in range(0, len(self._mat_robot_id[i])):
-                id =self._mat_robot_id[i][j]
-                if(id !=-1):
-                    print("["+str(i)+","+str(j)+"]= Robot_"+str(id)+": canMove-"+ str(self.Robots[id].CanMove))
+    def distance(self, message1,point1):
+        if(len(message1.distance)==0):
+            for i in range(int(float(ARENA_X()))):
+                message1.distance.append(int(ARENA_Y()) * [-1])
 
-    def PrintType_by_XY(self):
-        print("PrintType_by_XY:")
-        for i in range(len(self._mat_zone)):
-            for j in range(len(self._mat_zone[i])):
-                if(self._mat_zone[i][j] !=0):
-                    print("["+str(i)+","+str(j)+"]="+str(self._mat_zone[i][j]))
+
+        else:
+            return message1.distance[point1._x][point1._y]
+
+

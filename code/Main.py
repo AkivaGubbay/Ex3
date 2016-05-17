@@ -33,4 +33,6 @@ Mylog = Log()
 s = Simulation()
 
 s.showGUI()
-print(s._Arena.getEnv(22))
+print(len(Message(111,"333").distance))
+
+

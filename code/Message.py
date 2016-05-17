@@ -1,3 +1,4 @@
+from code.Point import Point
 
 class Message:
     def __init__(self,Id_Sender,Message):
@@ -6,6 +7,10 @@ class Message:
         self.Version = 0
         self.Message = Message
         self.Life = 2
+        self._real_location = Point(0,0)
+        self.distance = []
 
     def toString(self):
         return "Id_Sender:" + str(self.Id_Sender) +",Id_message:" + str(self.Id_message)+",Version:" + str(self.Version)+",Message:" + str(self.Message)+ ",Life:"+str(self.Life)
+
+
