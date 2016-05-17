@@ -64,6 +64,7 @@ def readParameters():
     global __older,__same_age,__younger
     global __current,__up,__left,__down, __right
     global __instant_sending_chance,__max_num_of_versions,__message_life_time
+    global __robot_leanght
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -91,6 +92,8 @@ def readParameters():
     __max_num_of_versions = int(getVar("MAX_NUM_OF_VERSIONS"))
     # message_life_time:
     __message_life_time = int(getVar("MESSAGE_LIFE_TIME"))
+    # robot leanght(for gui)
+    __robot_leanght = int(getVar("ROBOT_LEANGHT"))
 
 
 #Project Constants:
@@ -163,5 +166,6 @@ def MAX_NUM_OF_VERSIONS():
 def MESSAGE_LIFE_TIME():
    return __message_life_time
 
-
+def ROBOT_LEANGHT():
+    return __robot_leanght
 

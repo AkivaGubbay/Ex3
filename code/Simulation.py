@@ -2,6 +2,7 @@ from code.Global_Parameters import *
 from code.Robot import Robot
 from code.Zone import Zone
 from code.Message import Message
+from code.Point import Point
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -72,24 +73,29 @@ class Simulation:
     def gui(self):
         X = []
         for i in range(int(ARENA_X())):
-            line = int(ARENA_Y())*[0]
-            for j in range(int(ARENA_Y())):
-                if(self.Zone.Robot_By_XY[i][j]!=-1):
-                    line[j] = -1000
-                elif (self.Zone.Type_by_XY[i][j] == 2):
-                    line[j] = 1000
-                elif (self.Zone.Type_by_XY[i][j] == 1):
-                    line[j] = 500
-                elif (self.Zone.Type_by_XY[i][j] == 0):
-                    line[j] = 0
-                    """if (i > 0 & i<ARENA_Y()-1 & j> 0 & j<ARENA_Y()-1):
-                        if((self.Zone.Robot_By_XY[i][j-1]!=-1)|(self.Zone.Robot_By_XY[i][j+1]!=-1)|(self.Zone.Robot_By_XY[i-1][j]!=-1)|(self.Zone.Robot_By_XY[i+1][j]!=-1)):
-                            line[j] = -1000
-                        elif ((self.Zone.Robot_By_XY[i-1][j - 1] != -1) | (self.Zone.Robot_By_XY[i+1][j + 1] != -1) | (
-                            self.Zone.Robot_By_XY[i - 1][j+1] != -1) | (self.Zone.Robot_By_XY[i + 1][j-1] != -1)):
-                            line[j] = -1000"""
-
+            line = int(ARENA_Y())*[-1]
             X.append(line)
+
+        for i in range(int(ARENA_X())):
+            for j in range(int(ARENA_Y())):
+                if(X[i][j] != -1): continue
+
+                if(self.Zone.Robot_By_XY[i][j]!=-1):
+                    X[i][j] = -1000
+                    for i2 in range(i-ROBOT_LEANGHT(), i+ROBOT_LEANGHT()):
+                        for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
+                            if(Point.exists(i2,j2)):
+                                X[i2][j2] = -1000
+
+                elif (self.Zone.Type_by_XY[i][j] == 2):
+                    X[i][j] = 1000
+                elif (self.Zone.Type_by_XY[i][j] == 1):
+                    X[i][j] = 500
+                elif (self.Zone.Type_by_XY[i][j] == 0):
+                    X[i][j] = 0
+
         fig, ax = plt.subplots()
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
         plt.show()
+
+

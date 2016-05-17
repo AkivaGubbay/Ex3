@@ -39,10 +39,18 @@ class Zone:
         for s in range(0, len(Robots)):
             x = randint(1, int(ARENA_X()) - 2)
             y = randint(1, int(ARENA_Y()) - 2)
-            while(self.Robot_By_XY[x][y]!=-1 | (self.Type_by_XY[x][y] == 2|(Robots[s].CanMove == False & self.Type_by_XY[x][y] != 0))):
+            bool1 = self.Robot_By_XY[x][y]!=-1
+            bool2 = self.Type_by_XY[x][y] == 2
+            bool3 = Robots[s].CanMove == False
+            bool4 = self.Type_by_XY[x][y] != 0
+            while((bool1 |bool2 ) | (bool3 & bool4)):
                 x = randint(1, ARENA_X() - 2)
                 y = randint(1, ARENA_Y() - 2)
                 print("swap XY")
+                bool1 = self.Robot_By_XY[x][y] != -1
+                bool2 = self.Type_by_XY[x][y] == 2
+                bool3 = Robots[s].CanMove == False
+                bool4 = self.Type_by_XY[x][y] != 0
 
             Robots.append(Robot(s))
             self.Robot_By_XY[x][y] = Robots[s].id
