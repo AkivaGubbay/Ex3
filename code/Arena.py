@@ -103,16 +103,18 @@ class Arena:
             self._mat_robot_id[x][y]=-1
 
             if(direction == UP()):
-                Log.addLine("move the Robot_" + str(id) + "UP")
                 y = y - 1
+                Log.addLine("move the Robot_" + str(id) + " UP to [" + str(x) + "][" + str(y) + "]")
             elif(direction == DOWN()):
                 y = y + 1
+                Log.addLine("move the Robot_" + str(id) + " DOWN to [" + str(x) + "][" + str(y) + "]")
             elif (direction == LEFT()):
                 x = x - 1
+                Log.addLine("move the Robot_" + str(id) + " LEFT to [" + str(x) + "][" + str(y) + "]")
             elif (direction == RIGHT()):
                 x = x + 1
+                Log.addLine("move the Robot_" + str(id) + " RIGHT to [" + str(x) + "][" + str(y) + "]")
             self._mat_robot_id[x][y] = id
-
             self._Robots[id]._real_location = Point(x,y)
 
             return True

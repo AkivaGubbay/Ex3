@@ -31,20 +31,6 @@ Mylog = Log()
 
 #test Simulation:
 s = Simulation()
+
 s.showGUI()
-
-
-#Test Zone:
-#print('Test Zone:')
-#z=Zone(Mylog)
-#z.PrintRobot_By_XY()
-#z.PrintType_by_XY()
-
-Mylog.close()
-print()
-print("*******************************************************")
-r1 = Robot(860)
-m1 = Message(000,"Joey: Hey, how you do'n..")
-r1.messages.append(m1)
-print("have message? ",r1.haveMessage(m1))
-print("have message? ",r1.haveMessage("see the bombers.."))
+print(s._Arena.getEnv(22))
