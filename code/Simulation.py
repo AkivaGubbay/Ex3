@@ -45,18 +45,18 @@ class Simulation:
             for j in range(int(ARENA_Y())):
                 if(X[i][j] != -1): continue
 
-                if(self._Arena.Robot_By_XY[i][j]!=-1):
+                if(self._Arena._mat_robot_id[i][j]!=-1):
                     X[i][j] = -1000
                     for i2 in range(i-ROBOT_LEANGHT(), i+ROBOT_LEANGHT()):
                         for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
                             if(Point.exists(i2,j2)):
                                 X[i2][j2] = -1000
 
-                elif (self._Arena.Type_by_XY[i][j] == 2):
+                elif (self._Arena._mat_zone[i][j] == 2):
                     X[i][j] = 1000
-                elif (self._Arena.Type_by_XY[i][j] == 1):
+                elif (self._Arena._mat_zone[i][j] == 1):
                     X[i][j] = 500
-                elif (self._Arena.Type_by_XY[i][j] == 0):
+                elif (self._Arena._mat_zone[i][j] == 0):
                     X[i][j] = 0
 
         fig, ax = plt.subplots()
