@@ -35,6 +35,7 @@ s = Simulation()
 
 s.showGUI()
 
-print(len(Message(111,"333").distance))
+#print(len(Message(111,"333").distance))
 
 Mylog.close()
+

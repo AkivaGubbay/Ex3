@@ -119,41 +119,36 @@ class Arena:
 
             return True
 
-    def fillMatDistance(self, array):
+    def fillMatDistance(self, array,startpoint):
+        QueuePoint = []
+        nextQueuePoint = []
+        QueuePoint.append(startpoint)
         index = 0
-        exist_white_quare = True
-        while(exist_white_quare):
-            exist_white_quare = False
-            nextindex = index+1
-            for i in range(0, len(array)):
-                for j in range(0, len(array[i])):
-                    print(str(i) + ","+str(j))
-                    if(array[i][j] == index):
-                        # UP:
-                        if(Point.exists(i,j-1) & self._mat_zone[i][j-1]!=BLACK()):
-                            exist_white_quare = True
-                            array[i][j-1] = nextindex
-                        # DOWN:
-                        if(Point.exists(i,j+1) & self._mat_zone[i][j+1]!=BLACK()):
-                            exist_white_quare = True
-                            array[i][j-1] = nextindex
-                        # LEFT
-                        if(Point.exists(i-1,j) & self._mat_zone[i-1][j]!=BLACK()):
-                            exist_white_quare = True
-                            array[i][j-1] = nextindex
-                        # RIGHT
-                        if (Point.exists(i+1, j) & self._mat_zone[i+1][j] != BLACK()):
-                            exist_white_quare = True
-                            array[i][j-1] = nextindex
-            index =  nextindex
-
+        size = 1
+        boo1 = len(QueuePoint)>0
+        boo2 = index<TRANSMISSION_RANGE()
+        while(boo1 & boo2):
+            if(size == 0):
+                index = index+1
+                size = len(QueuePoint)-1
+            x = QueuePoint[0]._x
+            y = QueuePoint[0]._y
+            boolea1 = array[x][y] == INFINITY()
+            boolea2 = QueuePoint[0].exists()
+            boolea3 = self._mat_zone[x][y]!=BLACK()
+            if(boolea1 & boolea2 & boolea3):
+                array[x][y] = index
+                QueuePoint.append(Point(x-1, y))
+                QueuePoint.append(Point(x+1, y))
+                QueuePoint.append(Point(x, y-1))
+                QueuePoint.append(Point(x, y+1))
+            QueuePoint.pop(0)
+            boo1 = len(QueuePoint) > 0
+            boo2 = index < TRANSMISSION_RANGE()
+            size = size-1
 
     def distance(self, message1,point1):
-        if(len(message1._mat_distance)==0):
-            for i in range(int(float(ARENA_X()))):
-                message1._mat_distance.append(int(ARENA_Y()) * [-1])
-            message1._mat_distance[message1._real_location._x][message1._real_location._y] = 0
-            self.fillMatDistance(message1._mat_distance)
+        self.fillMatDistance(message1._mat_distance, Point(message1._real_location._x, message1._real_location._y))
         return message1._mat_distance[point1._x][point1._y]
 
 
