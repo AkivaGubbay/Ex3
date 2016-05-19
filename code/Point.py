@@ -8,6 +8,20 @@ class Point:
     def __init__(self, x, y):
         self._x = x
         self._y = y
+        self._zone = INFINITY() #temp
+        self._deviation = 0
+
+    """def Joint(self, point1):
+        if(self inside in point1): return
+        elif(point1 inside self):
+            self._x = point1._x
+            self._y = point1._y
+            self._zone = point1._zone
+
+        elif(There is a space between them cutting):
+            # Need to find a cutting point and create a new circle
+        """
+
 
     def toString(self):
         return '('+str(self._x)+', '+str(self._y)+')'
