@@ -1,6 +1,6 @@
 from code.Point import *
 from code.Global_Parameters import *
-
+from random import randint
 
 class Robot:
     static_arena = -1
@@ -12,7 +12,7 @@ class Robot:
         self._private_location = Point(0,0)
         self._real_location = Point(0,0)
         self._message_log = []          #All received messages
-        self._private_location_log = [] #Holds all the robots movements as list of points
+        self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
         self._neighbors_color = []      #Can save all his neighbors colors
         self._neighbors_list = []
         self._out_book = []             #Messages waiting to be sent.
@@ -20,28 +20,36 @@ class Robot:
         self._currently_sending = -1
         self._currently_get_message = -1
         self._current_zone = -1
-        self._distance_from = []#I want to fill the whole list with -1 but i dont knot how many neighbors..
+        self._distance_from = [-1]*(ROBOTS_NOT_MOVE()+ROBOTS_MOVE())#I want to fill the whole list with -1 but i dont knot how many neighbors..
 
 
+    #Robot asks 'Arena' in witch directions can he move.
     def getEnv(self):
         return Robot.static_arena.getEnv(self._id)
 
+
+    # Robot moves in given 'direction',
+    # updates his 'private_location', 'private_location_log',
+    # and calls 'Arena' to update 'real location'.
     def move(self,direction):
-        if(direction == UP()):
-            self._private_location._y += 1
-        if (direction == LEFT()):
-            self._private_location._x += -1
-        if (direction == DOWN()):
-            self._private_location._y += -1
-
-        if (direction == RIGHT()):
-            self._private_location._x += 1
-
-        #Add to robots new posision to log:
+        x = self._private_location._x
+        y = self._private_location._y
+        if direction == UP() : y += 1
+        elif direction == LEFT() : x += -1
+        elif direction == DOWN() : y += -1
+        elif direction == RIGHT() : x += 1
+        #Update _private_location:
+        self._private_location = Point(x,y)
+        #Add to robots new _private_location to log:
         self._private_location_log.append(self._private_location)
         #Update real location:
         Robot.static_arena.moveRobot(self._id,direction)
 
+
+    #Static function that generates and returns random direction.
+    @staticmethod
+    def getRandomDirection():
+        return randint(0, 3)
 
 
     """
@@ -54,6 +62,7 @@ class Robot:
 
     def hasNeighbor(self, neighbor):
         return neighbor in self.neighbors_list    """
+
 
     def toString(self):
         return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,neighbors list:"+str(self._neighbors_list)+" ,can move:"+str(self._can_move)
