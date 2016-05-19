@@ -7,7 +7,6 @@ class Message:
         self.Id_message = -1  # transmit_Message function (on Simulation) updates that value
         self.Version = 0
         self.Message = Message
-        self.Life = 2
         self._real_location = Point(0,0)
         self._mat_distance = []
         for i in range(int(float(ARENA_X()))):

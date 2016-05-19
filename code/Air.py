@@ -8,7 +8,7 @@ class Air:
     def __init__(self):
         self._messages = []
 
-    # Enter a new Message to X variable "Messages"
+    """# Enter a new Message to X variable "Messages"
     def transmit_Message(self, MyMessage):
         NewMessage = Message(MyMessage.Id_Sender, MyMessage.Message)
         NewMessage.Id_message = len(self._messages)
@@ -43,4 +43,4 @@ class Air:
         MyStr="toString_Messages [size="+str(len(self._messages))+"]:"
         for i in range(len(self._messages)):
             MyStr+="\n"+self._messages[i].toString()
-        return MyStr
+        return MyStr"""
