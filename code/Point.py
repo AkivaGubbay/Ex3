@@ -1,16 +1,12 @@
 from code.Global_Parameters import *
 import math
 
-
-#TODO:
-#Add field that says what area this point is in(white,black,gray).
-
 class Point:
 
     def __init__(self, x, y):
         self._x = x
         self._y = y
-        self._zone = INFINITY() #temp
+        self._zone = INFINITY() #temp value
         self._deviation = 0
 
     def Joint(self, point1):
