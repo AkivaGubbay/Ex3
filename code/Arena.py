@@ -119,36 +119,5 @@ class Arena:
 
             return True
 
-    def fillMatDistance(self, array,startpoint):
-        QueuePoint = []
-        nextQueuePoint = []
-        QueuePoint.append(startpoint)
-        index = 0
-        size = 1
-        boo1 = len(QueuePoint)>0
-        boo2 = index<TRANSMISSION_RANGE()
-        while(boo1 & boo2):
-            if(size == 0):
-                index = index+1
-                size = len(QueuePoint)-1
-            x = QueuePoint[0]._x
-            y = QueuePoint[0]._y
-            boolea1 = array[x][y] == INFINITY()
-            boolea2 = QueuePoint[0].exists()
-            boolea3 = self._mat_zone[x][y]!=BLACK()
-            if(boolea1 & boolea2 & boolea3):
-                array[x][y] = index
-                QueuePoint.append(Point(x-1, y))
-                QueuePoint.append(Point(x+1, y))
-                QueuePoint.append(Point(x, y-1))
-                QueuePoint.append(Point(x, y+1))
-            QueuePoint.pop(0)
-            boo1 = len(QueuePoint) > 0
-            boo2 = index < TRANSMISSION_RANGE()
-            size = size-1
-
-    def distance(self, message1,point1):
-        self.fillMatDistance(message1._mat_distance, Point(message1._real_location._x, message1._real_location._y))
-        return message1._mat_distance[point1._x][point1._y]
 
 

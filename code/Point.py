@@ -1,4 +1,6 @@
 from code.Global_Parameters import *
+import math
+
 
 #TODO:
 #Add field that says what area this point is in(white,black,gray).
@@ -11,29 +13,175 @@ class Point:
         self._zone = INFINITY() #temp
         self._deviation = 0
 
-    """def Joint(self, point1):
-        if(self inside in point1): return
-        elif(point1 inside self):
+    """def Joint(self, _mat_zone, point1):
+        dis = Point.distance(_mat_zone, self, point1)
+        if(dis == INFINITY()): #Error
+            if(point1._deviation < self._deviation):
+                self._x = point1._x
+                self._y = point1._y
+                self._deviation = point1._deviation
+            return
+        elif(self._deviation - dis - point1._deviation>=0): #point1 in self
             self._x = point1._x
             self._y = point1._y
-            self._zone = point1._zone
+            self._deviation = point1._deviation
+        elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
+            return
+        else:  # (There is a space between them cutting):
+            return_Point = (Point.getCuttingPoints(_mat_zone, self, point1))
+            newPoint = Point.getMiddlePoint(_mat_zone, self, point1)
+            self._x = newPoint._x
+            self._y = newPoint._y
+            self._deviation = dis = Point.distance(_mat_zone, return_Point[0], return_Point[1])"""
 
-        elif(There is a space between them cutting):
-            # Need to find a cutting point and create a new circle
-        """
+    def fillMatDistance(_mat_zone, array, startpoint):
+        QueuePoint = []
+        QueuePoint.append(startpoint)
+        index = 0
+        size = 1
+        boo1 = len(QueuePoint) > 0
+        boo2 = index < TRANSMISSION_RANGE()
+        while (boo1 & boo2):
+            if (size == 0):
+                index = index + 1
+                size = len(QueuePoint) - 1
+            x = QueuePoint[0]._x
+            y = QueuePoint[0]._y
+            boolea1 = array[x][y] == INFINITY()
+            boolea2 = QueuePoint[0].exists()
+            boolea3 = _mat_zone[x][y] != BLACK()
+            if (boolea1 & boolea2 & boolea3):
+                array[x][y] = index
+                QueuePoint.append(Point(x - 1, y))
+                QueuePoint.append(Point(x + 1, y))
+                QueuePoint.append(Point(x, y - 1))
+                QueuePoint.append(Point(x, y + 1))
+            QueuePoint.pop(0)
+            boo1 = len(QueuePoint) > 0
+            boo2 = index < TRANSMISSION_RANGE()
+            size = size - 1
 
+    def getMiddlePoint(_mat_zone, point1, point2):
+        array1 = []
+        for i in range(int(float(ARENA_Y()))):
+            array1.append(int(ARENA_X()) * [INFINITY()])
+
+        QueuePoint = []
+        QueuePoint.append(point1)
+        QueuePoint.append(point2)
+        index = 0
+        size = len(QueuePoint)
+        boo1 = len(QueuePoint) > 0
+        boo2 = index < TRANSMISSION_RANGE()
+        while (boo1 & boo2):
+            if (size == 0):
+                index = index + 1
+                size = len(QueuePoint) - 1
+            x = QueuePoint[0]._x
+            y = QueuePoint[0]._y
+            if (array1[x][y] != INFINITY()):
+                return QueuePoint[0]
+
+            boolea1 = array1[x][y] == INFINITY()
+            boolea2 = QueuePoint[0].exists()
+            boolea3 = _mat_zone[x][y] != BLACK()
+            if (boolea1 & boolea2 & boolea3):
+                array1[x][y] = index
+                QueuePoint.append(Point(x - 1, y))
+                QueuePoint.append(Point(x, y - 1))
+                QueuePoint.append(Point(x + 1, y))
+                QueuePoint.append(Point(x, y + 1))
+            QueuePoint.pop(0)
+            boo1 = len(QueuePoint) > 0
+            boo2 = index < TRANSMISSION_RANGE()
+            size = size - 1
+        return Point(INFINITY(), INFINITY())
+
+    def distance(_mat_zone, point1, point2):
+        array = []
+        for i in range(int(float(ARENA_Y()))):
+            array.append(int(ARENA_X()) * [INFINITY()])
+
+        JOKER = -999
+        array[point2._x][point2._y] = JOKER
+
+        QueuePoint = []
+        QueuePoint.append(point1)
+        index = 0
+        size = 1
+        boo1 = len(QueuePoint) > 0
+        boo2 = index < TRANSMISSION_RANGE()
+        while (boo1 & boo2):
+            if (size == 0):
+                index = index + 1
+                size = len(QueuePoint) - 1
+            x = QueuePoint[0]._x
+            y = QueuePoint[0]._y
+            if(array[x][y] == JOKER):
+                return index
+
+            boolea1 = array[x][y] == INFINITY()
+            boolea2 = QueuePoint[0].exists()
+            boolea3 = _mat_zone[x][y] != BLACK()
+            if (boolea1 & boolea2 & boolea3):
+                array[x][y] = index
+                QueuePoint.append(Point(x - 1, y))
+                QueuePoint.append(Point(x + 1, y))
+                QueuePoint.append(Point(x, y - 1))
+                QueuePoint.append(Point(x, y + 1))
+            QueuePoint.pop(0)
+            boo1 = len(QueuePoint) > 0
+            boo2 = index < TRANSMISSION_RANGE()
+            size = size - 1
+
+        return INFINITY()
+
+    def getCuttingPoints(_mat_zone, point1, point2):
+        return_Point = []
+        array1 = []
+        for i in range(int(float(ARENA_Y()))):
+            array1.append(int(ARENA_X()) * [INFINITY()])
+
+        QueuePoint = []
+        QueuePoint.append(point1)
+        #QueuePoint.append(point2)
+        index = 0
+        size = len(QueuePoint)
+        boo1 = len(QueuePoint) > 0
+        boo2 = index < TRANSMISSION_RANGE()
+        while (boo1 & boo2):
+            if (size == 0):
+                index = index + 1
+                size = len(QueuePoint) - 1
+                if(len(return_Point)>0):
+                    return return_Point
+            x = QueuePoint[0]._x
+            y = QueuePoint[0]._y
+            if(array1[x][y] !=INFINITY()):
+                return_Point.append(QueuePoint[0])
+                if (len(return_Point) == 3):
+                    return_Point.pop(1)
+            boolea1 = array1[x][y] == INFINITY()
+            boolea2 = QueuePoint[0].exists()
+            boolea3 = _mat_zone[x][y] != BLACK()
+            if (boolea1 & boolea2 & boolea3):
+                array1[x][y] = index
+                QueuePoint.append(Point(x - 1, y))
+                QueuePoint.append(Point(x, y - 1))
+                QueuePoint.append(Point(x + 1, y))
+                QueuePoint.append(Point(x, y + 1))
+            QueuePoint.pop(0)
+            boo1 = len(QueuePoint) > 0
+            boo2 = index < TRANSMISSION_RANGE()
+            size = size - 1
+        print("222222222222222222222222222222")
+        return INFINITY()
 
     def toString(self):
-        return '('+str(self._x)+', '+str(self._y)+')'
+        return '['+str(self._x)+', '+str(self._y)+']:' +str(self._zone)+'-' +str(self._deviation)
 
     def airDistance(self, x2, y2):
-        x_dis = self._x - x2
-        if(x_dis<0): x_dis = x_dis*-1
-
-        y_dis = self._y - y2
-        if (y_dis < 0): y_dis = y_dis * -1
-
-        return x_dis + y_dis
+        return math.sqrt((self._x - x2) * (self._x - x2) + (self._y - y2) * (self._y - y2))
 
     def exists(self):
         bo1 = self._x>=0
@@ -44,9 +192,6 @@ class Point:
 
     def existsXY(x1,y1):
         return Point(x1,y1).exists()
-
-    def toString(self):
-        return "[" + str(self._x)+","+ str(self._y)+"]"
 
 
 

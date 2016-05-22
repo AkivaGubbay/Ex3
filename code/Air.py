@@ -8,6 +8,8 @@ class Air:
     def __init__(self):
         self._messages = []
 
+    def getMessage(self, message):
+
     """# Enter a new Message to X variable "Messages"
     def transmit_Message(self, MyMessage):
         NewMessage = Message(MyMessage.Id_Sender, MyMessage.Message)

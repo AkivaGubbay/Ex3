@@ -16,12 +16,12 @@ class Simulation:
         self._Air = Air()
         self._Arena = Arena()
 
-
+        """
         #test:
         self._Air.transmit_Message(Message("abcde", 11))
         self._Air._messages[0]._real_location = self._Arena._Robots[11]._real_location
 
-        """
+
         test::
 
         point0 = Point(500,500)
@@ -32,6 +32,18 @@ class Simulation:
         print("to 500, 500 end")"""
 
         """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
+        """point1 = Point(100,100)
+point1._deviation = 200
+
+point2 = Point(105,105)
+point2._deviation = 350
+
+print("distance: "+ str(Point.distance(self._Arena._mat_zone, point1,point2)))
+return_Point = Point.getCuttingPoints(self._Arena._mat_zone, point1, point2)
+print("cuttingPoints: " + return_Point[0].toString() + return_Point[1].toString())
+point2.Joint(self._Arena._mat_zone, point1)
+print("Joint: " + point2.toString())"""
+
 
     def showGUI(self):
         X = []
@@ -60,34 +72,5 @@ class Simulation:
         fig, ax = plt.subplots()
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
         plt.show()
-
-    def fillMatDistance(self, array, startpoint):
-        QueuePoint = []
-        nextQueuePoint = []
-        QueuePoint.append(startpoint)
-        index = 0
-        size = 1
-        boo1 = len(QueuePoint) > 0
-        boo2 = index < TRANSMISSION_RANGE()
-        while (boo1 & boo2):
-            if (size == 0):
-                index = index + 1
-                size = len(QueuePoint) - 1
-            x = QueuePoint[0]._x
-            y = QueuePoint[0]._y
-            boolea1 = array[x][y] == INFINITY()
-            boolea2 = QueuePoint[0].exists()
-            boolea3 = self._mat_zone[x][y] != BLACK()
-            if (boolea1 & boolea2 & boolea3):
-                array[x][y] = index
-                QueuePoint.append(Point(x - 1, y))
-                QueuePoint.append(Point(x + 1, y))
-                QueuePoint.append(Point(x, y - 1))
-                QueuePoint.append(Point(x, y + 1))
-            QueuePoint.pop(0)
-            boo1 = len(QueuePoint) > 0
-            boo2 = index < TRANSMISSION_RANGE()
-            size = size - 1
-
 
 
