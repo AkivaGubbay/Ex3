@@ -14,6 +14,11 @@ class Point:
         self._deviation = 0
 
     def Joint(self, point1):
+        if (self._deviation > point1._deviation):
+            self._x = point1._x
+            self._y = point1._y
+            self._deviation = point1._deviation
+        """
         dis = Point.airDistance(self, point1._x, point1._y)
         if(self._deviation - dis - point1._deviation >= 0): #point1 in self
             self._x = point1._x
@@ -33,6 +38,7 @@ class Point:
                     self._deviation = point1._deviation
             else: #A union between two circles
                 x=777
+        """
 
     def fillMatDistance(_mat_zone, array, startpoint):
         QueuePoint = []
