@@ -13,26 +13,27 @@ class Point:
         self._zone = INFINITY() #temp
         self._deviation = 0
 
-    """def Joint(self, _mat_zone, point1):
-        dis = Point.distance(_mat_zone, self, point1)
-        if(dis == INFINITY()): #Error
-            if(point1._deviation < self._deviation):
-                self._x = point1._x
-                self._y = point1._y
-                self._deviation = point1._deviation
-            return
-        elif(self._deviation - dis - point1._deviation>=0): #point1 in self
+    def Joint(self, point1):
+        dis = Point.airDistance(self, point1._x, point1._y)
+        if(self._deviation - dis - point1._deviation >= 0): #point1 in self
             self._x = point1._x
             self._y = point1._y
             self._deviation = point1._deviation
         elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
             return
         else:  # (There is a space between them cutting):
-            return_Point = (Point.getCuttingPoints(_mat_zone, self, point1))
-            newPoint = Point.getMiddlePoint(_mat_zone, self, point1)
-            self._x = newPoint._x
-            self._y = newPoint._y
-            self._deviation = dis = Point.distance(_mat_zone, return_Point[0], return_Point[1])"""
+            bool1 = (self._x- self._deviation<=0) | (self._y- self._deviation<=0)
+            bool2 = (point1._x- point1._deviation<=0) | (point1._y- point1._deviation<=0)
+            bool3 = (self._x- self._deviation>=ARENA_X()-1) | (self._y- self._deviation>=ARENA_Y()-1)
+            bool4 = (point1._x- point1._deviation>=ARENA_X()-1) | (point1._y- point1._deviation>=ARENA_Y()-1)
+            if(bool1 | bool2 | bool3 | bool4): # Checks that the Circle does not come out from the field
+                if(self._deviation> point1._deviation):
+                    self._x = point1._x
+                    self._y = point1._y
+                    self._deviation = point1._deviation
+            else: #A union between two circles
+
+
 
     def fillMatDistance(_mat_zone, array, startpoint):
         QueuePoint = []
