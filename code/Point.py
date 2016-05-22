@@ -32,8 +32,7 @@ class Point:
                     self._y = point1._y
                     self._deviation = point1._deviation
             else: #A union between two circles
-
-
+                x=777
 
     def fillMatDistance(_mat_zone, array, startpoint):
         QueuePoint = []
@@ -61,42 +60,6 @@ class Point:
             boo1 = len(QueuePoint) > 0
             boo2 = index < TRANSMISSION_RANGE()
             size = size - 1
-
-    def getMiddlePoint(_mat_zone, point1, point2):
-        array1 = []
-        for i in range(int(float(ARENA_Y()))):
-            array1.append(int(ARENA_X()) * [INFINITY()])
-
-        QueuePoint = []
-        QueuePoint.append(point1)
-        QueuePoint.append(point2)
-        index = 0
-        size = len(QueuePoint)
-        boo1 = len(QueuePoint) > 0
-        boo2 = index < TRANSMISSION_RANGE()
-        while (boo1 & boo2):
-            if (size == 0):
-                index = index + 1
-                size = len(QueuePoint) - 1
-            x = QueuePoint[0]._x
-            y = QueuePoint[0]._y
-            if (array1[x][y] != INFINITY()):
-                return QueuePoint[0]
-
-            boolea1 = array1[x][y] == INFINITY()
-            boolea2 = QueuePoint[0].exists()
-            boolea3 = _mat_zone[x][y] != BLACK()
-            if (boolea1 & boolea2 & boolea3):
-                array1[x][y] = index
-                QueuePoint.append(Point(x - 1, y))
-                QueuePoint.append(Point(x, y - 1))
-                QueuePoint.append(Point(x + 1, y))
-                QueuePoint.append(Point(x, y + 1))
-            QueuePoint.pop(0)
-            boo1 = len(QueuePoint) > 0
-            boo2 = index < TRANSMISSION_RANGE()
-            size = size - 1
-        return Point(INFINITY(), INFINITY())
 
     def distance(_mat_zone, point1, point2):
         array = []
