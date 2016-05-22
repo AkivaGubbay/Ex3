@@ -10,10 +10,90 @@ class Point:
         self._deviation = 0
 
     def Joint(self, point1):
-        if (self._deviation > point1._deviation):
+        dis = Point.airDistance(self, point1._x, point1._y)
+        if (self._deviation - dis - point1._deviation >= 0):  # point1 in self
             self._x = point1._x
             self._y = point1._y
             self._deviation = point1._deviation
+            return
+        elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
+            return
+        elif(dis>point1._deviation + self._deviation):#Error?
+            if(point1._deviation < self._deviation):
+                self._x = point1._x
+                self._y = point1._y
+                self._deviation = point1._deviation
+            return
+
+
+
+        #need to do Union:
+
+        # y = m1 * x +d1
+        m1 = +(0.0 + self._y-point1._y)/(self._x-point1._x)
+        d1 = point1._y- m1*point1._x
+        print(m1)
+        points1 = Point.union(m1,d1,self._x, self._y,self._deviation)
+        points2 = Point.union(m1, d1, point1._x, point1._y, point1._deviation)
+
+        if(Point.airDistancePoints(points1[0], points2[0]) < Point.airDistancePoints(points1[0], points2[1])):
+            points2.pop(0)
+        else:
+            points2.pop(1)
+
+        if (Point.airDistancePoints(points2[0], points1[0]) < Point.airDistancePoints(points2[0], points1[1])):
+            points1.pop(0)
+        else:
+            points1.pop(1)
+
+        print(points1[0].toString())
+        print(points2[0].toString())
+
+        _x_new = (points1[0]._x + points2[0]._x)/2.0
+        _y_new = (points1[0]._y + points2[0]._y)/2.0
+
+        print(_x_new)
+        print(_y_new)
+
+        array = Point.union(1.0/m1, _y_new - _x_new*1.0/m1,self._x, self._y,self._deviation)
+        self._deviation = (Point.airDistancePoints(array[0], array[1]))/2.0
+        self._x = _x_new
+        self._y = _y_new
+
+    def union(m,d, a,b,c):
+        print("y = x*" + str(m) + " + " + str(d))
+        print("(x+ "+str(a)+")^2"+"(y+ "+str(c)+")^2 = "+str(c)+"^2")
+        xV2 = 1 +m*m
+        xV1 = -2*a +2*m*d -2*b*m
+        xV0 = a*a +b*b -c*c +d*d -2*b*d
+        _sqrt = math.sqrt(xV1*xV1 -4*xV2*xV0)
+        sol_x_1 = (0.0+-xV1 + _sqrt)/(2*xV2)
+        sol_x_2 = (0.0 + -xV1 - _sqrt) / (2 * xV2)
+
+        sol_y_1 = sol_x_1 * m + d
+        sol_y_2 = sol_x_2 * m + d
+
+        p1 = Point(sol_x_1, sol_y_1)
+        p2 = Point(sol_x_2, sol_y_2)
+        print(p1.toString())
+        print(p2.toString())
+        return [p1,p2]
+
+
+
+
+
+        """dis = Point.airDistance(self, point1._x, point1._y)
+if(self._deviation - dis - point1._deviation >= 0): #point1 in self
+    self._x = point1._x
+    self._y = point1._y
+    self._deviation = point1._deviation
+elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
+    return
+elif (self._deviation > point1._deviation):
+    self._x = point1._x
+    self._y = point1._y
+    self._deviation = point1._deviation"""
 
         """
         dis = Point.airDistance(self, point1._x, point1._y)
@@ -145,10 +225,13 @@ class Point:
         return INFINITY()
 
     def toString(self):
-        return '['+str(self._x)+', '+str(self._y)+']:' +str(self._zone)+'-' +str(self._deviation)
+        return '['+str(self._x)+', '+str(self._y)+'] dev =' +str(self._deviation)
 
     def airDistance(self, x2, y2):
         return math.sqrt((self._x - x2) * (self._x - x2) + (self._y - y2) * (self._y - y2))
+
+    def airDistancePoints(p1, p2):
+        return math.sqrt((p1._x - p2._x) * (p1._x - p2._x) + (p1._y - p2._y) * (p1._y - p2._y))
 
     def exists(self):
         bo1 = self._x>=0
