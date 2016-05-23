@@ -197,6 +197,9 @@ class Point:
     def existsXY(x1,y1):
         return Point(x1,y1).exists()
 
+    def signalToDistance(signal):
+        return int((MAX_MSG_RANGE() - math.sqrt(math.fabs(signal)))*(1+INSTANT_SENDING_CHANCE()))
+
 
 
 

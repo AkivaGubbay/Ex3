@@ -63,7 +63,7 @@ def readParameters():
     global __white,__gray,__black
     global __older,__same_age,__younger
     global __up,__left,__down, __right
-    global __instant_sending_chance,__max_num_of_versions,__message_life_time
+    global __instant_sending_chance,__max_num_of_versions,__message_life_time, __sending_known_deviation
     global __robot_leanght, __infinity, __min_msg_range, __max_msg_range
     global __no_msg, __msg_life_time, __msg_max_version
 
@@ -90,6 +90,8 @@ def readParameters():
     __up,__left,__down,__right = int(getVar("UP")),int(getVar("LEFT")),int(getVar("DOWN")),int(getVar("RIGHT"))
     # instant_sending_chance:
     __instant_sending_chance = float(getVar("INSTANT_SENDING_CHANCE"))
+    # sending_known_deviation:
+    __sending_known_deviation = float(getVar("SENDING_KNOWN_DEVIATION"))
     # max_num_of_versions:
     __max_num_of_versions = int(getVar("MAX_NUM_OF_VERSIONS"))
     # message_life_time:
@@ -164,6 +166,9 @@ def RIGHT():
 
 def INSTANT_SENDING_CHANCE():
    return __instant_sending_chance
+
+def SENDING_KNOWN_DEVIATION():
+   return __sending_known_deviation
 
 def MAX_NUM_OF_VERSIONS():
    return __max_num_of_versions
