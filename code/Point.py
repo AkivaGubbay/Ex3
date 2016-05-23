@@ -27,42 +27,41 @@ class Point:
 
 
 
-        #need to do Union:
+        ###"Circles touching" - need to do Union:###
 
+        # Calculating a straight line out of the two major circuits:
         # y = m1 * x +d1
         m1 = +(0.0 + self._y-point1._y)/(self._x-point1._x)
         d1 = point1._y- m1*point1._x
-        print(m1)
-        points1 = Point.union(m1,d1,self._x, self._y,self._deviation)
-        points2 = Point.union(m1, d1, point1._x, point1._y, point1._deviation)
 
+        points1 = Point.getPoints(m1,d1,self._x, self._y,self._deviation)
+        points2 = Point.getPoints(m1, d1, point1._x, point1._y, point1._deviation)
+
+        # We got four points, taking the points most often:
         if(Point.airDistancePoints(points1[0], points2[0]) < Point.airDistancePoints(points1[0], points2[1])):
-            points2.pop(0)
-        else:
             points2.pop(1)
+        else:
+            points2.pop(0)
 
         if (Point.airDistancePoints(points2[0], points1[0]) < Point.airDistancePoints(points2[0], points1[1])):
-            points1.pop(0)
-        else:
             points1.pop(1)
+        else:
+            points1.pop(0)
 
-        print(points1[0].toString())
-        print(points2[0].toString())
+        # Center the two points will be the new center:
+        self._x = int((points1[0]._x + points2[0]._x)/2.0)
+        self._y = int((points1[0]._y + points2[0]._y)/2.0)
 
-        _x_new = (points1[0]._x + points2[0]._x)/2.0
-        _y_new = (points1[0]._y + points2[0]._y)/2.0
+        # Calculating the straight line parallel to and from taking the new circle radius:
+        array = Point.getPoints(1.0/m1, self._x - self._y*1.0/m1,point1._x, point1._y,point1._deviation)
+        self._deviation = int((Point.airDistancePoints(array[0], array[1]))/2.0)
 
-        print(_x_new)
-        print(_y_new)
+    """Finding the intersection points between the straight line "y = mx + d"
+    to the circle "(x-a)^2 + (x-b)^2 = (c)^2" """
+    def getPoints(m,d, a,b,c):
+        # y = mx + d
+        #(x-a)^2 + (x-b)^2 = (c)^2
 
-        array = Point.union(1.0/m1, _y_new - _x_new*1.0/m1,self._x, self._y,self._deviation)
-        self._deviation = (Point.airDistancePoints(array[0], array[1]))/2.0
-        self._x = _x_new
-        self._y = _y_new
-
-    def union(m,d, a,b,c):
-        print("y = x*" + str(m) + " + " + str(d))
-        print("(x+ "+str(a)+")^2"+"(y+ "+str(c)+")^2 = "+str(c)+"^2")
         xV2 = 1 +m*m
         xV1 = -2*a +2*m*d -2*b*m
         xV0 = a*a +b*b -c*c +d*d -2*b*d
@@ -75,47 +74,7 @@ class Point:
 
         p1 = Point(sol_x_1, sol_y_1)
         p2 = Point(sol_x_2, sol_y_2)
-        print(p1.toString())
-        print(p2.toString())
         return [p1,p2]
-
-
-
-
-
-        """dis = Point.airDistance(self, point1._x, point1._y)
-if(self._deviation - dis - point1._deviation >= 0): #point1 in self
-    self._x = point1._x
-    self._y = point1._y
-    self._deviation = point1._deviation
-elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
-    return
-elif (self._deviation > point1._deviation):
-    self._x = point1._x
-    self._y = point1._y
-    self._deviation = point1._deviation"""
-
-        """
-        dis = Point.airDistance(self, point1._x, point1._y)
-        if(self._deviation - dis - point1._deviation >= 0): #point1 in self
-            self._x = point1._x
-            self._y = point1._y
-            self._deviation = point1._deviation
-        elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
-            return
-        else:  # (There is a space between them cutting):
-            bool1 = (self._x- self._deviation<=0) | (self._y- self._deviation<=0)
-            bool2 = (point1._x- point1._deviation<=0) | (point1._y- point1._deviation<=0)
-            bool3 = (self._x- self._deviation>=ARENA_X()-1) | (self._y- self._deviation>=ARENA_Y()-1)
-            bool4 = (point1._x- point1._deviation>=ARENA_X()-1) | (point1._y- point1._deviation>=ARENA_Y()-1)
-            if(bool1 | bool2 | bool3 | bool4): # Checks that the Circle does not come out from the field
-                if(self._deviation> point1._deviation):
-                    self._x = point1._x
-                    self._y = point1._y
-                    self._deviation = point1._deviation
-            else: #A union between two circles
-                x=777
-        """
 
     def fillMatDistance(_mat_zone, array, startpoint):
         QueuePoint = []
