@@ -1,0 +1,209 @@
+create Simulation
+create gray area point between: [800, 800, 990, 990]
+create gray area point between: [1, 1, 2, 2]
+create black area point between: [0, 0, 999, 0]
+create black area point between: [0, 0, 0, 999]
+create black area point between: [999, 0, 999, 999]
+create black area point between: [0, 999, 999, 999]
+create black area point between: [200, 200, 240, 240]
+create black area point between: [101, 0, 103, 300]
+create new Robot- id:0 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:1 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:2 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:3 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:4 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:5 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:6 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:7 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:8 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:9 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:10 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:11 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:12 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:13 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:14 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:15 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:16 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:17 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:18 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:19 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:20 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:21 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:22 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:23 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:24 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:25 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:26 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:27 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:28 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:29 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:30 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:31 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:32 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:33 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:34 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:35 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:36 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:37 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:38 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:39 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:40 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:41 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:42 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:43 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:44 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:45 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:46 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:47 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:48 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:49 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:50 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:51 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:52 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:53 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:54 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:55 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:56 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:57 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:58 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:59 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:60 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:61 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:62 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:63 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:64 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:65 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:66 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:67 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:68 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:69 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:70 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:71 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:72 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:73 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:74 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:75 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:76 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:77 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:78 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:79 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:80 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:81 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:82 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:83 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:84 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:85 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:86 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:87 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:88 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:89 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:90 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:91 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:92 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:93 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:94 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:95 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:96 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:97 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:98 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+create new Robot- id:99 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
+put Robot_0[305, 441] dev =0
+put Robot_1[606, 774] dev =0
+put Robot_2[763, 595] dev =0
+put Robot_3[950, 612] dev =0
+put Robot_4[209, 82] dev =0
+put Robot_5[312, 676] dev =0
+put Robot_6[554, 845] dev =0
+put Robot_7[51, 775] dev =0
+put Robot_8[45, 338] dev =0
+put Robot_9[88, 803] dev =0
+put Robot_10[921, 693] dev =0
+put Robot_11[853, 6] dev =0
+put Robot_12[324, 568] dev =0
+put Robot_13[674, 530] dev =0
+put Robot_14[397, 624] dev =0
+put Robot_15[949, 876] dev =0
+put Robot_16[104, 909] dev =0
+put Robot_17[34, 313] dev =0
+put Robot_18[229, 262] dev =0
+put Robot_19[482, 919] dev =0
+put Robot_20[149, 974] dev =0
+put Robot_21[447, 102] dev =0
+put Robot_22[459, 488] dev =0
+put Robot_23[853, 201] dev =0
+put Robot_24[507, 3] dev =0
+put Robot_25[114, 369] dev =0
+put Robot_26[499, 793] dev =0
+put Robot_27[825, 122] dev =0
+put Robot_28[343, 479] dev =0
+put Robot_29[419, 720] dev =0
+put Robot_30[906, 190] dev =0
+put Robot_31[954, 652] dev =0
+put Robot_32[701, 457] dev =0
+put Robot_33[681, 542] dev =0
+put Robot_34[982, 329] dev =0
+put Robot_35[146, 556] dev =0
+put Robot_36[18, 537] dev =0
+put Robot_37[331, 593] dev =0
+put Robot_38[581, 546] dev =0
+put Robot_39[503, 729] dev =0
+put Robot_40[313, 420] dev =0
+put Robot_41[342, 74] dev =0
+put Robot_42[876, 888] dev =0
+put Robot_43[27, 26] dev =0
+put Robot_44[104, 771] dev =0
+put Robot_45[874, 813] dev =0
+put Robot_46[725, 888] dev =0
+put Robot_47[330, 912] dev =0
+put Robot_48[386, 372] dev =0
+put Robot_49[118, 986] dev =0
+put Robot_50[874, 754] dev =0
+put Robot_51[889, 338] dev =0
+put Robot_52[158, 125] dev =0
+put Robot_53[596, 176] dev =0
+put Robot_54[381, 224] dev =0
+put Robot_55[211, 353] dev =0
+put Robot_56[531, 732] dev =0
+put Robot_57[398, 866] dev =0
+put Robot_58[723, 51] dev =0
+put Robot_59[231, 163] dev =0
+put Robot_60[699, 134] dev =0
+put Robot_61[962, 966] dev =0
+put Robot_62[225, 51] dev =0
+put Robot_63[209, 110] dev =0
+put Robot_64[241, 328] dev =0
+put Robot_65[530, 943] dev =0
+put Robot_66[31, 384] dev =0
+put Robot_67[236, 122] dev =0
+put Robot_68[165, 775] dev =0
+put Robot_69[267, 184] dev =0
+put Robot_70[927, 702] dev =0
+put Robot_71[883, 2] dev =0
+put Robot_72[193, 369] dev =0
+put Robot_73[401, 488] dev =0
+put Robot_74[233, 723] dev =0
+put Robot_75[511, 985] dev =0
+put Robot_76[24, 717] dev =0
+put Robot_77[895, 861] dev =0
+put Robot_78[724, 892] dev =0
+put Robot_79[768, 587] dev =0
+put Robot_80[74, 7] dev =0
+put Robot_81[403, 111] dev =0
+put Robot_82[222, 38] dev =0
+put Robot_83[95, 300] dev =0
+put Robot_84[292, 299] dev =0
+put Robot_85[909, 840] dev =0
+put Robot_86[485, 114] dev =0
+put Robot_87[308, 767] dev =0
+put Robot_88[701, 63] dev =0
+put Robot_89[180, 790] dev =0
+put Robot_90[894, 994] dev =0
+put Robot_91[695, 936] dev =0
+put Robot_92[190, 424] dev =0
+put Robot_93[634, 884] dev =0
+put Robot_94[600, 255] dev =0
+put Robot_95[967, 559] dev =0
+put Robot_96[788, 830] dev =0
+put Robot_97[503, 739] dev =0
+put Robot_98[779, 987] dev =0
+put Robot_99[735, 64] dev =0

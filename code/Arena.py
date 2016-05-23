@@ -68,6 +68,8 @@ class Arena:
             self._Robots[s]._real_location = Point(x, y)
             Log.addLine("put Robot_" + str(self._Robots[s]._id) + self._Robots[s]._real_location.toString())
 
+        self.sortRandomRobotsArray()
+
     """Returns the robot can he move forward(UP, DOWN, LEFT,RIGHT)
     Assumes that that the location of the robot's true, namely:  x>0, y>o, x<ARENA_X(), y<ARENA_Y()-1"""
     def getEnv(self, id):
@@ -125,7 +127,7 @@ class Arena:
 
     def sortRandomRobotsArray(self):
         for i in range(len(self._Robots_sort_Random)):
-            sw = random.randint(0,len(self._Robots_sort_Random))
+            sw = random.randint(0,len(self._Robots_sort_Random)-1)
             temp = self._Robots_sort_Random[sw]
             self._Robots_sort_Random[sw] = self._Robots_sort_Random[i]
             self._Robots_sort_Random[i] = temp
