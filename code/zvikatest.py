@@ -6,11 +6,12 @@ from code.Point import Point
 from code.Air import Air
 from code.Log import Log
 import math
+import random
 
 readParameters()
 Mylog = Log()
 
-p1 = Point(100,100)
+"""p1 = Point(100,100)
 p1._deviation = 100
 print(p1.toString())
 
@@ -19,4 +20,6 @@ p2._deviation = 40
 print(p2.toString())
 
 p1.Joint(p2)
-print(p1.toString())
+print(p1.toString())"""
+
+print(random.randint(0,100))
