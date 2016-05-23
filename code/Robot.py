@@ -11,6 +11,10 @@ class Robot:
         self._battery_status = BATTARY_CAPACITY()
         self._private_location = Point(0,0)
         self._real_location = Point(0,0)
+
+        self._estimated_location = Point(ARENA_X()/2.0, ARENA_Y()/2.0)
+        self._estimated_location._deviation = ARENA_X() + ARENA_Y()
+
         self._message_log = []          #All received messages
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
         self._neighbors_color = []      #Can save all his neighbors colors

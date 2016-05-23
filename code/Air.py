@@ -6,16 +6,24 @@ from code.Point import Point
 from code.Log import Log
 
 class Air:
-    static_mat_zone =-1
+    static_mat_zone = -1
+    _self = -1
     def __init__(self):
         self._messages = []
         self.mone = 0
+        _self = self
 
-    def getMessage(self, _mat_zone, message, robot):
+    def sendMessage(self, _mat_zone, message, robot):
         message._real_location = robot._real_location
         Point.fillMatDistance(_mat_zone,message._mat_distance, message._real_location)
         self.Id_message = self.mone*1000 +robot._id
         self.mone = self.mone+1
+
+    def getMessage(robot):
+        for i in range(0, len(Air._self._messages)):
+            if(Air._self._messages[i]._mat_distance[robot._real_location._x][robot._real_location._y] <=50):
+                return Air._self._messages[i]
+
 
     """ # Enter a new Message to X variable "Messages"
    def transmit_Message(self, MyMessage):
