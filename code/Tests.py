@@ -28,8 +28,8 @@ def globalParametersTest():
     print("UP", UP()), print("LEFT", LEFT()), print("DOWN", DOWN()), print("RIGHT",RIGHT())
     print("INSTANT_SENDING_CHANCE", INSTANT_SENDING_CHANCE())
     print("MAX_NUM_OF_VERSIONS", MAX_NUM_OF_VERSIONS())
-    print("MESSAGE_LIFE_TIME", MESSAGE_LIFE_TIME())
-    print("ROBOT_LEANGHT", ROBOT_LEANGHT())
+    print("MESSAGE_LIFE_TIME", MESSAGE_LIFE_TIME()),print("INFINITY", INFINITY())
+    print("MIN_MSG_RANGE", MIN_MSG_RANGE()),print("MAX_MSG_RANGE", MAX_MSG_RANGE())
 
 
 #Tests Robot class:
@@ -54,8 +54,8 @@ def RobotTest():
 
 
 
-#globalParametersTest()
-RobotTest()
+globalParametersTest()
+#RobotTest()
 
 
 #MUST HAVE:
