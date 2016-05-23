@@ -15,7 +15,6 @@ class Point:
             self._x = point1._x
             self._y = point1._y
             self._deviation = point1._deviation
-            return
         elif (point1._deviation - dis - self._deviation >= 0):  # self in point1
             return
         elif(dis>point1._deviation + self._deviation):#Error?
@@ -23,38 +22,32 @@ class Point:
                 self._x = point1._x
                 self._y = point1._y
                 self._deviation = point1._deviation
-            return
+        else: ###"Circles touching" - need to do Union:###
+            # Calculating a straight line out of the two major circuits:
+            # y = m1 * x +d1
+            m1 = +(0.0 + self._y-point1._y)/(self._x-point1._x)
+            d1 = point1._y- m1*point1._x
+            points1 = Point.getPoints(m1,d1,self._x, self._y,self._deviation)
+            points2 = Point.getPoints(m1, d1, point1._x, point1._y, point1._deviation)
 
+            # We got four points, taking the points most often:
+            if(Point.airDistancePoints(points1[0], points2[0]) < Point.airDistancePoints(points1[0], points2[1])):
+                points2.pop(1)
+            else:
+                points2.pop(0)
 
+            if (Point.airDistancePoints(points2[0], points1[0]) < Point.airDistancePoints(points2[0], points1[1])):
+                points1.pop(1)
+            else:
+                points1.pop(0)
 
-        ###"Circles touching" - need to do Union:###
+            # Center the two points will be the new center:
+            self._x = int((points1[0]._x + points2[0]._x)/2.0)
+            self._y = int((points1[0]._y + points2[0]._y)/2.0)
 
-        # Calculating a straight line out of the two major circuits:
-        # y = m1 * x +d1
-        m1 = +(0.0 + self._y-point1._y)/(self._x-point1._x)
-        d1 = point1._y- m1*point1._x
-
-        points1 = Point.getPoints(m1,d1,self._x, self._y,self._deviation)
-        points2 = Point.getPoints(m1, d1, point1._x, point1._y, point1._deviation)
-
-        # We got four points, taking the points most often:
-        if(Point.airDistancePoints(points1[0], points2[0]) < Point.airDistancePoints(points1[0], points2[1])):
-            points2.pop(1)
-        else:
-            points2.pop(0)
-
-        if (Point.airDistancePoints(points2[0], points1[0]) < Point.airDistancePoints(points2[0], points1[1])):
-            points1.pop(1)
-        else:
-            points1.pop(0)
-
-        # Center the two points will be the new center:
-        self._x = int((points1[0]._x + points2[0]._x)/2.0)
-        self._y = int((points1[0]._y + points2[0]._y)/2.0)
-
-        # Calculating the straight line parallel to and from taking the new circle radius:
-        array = Point.getPoints(1.0/m1, self._x - self._y*1.0/m1,point1._x, point1._y,point1._deviation)
-        self._deviation = int((Point.airDistancePoints(array[0], array[1]))/2.0)
+            # Calculating the straight line parallel to and from taking the new circle radius:
+            array = Point.getPoints(1.0/m1, self._x - self._y*1.0/m1,point1._x, point1._y,point1._deviation)
+            self._deviation = int(math.fabs(Point.airDistancePoints(array[0], array[1]))/2.0)
 
     """Finding the intersection points between the straight line "y = mx + d"
     to the circle "(x-a)^2 + (x-b)^2 = (c)^2" """
