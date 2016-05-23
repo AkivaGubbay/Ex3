@@ -178,3 +178,6 @@ def MIN_MSG_RANGE():
 def MAX_MSG_RANGE():
     return __max_msg_range
 
+def NO_MSG():
+    return -1
+

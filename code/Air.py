@@ -20,9 +20,47 @@ class Air:
         self.mone = self.mone+1
 
     def getMessage(robot):
+        sum_range = 0
+        flag = False
+        nearest_messages = Message(INFINITY(), INFINITY())
+        robot_loc = robot._real_location
         for i in range(0, len(Air._self._messages)):
-            if(Air._self._messages[i]._mat_distance[robot._real_location._x][robot._real_location._y] <=50):
-                return Air._self._messages[i]
+            r = Air._self._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            if(r <=MIN_MSG_RANGE()):
+                Air._self._messages[i]._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)
+                return Air._self._messages[i] ##################################put distance to msg
+            elif(r >=MAX_MSG_RANGE()):
+                continue
+            else:
+                sum_range = sum_range + r
+                nearest_mess_loc = nearest_messagesa._real_location
+                messa_i = Air._self._messages[i]._real_location
+                if(flag == False):
+                    nearest_messagesa = Air._self._messages[i]
+                    flag = True
+                elif(Point.distance(Air.static_mat_zone, robot_loc,nearest_mess_loc) > Point.distance(Air.static_mat_zone, robot_loc,messa_i)):
+                    nearest_messagesa = Air._self._messages[i]
+        if(sum_range>= MAX_MSG_RANGE()):
+            return NO_MSG()
+        else:
+            nearest_messagesa._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)
+            ##################################put distance to msg
+            return nearest_messagesa
+
+    def canSend(robot):
+        sum_range = 0
+        nearest_messages = Message(INFINITY(), INFINITY())
+        robot_loc = robot._real_location
+        for i in range(0, len(Air._self._messages)):
+            r = Air._self._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            if (r < MAX_MSG_RANGE()):
+                sum_range = sum_range + r
+        if (sum_range >= MAX_MSG_RANGE()):
+            return False
+        else:
+            return True
+
+
 
 
     """ # Enter a new Message to X variable "Messages"
