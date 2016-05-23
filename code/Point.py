@@ -58,7 +58,9 @@ class Point:
         xV2 = 1 +m*m
         xV1 = -2*a +2*m*d -2*b*m
         xV0 = a*a +b*b -c*c +d*d -2*b*d
-        _sqrt = math.sqrt(xV1*xV1 -4*xV2*xV0)
+
+        _sqrt = math.fabs((int(xV1*xV1 -4*xV2*xV0)))
+        _sqrt = math.sqrt(_sqrt)
         sol_x_1 = (0.0+-xV1 + _sqrt)/(2*xV2)
         sol_x_2 = (0.0 + -xV1 - _sqrt) / (2 * xV2)
 

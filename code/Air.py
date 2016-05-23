@@ -1,16 +1,21 @@
 from code.Global_Parameters import *
 from code.Robot import Robot
-from random import randint
-from code.Log import Log
+from code.Arena import Arena
 from code.Message import Message
+from code.Point import Point
+from code.Log import Log
 
 class Air:
+    static_mat_zone =-1
     def __init__(self):
         self._messages = []
+        self.mone = 0
 
-    def getMessage(self, message):
-        #fewferw
-        x=444
+    def getMessage(self, _mat_zone, message, robot):
+        message._real_location = robot._real_location
+        Point.fillMatDistance(_mat_zone,message._mat_distance, message._real_location)
+        self.Id_message = self.mone*1000 +robot._id
+        self.mone = self.mone+1
 
     """ # Enter a new Message to X variable "Messages"
    def transmit_Message(self, MyMessage):

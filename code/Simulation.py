@@ -15,7 +15,7 @@ class Simulation:
         Log.addLine("create Simulation")
         self._Air = Air()
         self._Arena = Arena()
-
+        Air.static_mat_zone = self._Arena._mat_zone
         """
         #test:
         self._Air.transmit_Message(Message("abcde", 11))
