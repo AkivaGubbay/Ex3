@@ -1,7 +1,7 @@
 from code.Point import *
 from code.Global_Parameters import *
 from random import randint
-
+#chnage is good.
 class Robot:
     static_arena = -1
 

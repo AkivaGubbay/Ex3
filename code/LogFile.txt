@@ -1,12 +1,11 @@
-create Simulation
 create gray area point between: [800, 800, 990, 990]
 create gray area point between: [1, 1, 2, 2]
 create black area point between: [0, 0, 999, 0]
 create black area point between: [0, 0, 0, 999]
 create black area point between: [999, 0, 999, 999]
 create black area point between: [0, 999, 999, 999]
-create black area point between: [200, 200, 210, 240]
-create black area point between: [31, 32, 33, 36]
+create black area point between: [200, 200, 240, 240]
+create black area point between: [101, 0, 103, 300]
 create new Robot- id:0 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
 create new Robot- id:1 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
 create new Robot- id:2 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
@@ -107,103 +106,107 @@ create new Robot- id:96 , battery status:50 , message log:[] ,neighbors list:[] 
 create new Robot- id:97 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
 create new Robot- id:98 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
 create new Robot- id:99 , battery status:50 , message log:[] ,neighbors list:[] ,can move:True
-put Robot_0[693,755]
-put Robot_1[391,661]
-put Robot_2[593,851]
-put Robot_3[804,427]
-put Robot_4[575,527]
-put Robot_5[572,504]
-put Robot_6[545,968]
-put Robot_7[256,604]
-put Robot_8[740,896]
-put Robot_9[835,404]
-put Robot_10[462,925]
-put Robot_11[478,516]
-put Robot_12[11,872]
-put Robot_13[757,563]
-put Robot_14[979,943]
-put Robot_15[810,345]
-put Robot_16[38,408]
-put Robot_17[612,134]
-put Robot_18[670,990]
-put Robot_19[532,56]
-put Robot_20[946,204]
-put Robot_21[185,761]
-put Robot_22[714,67]
-put Robot_23[435,416]
-put Robot_24[139,126]
-put Robot_25[631,717]
-put Robot_26[550,787]
-put Robot_27[251,227]
-put Robot_28[278,441]
-put Robot_29[995,698]
-put Robot_30[269,786]
-put Robot_31[604,483]
-put Robot_32[101,224]
-put Robot_33[498,863]
-put Robot_34[803,455]
-put Robot_35[466,382]
-put Robot_36[537,787]
-put Robot_37[194,120]
-put Robot_38[179,374]
-put Robot_39[325,916]
-put Robot_40[346,903]
-put Robot_41[977,831]
-put Robot_42[571,953]
-put Robot_43[117,209]
-put Robot_44[68,284]
-put Robot_45[714,514]
-put Robot_46[814,691]
-put Robot_47[651,580]
-put Robot_48[14,872]
-put Robot_49[174,542]
-put Robot_50[394,452]
-put Robot_51[118,574]
-put Robot_52[136,476]
-put Robot_53[512,328]
-put Robot_54[50,191]
-put Robot_55[757,191]
-put Robot_56[328,243]
-put Robot_57[671,998]
-put Robot_58[598,21]
-put Robot_59[697,102]
-put Robot_60[159,741]
-put Robot_61[241,355]
-put Robot_62[672,78]
-put Robot_63[85,807]
-put Robot_64[735,584]
-put Robot_65[496,733]
-put Robot_66[953,715]
-put Robot_67[406,386]
-put Robot_68[179,753]
-put Robot_69[583,642]
-put Robot_70[827,687]
-put Robot_71[834,742]
-put Robot_72[485,952]
-put Robot_73[312,251]
-put Robot_74[757,21]
-put Robot_75[347,986]
-put Robot_76[750,685]
-put Robot_77[975,213]
-put Robot_78[670,255]
-put Robot_79[11,119]
-put Robot_80[98,764]
-put Robot_81[337,8]
-put Robot_82[883,674]
-put Robot_83[745,341]
-put Robot_84[921,573]
-put Robot_85[413,155]
-put Robot_86[246,995]
-put Robot_87[126,305]
-put Robot_88[706,507]
-put Robot_89[336,530]
-put Robot_90[136,810]
-put Robot_91[82,215]
-put Robot_92[304,221]
-put Robot_93[465,460]
-put Robot_94[265,500]
-put Robot_95[521,313]
-put Robot_96[55,522]
-put Robot_97[527,968]
-put Robot_98[919,190]
-put Robot_99[24,273]
+put Robot_0[187, 616] dev =0
+put Robot_1[971, 807] dev =0
+put Robot_2[607, 512] dev =0
+put Robot_3[587, 157] dev =0
+put Robot_4[195, 870] dev =0
+put Robot_5[330, 662] dev =0
+put Robot_6[41, 173] dev =0
+put Robot_7[726, 827] dev =0
+put Robot_8[670, 239] dev =0
+put Robot_9[475, 407] dev =0
+put Robot_10[109, 840] dev =0
+put Robot_11[107, 565] dev =0
+put Robot_12[2, 463] dev =0
+put Robot_13[714, 918] dev =0
+put Robot_14[533, 650] dev =0
+put Robot_15[746, 297] dev =0
+put Robot_16[394, 627] dev =0
+put Robot_17[801, 446] dev =0
+put Robot_18[129, 75] dev =0
+put Robot_19[925, 36] dev =0
+put Robot_20[398, 426] dev =0
+put Robot_21[298, 747] dev =0
+put Robot_22[788, 551] dev =0
+put Robot_23[976, 61] dev =0
+put Robot_24[231, 682] dev =0
+put Robot_25[890, 452] dev =0
+put Robot_26[567, 287] dev =0
+put Robot_27[887, 663] dev =0
+put Robot_28[477, 311] dev =0
+put Robot_29[3, 54] dev =0
+put Robot_30[650, 43] dev =0
+put Robot_31[833, 146] dev =0
+put Robot_32[924, 345] dev =0
+put Robot_33[487, 931] dev =0
+put Robot_34[8, 353] dev =0
+put Robot_35[370, 586] dev =0
+put Robot_36[525, 789] dev =0
+put Robot_37[117, 698] dev =0
+put Robot_38[260, 28] dev =0
+put Robot_39[923, 412] dev =0
+put Robot_40[459, 833] dev =0
+put Robot_41[384, 894] dev =0
+put Robot_42[796, 74] dev =0
+put Robot_43[200, 116] dev =0
+put Robot_44[734, 649] dev =0
+put Robot_45[964, 434] dev =0
+put Robot_46[224, 591] dev =0
+put Robot_47[763, 798] dev =0
+put Robot_48[361, 177] dev =0
+put Robot_49[754, 521] dev =0
+put Robot_50[118, 546] dev =0
+put Robot_51[605, 482] dev =0
+put Robot_52[974, 743] dev =0
+put Robot_53[192, 510] dev =0
+put Robot_54[882, 222] dev =0
+put Robot_55[362, 782] dev =0
+put Robot_56[227, 427] dev =0
+put Robot_57[285, 646] dev =0
+put Robot_58[511, 155] dev =0
+put Robot_59[274, 52] dev =0
+put Robot_60[867, 706] dev =0
+put Robot_61[912, 3] dev =0
+put Robot_62[802, 690] dev =0
+put Robot_63[789, 525] dev =0
+put Robot_64[452, 30] dev =0
+put Robot_65[502, 63] dev =0
+put Robot_66[494, 655] dev =0
+put Robot_67[333, 613] dev =0
+put Robot_68[141, 21] dev =0
+put Robot_69[183, 178] dev =0
+put Robot_70[495, 88] dev =0
+put Robot_71[868, 305] dev =0
+put Robot_72[190, 446] dev =0
+put Robot_73[343, 38] dev =0
+put Robot_74[563, 878] dev =0
+put Robot_75[742, 427] dev =0
+put Robot_76[110, 911] dev =0
+put Robot_77[178, 345] dev =0
+put Robot_78[307, 440] dev =0
+put Robot_79[311, 832] dev =0
+put Robot_80[248, 203] dev =0
+put Robot_81[1, 492] dev =0
+put Robot_82[660, 473] dev =0
+put Robot_83[551, 482] dev =0
+put Robot_84[265, 21] dev =0
+put Robot_85[54, 465] dev =0
+put Robot_86[75, 20] dev =0
+put Robot_87[135, 762] dev =0
+put Robot_88[474, 801] dev =0
+put Robot_89[302, 2] dev =0
+put Robot_90[642, 198] dev =0
+put Robot_91[336, 176] dev =0
+put Robot_92[253, 963] dev =0
+put Robot_93[977, 26] dev =0
+put Robot_94[504, 12] dev =0
+put Robot_95[796, 186] dev =0
+put Robot_96[655, 525] dev =0
+put Robot_97[968, 859] dev =0
+put Robot_98[165, 739] dev =0
+put Robot_99[826, 217] dev =0
+move the Robot_0 UP to [187][615]
+move the Robot_0 LEFT to [186][615]
+move the Robot_0 UP to [186][614]
+move the Robot_0 LEFT to [185][614]
