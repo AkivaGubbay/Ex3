@@ -22,4 +22,4 @@ print(p2.toString())
 p1.Joint(p2)
 print(p1.toString())"""
 
-print(random.randint(0,100))
+print(Point.signalToDistance(450*450))
