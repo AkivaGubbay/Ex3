@@ -65,6 +65,8 @@ def readParameters():
     global __up,__left,__down, __right
     global __instant_sending_chance,__max_num_of_versions,__message_life_time
     global __robot_leanght, __infinity, __min_msg_range, __max_msg_range
+    global __no_msg, __msg_life_time, __msg_max_version
+
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -98,6 +100,8 @@ def readParameters():
     __infinity = int(getVar("INFINITY"))
     # Accuracy range for ssn of messages:
     __min_msg_range,__max_msg_range = int(getVar("MIN_MSG_RANGE")),int(getVar("MAX_MSG_RANGE"))
+    # Msg constants:
+    __no_msg, __msg_life_time,__msg_max_version = int(getVar("NO_MSG")),int(getVar("MSG_LIFE_TIME")),int(getVar("MSG_MAX_VERSION"))
 
 
 #Project Constants:
@@ -179,5 +183,13 @@ def MAX_MSG_RANGE():
     return __max_msg_range
 
 def NO_MSG():
-    return -1
+    return __no_msg
+
+def MSG_LIFE_TIME():
+    return __msg_life_time
+
+def MSG_MAX_VERSION():
+    return __msg_max_version
+
+
 

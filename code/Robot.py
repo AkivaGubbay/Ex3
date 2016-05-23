@@ -56,16 +56,8 @@ class Robot:
         return direction
 
 
-    """
-    def haveMessage(self, message): #differant versions..
-        return message in self.messages
-
-    def addNeighbor(self,neighbor):
-        if(self.hasNeighbor()): return
-        self.neighbors_list.append(neighbor)
-
-    def hasNeighbor(self, neighbor):
-        return neighbor in self.neighbors_list    """
+    def sendNewMessage(self):
+        print("under construction..")
 
 
     def toString(self):

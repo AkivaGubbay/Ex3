@@ -30,6 +30,8 @@ def globalParametersTest():
     print("MAX_NUM_OF_VERSIONS", MAX_NUM_OF_VERSIONS())
     print("MESSAGE_LIFE_TIME", MESSAGE_LIFE_TIME()),print("INFINITY", INFINITY())
     print("MIN_MSG_RANGE", MIN_MSG_RANGE()),print("MAX_MSG_RANGE", MAX_MSG_RANGE())
+    print("NO_MSG", NO_MSG()),print("MSG_LIFE_TIME", MSG_LIFE_TIME()),print("MSG_MAX_VERSION", MSG_MAX_VERSION())
+
 
 
 #Tests Robot class:
