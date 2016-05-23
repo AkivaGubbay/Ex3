@@ -16,34 +16,6 @@ class Simulation:
         self._Air = Air()
         self._Arena = Arena()
         Air.static_mat_zone = self._Arena._mat_zone
-        """
-        #test:
-        self._Air.transmit_Message(Message("abcde", 11))
-        self._Air._messages[0]._real_location = self._Arena._Robots[11]._real_location
-
-
-        test::
-
-        point0 = Point(500,500)
-
-        print("to 500, 500: ")
-        print(self._Air._messages[0]._real_location.toString())
-        print(self._Arena.distance(self._Air._messages[0], point0))
-        print("to 500, 500 end")"""
-
-        """ <<<   Here should be the "MAIN FOR" Of the project   >>> """
-        """point1 = Point(100,100)
-point1._deviation = 200
-
-point2 = Point(105,105)
-point2._deviation = 350
-
-print("distance: "+ str(Point.distance(self._Arena._mat_zone, point1,point2)))
-return_Point = Point.getCuttingPoints(self._Arena._mat_zone, point1, point2)
-print("cuttingPoints: " + return_Point[0].toString() + return_Point[1].toString())
-point2.Joint(self._Arena._mat_zone, point1)
-print("Joint: " + point2.toString())"""
-
 
     def showGUI(self):
         X = []

@@ -4,10 +4,13 @@ from random import randint
 from code.Log import Log
 from code.Point import Point
 
+import random
+
 class Arena:
     def __init__(self):
         self._mat_robot_id = []
         self._Robots = []
+        self._Robots_sort_Random = []
         self._mat_zone = [] #by color (white = 0    gray = 1     black = 2)
 
         for i in range(int(float(ARENA_X()))):
@@ -34,11 +37,13 @@ class Arena:
         # Creates a new robot 'that can move' to variable "Robots"
         for s in range(0, int(ROBOTS_MOVE())):
             self._Robots.append(Robot(s))
+            self._Robots_sort_Random.append(Robot(s))
             Log.addLine("create new Robot- " + self._Robots[s].toString())
 
         # Creates a new robot 'that can't move' to variable "Robots"
         for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
             self._Robots.append(Robot(s))
+            self._Robots_sort_Random.append(Robot(s))
             self._Robots[s].CanMove = False
             Log.addLine("create new Robot- " + self._Robots[s].toString())
 
@@ -117,6 +122,16 @@ class Arena:
             self._Robots[id]._real_location = Point(x,y)
 
             return True
+
+    def sortRandomRobotsArray(self):
+        for i in range(len(self._Robots_sort_Random)):
+            sw = random.randint(0,len(self._Robots_sort_Random))
+            temp = self._Robots_sort_Random[sw]
+            self._Robots_sort_Random[sw] = self._Robots_sort_Random[i]
+            self._Robots_sort_Random[i] = temp
+
+
+
 
 
 
