@@ -35,9 +35,9 @@ def globalParametersTest():
 #Tests Robot class:
 def RobotTest():
     print("**********************RobotTest*****************************************")
+    Robot.static_arena = Arena() #Must give the static_arena a value!!!
     r1 = Robot(0)
     print(r1._id)
-    Robot.static_arena = Arena()
     #Env:
     env = r1.getEnv()
     print("getEnv: ",env)
@@ -49,7 +49,19 @@ def RobotTest():
     print("private location log",end=" :")
     for i in r1._private_location_log: print(i.toString(),end=", ")
     print("\nRandom numbers",end=" :")
-    for i in range(0,20): print(Robot.getRandomDirection(),end=", ")
+    for i in range(0,20): print(r1.getRandomDirection(),end=", ")
+
+
+
+
+#globalParametersTest()
+RobotTest()
+
+
+#MUST HAVE:
+Mylog.close()
+
+
 
 
 #'__str__' is toString in python:
@@ -63,11 +75,3 @@ class A:
 
 ob = A(10)
 print(ob) """
-
-
-#globalParametersTest()
-#RobotTest()
-
-
-#MUST HAVE:
-Mylog.close()

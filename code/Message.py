@@ -12,7 +12,21 @@ class Message:
         for i in range(int(float(ARENA_Y()))):
             self._mat_distance.append(int(ARENA_X()) * [INFINITY()])
 
-    def toString(self):
+    def __str__(self):
         return "Id_Sender:" + str(self.Id_Sender) +",Id_message:" + str(self.Id_message)+",Version:" + str(self.Version)+",Message:" + str(self.Message)+ ",Life:"+str(self.Life)
+
+
+
+"""Working on new Message class!!!!!!!!!!!!!!!!!!!!!!!!!"""
+class Message2:
+    def __init__(self, Id_source,Id_message, Message,time):
+        self._sourse_id = Id_source
+        self._message_id = Id_message
+        self._message = Message
+        self._sender_log = [Id_source]
+        self._create_time = time
+        #self.distance_from_all_points    ??
+        #self._real_location              ??
+
 
 

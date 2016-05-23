@@ -82,7 +82,6 @@ class Arena:
         if(self._mat_robot_id[x+1][y]!=-1 | self._mat_zone[x+1][y]):
             array[RIGHT()] =False
 
-        print(array)
         return array
 
     """Returns the point where the robot is currently"""

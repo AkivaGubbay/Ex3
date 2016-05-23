@@ -11,6 +11,8 @@ from code.Global_Parameters import *
 #MUST HAVE:
 readParameters()
 Mylog = Log()
+
+
 """
 #Test Point:
 print('Test Point:')
@@ -25,10 +27,6 @@ r.messages.append('Joey: How you doing..')
 print(r.messages.pop())
 print("tostring: "+ r.toString())
 """
-
-
-#log
-Mylog = Log()
 
 #test Simulation:
 s = Simulation()
