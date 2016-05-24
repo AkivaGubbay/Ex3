@@ -80,7 +80,7 @@ class Robot:
             print("Cant move in any direction..")
         else: return direction
 
-
+    #Creats a new message and sends it if possible:
     def sendNewMessage(self):
         #Want to sent my zone:
         self._estimated_location._zone = self._current_zone # send the true color of zone
@@ -90,15 +90,21 @@ class Robot:
         self._currently_sending = msg
         self._action_time = self.msgRandomWaitTime()
 
-        #checking with 'Air' that robot can send now:
-        if Robot.static_air.canSend(self) == True:
+        # checking with 'Air' that robot can send now:
+        if self._time < self._action_time or Robot.static_air.canSend(self) == False:
+            # robot must send another time:
+
+            #Case: 'action time' is now but 'Air' wont let robot send:
+            if self._time == self._action_time: self._action_time += 1
+
+            return
+
+        else: #Sending now!
             self._message_log.append(msg._id_message)
             Robot.static_air.sendMessage(msg, self)
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
 
-        else: #robot must send another time:
-            self._action_time += 1
 
 
 
