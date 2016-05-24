@@ -41,10 +41,12 @@ class Robot:
         print("Robot " + str(self._id) + ": No Action Taken.")
         x = randint(1, 3)
         if x == 1: #send new Message.
+            print("Robot " + str(self._id) + ": sending new Message")
             self.sendNewMessage()
         if x == 2: #Move randomly.
             direction = self.getRandomDirection()
             self.move(direction)
+            print("Robot " + str(self._id) + ": Moving randomly.")
         #if x == 3:  # Move randomly.
 
 
@@ -91,7 +93,7 @@ class Robot:
         self._currently_sending = msg
         if self._action_time != INFINITY():
             self._action_time = self.newMsgRandomWaitTime()
-        if self._time < self._action_time or Robot.static_air.canSend() == False : return
+        if self._time < self._action_time or Robot.static_air.canSend(self) == False : return
         self._action_time = INFINITY()
         self._message_log.append(msg._id_message)
         Robot.static_air.sendMessage(msg, self)
