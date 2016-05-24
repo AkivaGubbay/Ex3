@@ -5,10 +5,11 @@ from code.Global_Parameters import *
 # add senders to 'sender_history'
 
 class Message:
-    def __init__(self,Id_Sender,Id_Message,Time):
+    def __init__(self,Id_Sender,Id_Message,Time,_sender_estimated_location):
         self._id_source = Id_Sender    # Upond creation: source = sender.
         self._id_message = Id_Message  # transmit_Message function (on Simulation) updates that value
-        self_sender_history = [Id_Sender]  # From here you can also find the latest sender.
+        self._sender_history = [Id_Sender]  # From here you can also find the latest sender.
+        self._sender_estimated_location = _sender_estimated_location
         self._create_time = Time   #so that we dont pass 'MSG_LIFE_TIME'.
         self._version = 0    #so that we dont pass 'MAX_VERSION'.
         self._real_location = Point(0,0)

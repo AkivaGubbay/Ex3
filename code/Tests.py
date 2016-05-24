@@ -32,7 +32,7 @@ def globalParametersTest():
     print("MESSAGE_LIFE_TIME", MESSAGE_LIFE_TIME()),print("INFINITY", INFINITY())
     print("MIN_MSG_RANGE", MIN_MSG_RANGE()),print("MAX_MSG_RANGE", MAX_MSG_RANGE())
     print("NO_MSG", NO_MSG()),print("MSG_LIFE_TIME", MSG_LIFE_TIME()),print("MSG_MAX_VERSION", MSG_MAX_VERSION())
-    print("NEW_MSG_WAIT_TIME", NEW_MSG_WAIT_TIME())
+    print("MSG_WAIT_TIME", MSG_WAIT_TIME())
 
 
 
@@ -60,8 +60,8 @@ def RobotTest():
 
 
 
-#globalParametersTest()
-RobotTest()
+globalParametersTest()
+#RobotTest()
 
 
 #MUST HAVE:
