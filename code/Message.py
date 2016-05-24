@@ -4,6 +4,7 @@ from code.Global_Parameters import *
 #TODO:
 # add senders to 'sender_history'
 
+#good day!
 class Message:
     def __init__(self,Id_Sender,Id_Message,Time,_sender_estimated_location):
         self._id_source = Id_Sender    # Upond creation: source = sender.
