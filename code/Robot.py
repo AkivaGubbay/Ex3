@@ -36,11 +36,11 @@ class Robot:
             if x == 1: #send new Message.
                 print("Robot " + str(self._id) + ": sending new Message")
                 self.sendNewMessage()
-            if x == 2: #Move randomly.
+            elif x == 2: #Move randomly.
                 direction = self.getRandomDirection()
                 self.move(direction)
                 print("Robot " + str(self._id) + ": Moving randomly.")
-            #if x == 3:  # get message.
+            elif x == 3:  # get message.
                 self.getMessage()
                 print("Robot " + str(self._id) + ": Receiving Messages.")
 

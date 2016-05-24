@@ -59,7 +59,7 @@ class Simulation:
         callback = self
 
         Msg1_loc = plt.axes([0.1, 0.95, 0.85, 0.045])
-        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot number= "+str(ROBOTS_MOVE() + ROBOTS_NOT_MOVE()) + ",    Messages mone = " + str(self.Messages_mone))
+        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot moved= "+str(Arena._mone_move) + ",    Messages mone = " + str(self.Messages_mone))
 
         #button1:
         butt1_loc = plt.axes([0.1, 0.001, 0.25, 0.065])

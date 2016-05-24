@@ -7,6 +7,7 @@ from code.Point import Point
 import random
 
 class Arena:
+    _mone_move =0
     def __init__(self):
         self._mat_robot_id = []
         self._Robots = []
@@ -103,7 +104,7 @@ class Arena:
         if(array[direction]==False):
             return False
         else:
-
+            Arena._mone_move +=1
             x = self._Robots[id]._real_location._x
             y = self._Robots[id]._real_location._y
             self._mat_robot_id[x][y]=-1
