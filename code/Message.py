@@ -28,7 +28,7 @@ class Message:
 
 
     def __str__(self):
-        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version)+ ",Life:"+str(self._lif)
+        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version)
 
 
 

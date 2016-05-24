@@ -28,8 +28,9 @@ class Air:
     def getMessage(robot):
         sum_range = 0
         flag = False
-        nearest_messages = Message(INFINITY(), INFINITY(),INFINITY())
+        nearest_messages = Message(INFINITY(), INFINITY(),INFINITY(),INFINITY())
         robot_loc = robot._real_location
+        r=0
         for i in range(0, len(Air._messages)):
             r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
             if(r <=MIN_MSG_RANGE()):
@@ -46,7 +47,7 @@ class Air:
                     flag = True
                 elif(Point.distance(Air.static_mat_zone, robot_loc,nearest_mess_loc) > Point.distance(Air.static_mat_zone, robot_loc,messa_i)):
                     nearest_messagesa = Air._messages[i]
-        if(sum_range>= MAX_MSG_RANGE()):
+        if(r==0 or sum_range>= MAX_MSG_RANGE()):
             return NO_MSG()
         else:
             nearest_messagesa._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)

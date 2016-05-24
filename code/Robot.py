@@ -18,7 +18,7 @@ class Robot:
         self._real_location = Point(0,0) #later put real location.
         self._message_log = []          #All received messages
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
-        self._neighbors_loc = []*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())      #Can save all his neighbors location
+        self._neighbors_loc = [0]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())      #Can save all his neighbors location
         self._time = -1                 #Robots always knows the time.
         self._currently_sending = NO_MSG()
         self._currently_get_message = NO_MSG()
@@ -111,6 +111,9 @@ class Robot:
 
 
     def forwardMessage(self):
+        print("@@@@")
+        print(self._currently_sending)
+        print("@@@@")
         self._currently_sending._sender_history.append(self._id)  # Adds the robots id to message's 'sender_history'.
         was_sent = Robot.static_air.sendMessage(self._currently_sending, self)
         if was_sent == False:
@@ -137,7 +140,8 @@ class Robot:
             point1 = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
             point1._deviation = Point.signalToDistance(msg._snn)
             point1._zone = msg._sender_estimated_location._zone
-            self._neighbors_loc[msg._sender_history[len(msg._sender_history)-1]] =point1
+            if(len(msg._sender_history)>0): self._neighbors_loc[msg._sender_history[len(msg._sender_history)-1]] =point1
+            else: self._neighbors_loc[msg._id_source] = point1
 
             # Updating 'estimated_location' with info from recieved message:
             self._estimated_location._x -=self._private_location._x
