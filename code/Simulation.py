@@ -73,7 +73,7 @@ class Simulation:
         ##button3:
         butt3_loc = plt.axes([0.7, 0.001, 0.25, 0.065])
         butt3 = Button(butt3_loc, str(BUTTON_NUMBER_3()) +' step forward')
-        butt3.on_clicked(callback.actionButton2)
+        butt3.on_clicked(callback.actionButton3)
 
         plt.show()
 

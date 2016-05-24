@@ -116,7 +116,7 @@ class Robot:
             print("Robot " + str(self._id) + ": Is Waiting..")
             return
         else:
-            print("Robot " + str(self._id) + "sent message  " + self._currently_sending._id_message)
+            print("Robot " + str(self._id) + "sent message  " + str(self._currently_sending._id_message))
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
             return
