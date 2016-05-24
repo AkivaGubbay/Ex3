@@ -78,16 +78,16 @@ class Robot:
         env = self.getEnv()
         direction = randint(WHITE(), BLACK()) #white,black,gray
         count = 0 #Case: Robot cant move in any direction.
-        while(env[direction] == False or count == 11):
-            dir = randint(WHITE(), BLACK())
+        while(env[direction] == False and count < 11):
+            direction = randint(WHITE(), BLACK())
             count+= 1
         if count == 11:
-            Log.addLine("robot "+str(self._id)+" Cant move in any direction. (There are probably around other robots)")
+            Log.addLine("robot "+str(self._id)+" Cant move in any direction. (surrounded by other robots)")
         else: return direction
 
     #Creats a new message and sends it if possible:
     def sendNewMessage(self):
-        #Want to sent my zone:
+        #Want to set my zone:
         self._estimated_location._zone = self._current_zone # send the true color of zone
 
         # creating new message:
