@@ -82,7 +82,9 @@ class Robot:
 
 
     def sendNewMessage(self):
+        #Want to sent my zone:
         self._estimated_location._zone = self._current_zone # send the true color of zone
+
         # creating new message:
         msg = Message(self._id,self.creatMessageId(),self._time,self._estimated_location)
         self._currently_sending = msg
