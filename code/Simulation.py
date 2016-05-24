@@ -23,6 +23,7 @@ class Simulation:
         Air.static_mat_zone = self._Arena._mat_zone
         Simulation.__self = self
         self._time = 0
+        self.Messages_mone = 0
 
 
         Robot.static_arena = self._Arena  # Must give the static_arena a value!!!
@@ -57,8 +58,8 @@ class Simulation:
 
         callback = self
 
-        #Msg1_loc = plt.axes([0.1, 0.95, 0.85, 0.015])
-        #Msg1 = Button(Msg1_loc, str(BUTTON_NUMBER_1()) + ' step forward')
+        Msg1_loc = plt.axes([0.1, 0.95, 0.85, 0.045])
+        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot number= "+str(ROBOTS_MOVE() + ROBOTS_NOT_MOVE()) + ",    Messages mone = " + str(self.Messages_mone))
 
         #button1:
         butt1_loc = plt.axes([0.1, 0.001, 0.25, 0.065])
@@ -88,8 +89,8 @@ class Simulation:
 
     def action(self, time):
         size = len (Simulation.__self._Arena._Robots_sort_Random)
-        self._time += 1
         for t in range(0, time):
+            self._time += 1
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
                 robot = self._Arena._Robots_sort_Random[i]
@@ -97,7 +98,7 @@ class Simulation:
                 robot._current_zone = self._Arena.getEnv(robot._id)
 
                 robot.doAction()
-
+        self.Messages_mone +=len(self._Air._messages)
         self._Air._messages = []
         #plt.close()
         self.showGUI()
