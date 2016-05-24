@@ -24,6 +24,9 @@ class Simulation:
         Simulation.__self = self
         self._time = 0
 
+        Robot.static_arena = self._Arena  # Must give the static_arena a value!!!
+        Robot.static_air = self._Air  # Must give the static_air a value!!!
+
     def showGUI(self):
         X = []
         for i in range(int(ARENA_X())):
