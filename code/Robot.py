@@ -24,24 +24,23 @@ class Robot:
         self._currently_get_message = NO_MSG()
         self._action_time = INFINITY()    #When to do my next action(next sending).
         self._current_zone = -1
-        self._distance_from = [-1]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())#I want to fill the whole list with -1 but i dont knot how many neighbors..
 
     def doAction(self):
         if self._action_time != INFINITY():
             if self._action_time == self._time:
                 self.forwardMessage()
                 return
-               #...forwardMessage....
-        print("Robot " + str(self._id) + ": No Action Taken.")
-        x = randint(1, 3)
-        if x == 1: #send new Message.
-            print("Robot " + str(self._id) + ": sending new Message")
-            self.sendNewMessage()
-        if x == 2: #Move randomly.
-            direction = self.getRandomDirection()
-            self.move(direction)
-            print("Robot " + str(self._id) + ": Moving randomly.")
-        #if x == 3:  # Move randomly.
+        else: # Robot has no action. He will now get a random one:
+            print("Robot " + str(self._id) + ": No Action Taken.")
+            x = randint(1, 3)
+            if x == 1: #send new Message.
+                print("Robot " + str(self._id) + ": sending new Message")
+                self.sendNewMessage()
+            if x == 2: #Move randomly.
+                direction = self.getRandomDirection()
+                self.move(direction)
+                print("Robot " + str(self._id) + ": Moving randomly.")
+            #if x == 3:  # get message.
 
 
 
@@ -83,24 +82,31 @@ class Robot:
 
 
     def sendNewMessage(self):
+        #creating new message:
         msg = Message(self._id,self.creatMessageId(),self._time,self._estimated_location)
         self._currently_sending = msg
-        if self._action_time != INFINITY():
-            self._action_time = self.msgRandomWaitTime()
-        if self._time < self._action_time or Robot.static_air.canSend(self) == False : return
-        self._action_time = INFINITY()
-        self._message_log.append(msg._id_message)
-        Robot.static_air.sendMessage(msg, self)
-        self._currently_sending = NO_MSG()
+        self._action_time = self.msgRandomWaitTime()
+
+        #checking with 'Air' that robot can send now:
+        if Robot.static_air.canSend(self) == True:
+            self._message_log.append(msg._id_message)
+            Robot.static_air.sendMessage(msg, self)
+            self._action_time = INFINITY()
+            self._currently_sending = NO_MSG()
+
+        else: #robot must send another time:
+            self._action_time += 1
+
+
 
     def forwardMessage(self):
-        val = Robot.static_air.sendMessage(self._currently_sending, self)
-        if val == False:
+        self._currently_sending._sender_history.append(self._id)  # Adds the robots id to message's 'sender_history'.
+        was_sent = Robot.static_air.sendMessage(self._currently_sending, self)
+        if was_sent == False:
             self._action_time += 1
             print("Robot " + str(self._id) + ": Is Waiting..")
             return
         else:
-            self._currently_sending._sender_history.append(self._id)
             print("Robot " + str(self._id) + "sent message  " + self._currently_sending._id_message)
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()

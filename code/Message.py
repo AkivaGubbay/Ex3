@@ -8,7 +8,7 @@ class Message:
     def __init__(self,Id_Sender,Id_Message,Time,_sender_estimated_location):
         self._id_source = Id_Sender    # Upond creation: source = sender.
         self._id_message = Id_Message  # transmit_Message function (on Simulation) updates that value
-        self._sender_history = [Id_Sender]  # From here you can also find the latest sender.
+        self._sender_history = []  # From here you can also find the latest sender.
         self._sender_estimated_location = _sender_estimated_location
         self._create_time = Time   #so that we dont pass 'MSG_LIFE_TIME'.
         self._version = 0    #so that we dont pass 'MAX_VERSION'.
