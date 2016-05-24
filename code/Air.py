@@ -26,7 +26,7 @@ class Air:
     def getMessage(robot):
         sum_range = 0
         flag = False
-        nearest_messages = Message(INFINITY(), INFINITY())
+        nearest_messages = Message(INFINITY(), INFINITY(),INFINITY())
         robot_loc = robot._real_location
         for i in range(0, len(Air._self._messages)):
             r = Air._self._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
@@ -53,7 +53,6 @@ class Air:
 
     def canSend(robot):
         sum_range = 0
-        nearest_messages = Message(INFINITY(), INFINITY())
         robot_loc = robot._real_location
         for i in range(0, len(Air._self._messages)):
             r = Air._self._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
