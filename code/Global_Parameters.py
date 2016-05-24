@@ -107,7 +107,7 @@ def readParameters():
     # Range of time a new message must waut before being sent:
     __new_msg_wait_time = int(getVar("NEW_MSG_WAIT_TIME"))
     # battery_about_to_end:
-    __battery_about_to_end = int(getVar("BATTERY_ABOUT_TO_END"))
+    __battery_about_to_end = float(getVar("BATTERY_ABOUT_TO_END"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
