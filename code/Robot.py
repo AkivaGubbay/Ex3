@@ -22,6 +22,9 @@ class Robot:
         self._current_zone = -1
         self._distance_from = [-1]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())#I want to fill the whole list with -1 but i dont knot how many neighbors..
 
+    def doAction(self):
+        print("Robot " +str(self._id) + " doAction")
+
 
     #Robot asks 'Arena' in witch directions can he move.
     def getEnv(self):

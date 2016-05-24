@@ -8,14 +8,20 @@ from code.Log import Log
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.widgets import Button
+
+
+
 import matplotlib.cm as cm
 
 class Simulation:
+    __self = -1
     def __init__(self):
         Log.addLine("create Simulation")
         self._Air = Air()
         self._Arena = Arena()
         Air.static_mat_zone = self._Arena._mat_zone
+        Simulation.__self = self
 
     def showGUI(self):
         X = []
@@ -43,6 +49,32 @@ class Simulation:
 
         fig, ax = plt.subplots()
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
+        date1_Entry = Entry(X)
+        date1_Entry.pack()
+
+        callback = self
+        axprev = plt.axes([0.1, 0.001, 0.1, 0.065])
+        axnext = plt.axes([0.71, 0.001, 0.25, 0.065])
+        bnext = Button(axnext, 'One step forward')
+        bnext.on_clicked(callback.oneAction)
+        bprev = Button(axprev, 'Previous')
+        bprev.on_clicked(callback.oneAction)
+
         plt.show()
+
+    def action(self, time):
+        size = len (self._Arena._Robots_sort_Random)
+        for t in range(0, time):
+            self._Arena.sortRandomRobotsArray()
+            for i in range(0, size):
+                self._Arena._Robots_sort_Random[i].doAction()
+
+    def oneAction(self, event):
+        size = len (Simulation.__self._Arena._Robots_sort_Random)
+        for t in range(0, 1):
+            Simulation.__self._Arena.sortRandomRobotsArray()
+            for i in range(0, size):
+                Simulation.__self._Arena._Robots_sort_Random[i].doAction()
+
 
 

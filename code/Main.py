@@ -32,6 +32,7 @@ print("tostring: "+ r.toString())
 s = Simulation()
 
 s.showGUI()
+s.action(2)
 
 #print(len(Message(111,"333").distance))
 
