@@ -9,7 +9,7 @@ class Point:
         self._zone = INFINITY() #temp value
         self._deviation = 0
 
-    def Joint(self, point1):
+    def joint(self, point1):
         dis = Point.airDistance(self, point1._x, point1._y)
         if (self._deviation - dis - point1._deviation >= 0):  # point1 in self
             self._x = point1._x

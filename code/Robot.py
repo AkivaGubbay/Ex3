@@ -3,7 +3,7 @@ from code.Message import *
 #from code.Air import *
 from code.Global_Parameters import *
 from random import randint
-#chnage is good.
+#Life is good!
 class Robot:
     static_arena = -1
     static_air = -1
@@ -13,11 +13,12 @@ class Robot:
         self._can_move = True
         self._battery_status = BATTARY_CAPACITY()
         self._private_location = Point(0,0)
+        self.self_sender_history = Point(ARENA_X()/2,ARENA_Y()/2)
+        self._estimated_location._deviation = ARENA_X()+ARENA_Y()
         self._real_location = Point(0,0) #later put real location.
         self._message_log = []          #All received messages
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
-        self._neighbors_color = []      #Can save all his neighbors colors
-        self._neighbors_list = []
+        self._neighbors_loc = []      #Can save all his neighbors location
         self._time = -1                 #Robots always knows the time.
         self._currently_sending = NO_MSG()
         self._currently_get_message = NO_MSG()
@@ -28,16 +29,9 @@ class Robot:
     def doAction(self):
         if self._action_time != INFINITY():
             if self._action_time == self._time:
-                val = Robot.static_air.sendMessage(self._currently_sending,self)
-                if val == False:
-                    self._action_time+= 1
-                    print("Robot " + str(self._id) + ": Is Waiting..")
-                    return
-                else:
-                    print("Robot " + str(self._id) + "sent message  " + self._currently_sending._id_message)
-                    self._action_time = INFINITY()
-                    self._currently_sending = NO_MSG()
-                    return
+                self.forwardMessage()
+                return
+               #...forwardMessage....
         print("Robot " + str(self._id) + ": No Action Taken.")
         x = randint(1, 3)
         if x == 1: #send new Message.
@@ -89,21 +83,58 @@ class Robot:
 
 
     def sendNewMessage(self):
-        msg = Message(self._id,self.creatMessageId(),self._time)
+        msg = Message(self._id,self.creatMessageId(),self._time,self._estimated_location)
         self._currently_sending = msg
         if self._action_time != INFINITY():
-            self._action_time = self.newMsgRandomWaitTime()
+            self._action_time = self.msgRandomWaitTime()
         if self._time < self._action_time or Robot.static_air.canSend(self) == False : return
         self._action_time = INFINITY()
         self._message_log.append(msg._id_message)
         Robot.static_air.sendMessage(msg, self)
+        self._currently_sending = NO_MSG()
+
+    def forwardMessage(self):
+        val = Robot.static_air.sendMessage(self._currently_sending, self)
+        if val == False:
+            self._action_time += 1
+            print("Robot " + str(self._id) + ": Is Waiting..")
+            return
+        else:
+            self._currently_sending._sender_history.append(self._id)
+            print("Robot " + str(self._id) + "sent message  " + self._currently_sending._id_message)
+            self._action_time = INFINITY()
+            self._currently_sending = NO_MSG()
+            return
+
+
+
+    def getMessage(self):
+        msg = Robot.static_air.getMessage(self)
+        if(msg == NO_MSG()):
+            return
+        else:
+            if msg._version >= MAX_NUM_OF_VERSIONS(): return
+            msg._version+= 1
+            self._currently_get_message = msg
+            #.....
+            self._estimated_location._x -=self._private_location._x
+            self._estimated_location._y -= self._private_location._y
+            new_point = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
+            new_point._deviation = Point.signalToDistance(msg._snn)
+
+            self._estimated_location.joint(new_point)
+            self._estimated_location._x += self._private_location._x
+            self._estimated_location._y += self._private_location._y
+
+            self._action_time = self.msgRandomWaitTime()
+            self._message_log.append(msg._id_message)
 
 
     def creatMessageId(self):
         return self._id + len(self._message_log)
 
-    def newMsgRandomWaitTime(self):
-        return self._time + randint(0,NEW_MSG_WAIT_TIME())
+    def msgRandomWaitTime(self):
+        return self._time + randint(0,MSG_WAIT_TIME())
 
     def toString(self):
         return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,neighbors list:"+str(self._neighbors_list)+" ,can move:"+str(self._can_move)
