@@ -98,8 +98,8 @@ class Simulation:
                 robot._current_zone = self._Arena.getEnv(robot._id)
 
                 robot.doAction()
-        self.Messages_mone +=len(self._Air._messages)
-        self._Air._messages = []
+        self.Messages_mone +=len(Air._messages)
+        Air._messages = []
         #plt.close()
         self.showGUI()
 

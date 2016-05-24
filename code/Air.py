@@ -10,20 +10,19 @@ class Air:
     _self = -1
     _messages = []
     def __init__(self):
-        _messages = []
         _self = self
 
     @staticmethod
     def sendMessage(message, robot):
-        _canSend = Air.canSend
-        if(_canSend == True):
+        canSend = Air.canSend(robot)
+        if(canSend == True):
             message._real_location = robot._real_location
-            Point.fillMatDistance(Air._self.static_mat_zone,message._mat_distance, message._real_location)
+            Point.fillMatDistance(Air.static_mat_zone,message._mat_distance, message._real_location)
             #Air._self.Id_message = Air._self.mone*1000 +robot._id
             #Air._self.mone = Air._self.mone+1
             Air._messages.append(message)
 
-        return _canSend
+        return canSend
 
     @staticmethod
     def getMessage(robot):
@@ -62,7 +61,7 @@ class Air:
             r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
             if (r < MAX_MSG_RANGE()):
                 sum_range = sum_range + r
-        if (sum_range >= MAX_MSG_RANGE()):
-            return False
-        else:
+        if (sum_range < MAX_MSG_RANGE()):
             return True
+        else:
+            return False
