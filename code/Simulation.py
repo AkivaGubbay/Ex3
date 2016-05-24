@@ -65,7 +65,6 @@ class Simulation:
 
         plt.show()
 
-
     """def action(self, time):
         size = len (self._Arena._Robots_sort_Random)
         for t in range(0, time):
@@ -79,11 +78,14 @@ class Simulation:
         size = len (Simulation.__self._Arena._Robots_sort_Random)
         self._time += 1
         for t in range(0, 1):
-            Simulation.__self._Arena._Robots_sort_Random[i]._time = self._time
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
+                Simulation.__self._Arena._Robots_sort_Random[i]._time = self._time
                 Simulation.__self._Arena._Robots_sort_Random[i].doAction()
+
         self._Air._messages = []
+        plt.close()
+        self.showGUI()
 
 
 
