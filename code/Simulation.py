@@ -49,16 +49,14 @@ class Simulation:
 
         fig, ax = plt.subplots()
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
-        date1_Entry = Entry(X)
-        date1_Entry.pack()
 
         callback = self
-        axprev = plt.axes([0.1, 0.001, 0.1, 0.065])
+        #axprev = plt.axes([0.1, 0.001, 0.1, 0.065])
         axnext = plt.axes([0.71, 0.001, 0.25, 0.065])
         bnext = Button(axnext, 'One step forward')
         bnext.on_clicked(callback.oneAction)
-        bprev = Button(axprev, 'Previous')
-        bprev.on_clicked(callback.oneAction)
+        #bprev = Button(axprev, 'Previous')
+        #bprev.on_clicked(callback.oneAction)
 
         plt.show()
 
