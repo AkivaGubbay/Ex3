@@ -18,7 +18,7 @@ class Robot:
         self._real_location = Point(0,0) #later put real location.
         self._message_log = []          #All received messages
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
-        self._neighbors_loc = []      #Can save all his neighbors location
+        self._neighbors_loc = []*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())      #Can save all his neighbors location
         self._time = -1                 #Robots always knows the time.
         self._currently_sending = NO_MSG()
         self._currently_get_message = NO_MSG()
@@ -83,6 +83,7 @@ class Robot:
 
 
     def sendNewMessage(self):
+        self._estimated_location._zone = self._current_zone # send the true color of zone
         msg = Message(self._id,self.creatMessageId(),self._time,self._estimated_location)
         self._currently_sending = msg
         if self._action_time != INFINITY():
@@ -116,6 +117,11 @@ class Robot:
             if msg._version >= MAX_NUM_OF_VERSIONS(): return
             msg._version+= 1
             self._currently_get_message = msg
+            point1 = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
+            point1._deviation = Point.signalToDistance(msg._snn)
+            point1._zone = msg._sender_estimated_location._zone
+            self._neighbors_loc[msg._sender_history[len(msg._sender_history)-1]] =point1
+
             #.....
             self._estimated_location._x -=self._private_location._x
             self._estimated_location._y -= self._private_location._y
