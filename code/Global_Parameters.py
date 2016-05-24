@@ -1,4 +1,3 @@
-
 #private veriables:
 __black_area = []
 __gray_area = []
@@ -67,6 +66,7 @@ def readParameters():
     global __robot_leanght, __infinity, __min_msg_range, __max_msg_range
     global __no_msg, __msg_life_time, __msg_max_version,__msg_wait_time
     global __battery_about_to_end
+    global __Button_number_1, __Button_number_2, __Button_number_3
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -108,6 +108,11 @@ def readParameters():
     __msg_wait_time = int(getVar("MSG_WAIT_TIME"))
     # battery_about_to_end:
     __battery_about_to_end = float(getVar("BATTERY_ABOUT_TO_END"))
+
+    # Several steps by pressing the buttons:
+    __Button_number_1 = int(getVar("BUTTON_NUMBER_1"))
+    __Button_number_2 = int(getVar("BUTTON_NUMBER_2"))
+    __Button_number_3 = int(getVar("BUTTON_NUMBER_3"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
@@ -205,3 +210,11 @@ def MSG_WAIT_TIME():       # Range of time a new message must waut before being 
 def BATTERY_ABOUT_TO_END():
     return __battery_about_to_end
 
+def BUTTON_NUMBER_1():
+    return __Button_number_1
+
+def BUTTON_NUMBER_2():
+    return __Button_number_2
+
+def BUTTON_NUMBER_3():
+    return __Button_number_3

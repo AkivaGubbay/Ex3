@@ -56,17 +56,35 @@ class Simulation:
         ax.imshow(X, cmap='RdGy', interpolation='nearest')
 
         callback = self
-        #axprev = plt.axes([0.1, 0.001, 0.1, 0.065])
-        axnext = plt.axes([0.71, 0.001, 0.25, 0.065])
-        bnext = Button(axnext, 'One step forward')
-        bnext.on_clicked(callback.oneAction)
-        #bprev = Button(axprev, 'Previous')
-        #bprev.on_clicked(callback.oneAction)
+
+        #Msg1_loc = plt.axes([0.1, 0.95, 0.85, 0.015])
+        #Msg1 = Button(Msg1_loc, str(BUTTON_NUMBER_1()) + ' step forward')
+
+        #button1:
+        butt1_loc = plt.axes([0.1, 0.001, 0.25, 0.065])
+        butt1 = Button(butt1_loc, str(BUTTON_NUMBER_1())+' step forward')
+        butt1.on_clicked(callback.actionButton1)
+
+        # button2:
+        butt2_loc = plt.axes([0.4, 0.001, 0.25, 0.065])
+        butt2 = Button(butt2_loc, str(BUTTON_NUMBER_2()) +' step forward')
+        butt2.on_clicked(callback.actionButton2)
+
+        ##button3:
+        butt3_loc = plt.axes([0.7, 0.001, 0.25, 0.065])
+        butt3 = Button(butt3_loc, str(BUTTON_NUMBER_3()) +' step forward')
+        butt3.on_clicked(callback.actionButton2)
 
         plt.show()
 
-    def oneAction(self, event):
-        self.action(1)
+    def actionButton1(self, event):
+        self.action(BUTTON_NUMBER_1())
+
+    def actionButton2(self, event):
+        self.action(BUTTON_NUMBER_2())
+
+    def actionButton3(self, event):
+        self.action(BUTTON_NUMBER_3())
 
     def action(self, time):
         size = len (Simulation.__self._Arena._Robots_sort_Random)
@@ -81,7 +99,7 @@ class Simulation:
                 robot.doAction()
 
         self._Air._messages = []
-        plt.close()
+        #plt.close()
         self.showGUI()
 
 
