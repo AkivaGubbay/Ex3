@@ -1,9 +1,12 @@
 from code.Point import *
+from code.Message import *
+#from code.Air import *
 from code.Global_Parameters import *
 from random import randint
 #chnage is good.
 class Robot:
     static_arena = -1
+    static_air = -1
 
     def __init__(self, id):
         self._id = id
@@ -15,16 +18,34 @@ class Robot:
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
         self._neighbors_color = []      #Can save all his neighbors colors
         self._neighbors_list = []
-        self._out_book = []             #Messages waiting to be sent.
         self._time = -1                 #Robots always knows the time.
-        self._currently_sending = -1
-        self._currently_get_message = -1
+        self._currently_sending = NO_MSG()
+        self._currently_get_message = NO_MSG()
+        self._action_time = INFINITY()    #When to do my next action(next sending).
         self._current_zone = -1
         self._distance_from = [-1]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())#I want to fill the whole list with -1 but i dont knot how many neighbors..
-        self.count = 0  # Used in creating message id's.
 
     def doAction(self):
-        print("Robot " +str(self._id) + " doAction")
+        if self._action_time != INFINITY():
+            if self._action_time == self._time:
+                val = Robot.static_air.sendMessage(self._currently_sending,self)
+                if val == False:
+                    self._action_time+= 1
+                    print("Robot " + str(self._id) + ": Is Waiting..")
+                    return
+                else:
+                    print("Robot " + str(self._id) + "sent message  " + self._currently_sending._id_message)
+                    self._action_time = INFINITY()
+                    self._currently_sending = NO_MSG()
+                    return
+        print("Robot " + str(self._id) + ": No Action Taken.")
+        x = randint(1, 3)
+        if x == 1: #send new Message.
+            self.sendNewMessage()
+        if x == 2: #Move randomly.
+            direction = self.getRandomDirection()
+            self.move(direction)
+        #if x == 3:  # Move randomly.
 
 
 
@@ -56,23 +77,31 @@ class Robot:
     def getRandomDirection(self):
         env = self.getEnv()
         direction = randint(WHITE(), BLACK()) #white,black,gray
-        while(env[direction] == False):
+        count = 0 #Case: Robot cant move in any direction.
+        while(env[direction] == False or count == 11):
             dir = randint(WHITE(), BLACK())
-        return direction
+            count+= 1
+        if count == 11:
+            print("Cant move in any direction..")
+        else: return direction
 
 
     def sendNewMessage(self):
         msg = Message(self._id,self.creatMessageId(),self._time)
-        #easy random time..
-        while(self.static_air.canSend() == False):
-            print("under construction..")
-            #easy random time..
+        self._currently_sending = msg
+        if self._action_time != INFINITY():
+            self._action_time = self.newMsgRandomWaitTime()
+        if self._time < self._action_time or Robot.static_air.canSend() == False : return
+        self._action_time = INFINITY()
+        self._message_log.append(msg._id_message)
+        Robot.static_air.sendMessage(msg, self)
 
-        #call Air method..
 
     def creatMessageId(self):
-        self.count+= 1
-        return self._id+self.count
+        return self._id + len(self._message_log)
+
+    def newMsgRandomWaitTime(self):
+        return self._time + randint(0,NEW_MSG_WAIT_TIME())
 
     def toString(self):
         return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,neighbors list:"+str(self._neighbors_list)+" ,can move:"+str(self._can_move)
