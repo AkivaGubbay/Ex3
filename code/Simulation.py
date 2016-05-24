@@ -65,23 +65,20 @@ class Simulation:
 
         plt.show()
 
-    """def action(self, time):
-        size = len (self._Arena._Robots_sort_Random)
-        for t in range(0, time):
-            self._Arena.sortRandomRobotsArray()
-            for i in range(0, size):
-                self._Arena._Robots_sort_Random[i].doAction()
-        self._Air._messages = []
-        plt.show()"""
-
     def oneAction(self, event):
+        self.action(1)
+
+    def action(self, time):
         size = len (Simulation.__self._Arena._Robots_sort_Random)
         self._time += 1
-        for t in range(0, 1):
+        for t in range(0, time):
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
-                Simulation.__self._Arena._Robots_sort_Random[i]._time = self._time
-                Simulation.__self._Arena._Robots_sort_Random[i].doAction()
+                robot = self._Arena._Robots_sort_Random[i]
+                robot._time = self._time
+                robot._current_zone = self._Arena.getEnv(robot._id)
+
+                robot.doAction()
 
         self._Air._messages = []
         plt.close()
