@@ -16,13 +16,15 @@ class Robot:
         self._id = id
         self._can_move = True
         self._battery_status = BATTARY_CAPACITY()
+
         self._private_location = Point(0,0)
         self._estimated_location = Point(ARENA_X()/2,ARENA_Y()/2)
         self._estimated_location._deviation = ARENA_X()+ARENA_Y()
         self._real_location = Point(0,0) #later put real location.
+
         self._message_log = []          #All received messages
         self._private_location_log = [Point(0,0)] #Holds all the robots movements as list of points
-        self._neighbors_loc = [0]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())      #Can save all his neighbors location
+        self._neighbors_loc = [INFINITY()]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())      #Can save all his neighbors location
         self._time = -1                 #Robots always knows the time.
         self._currently_sending = NO_MSG()
         self._currently_get_message = NO_MSG()
@@ -30,10 +32,45 @@ class Robot:
         self._current_zone = -1
 
     def doAction(self):
+        # charge battery:
+        if(self._current_zone == WHITE()):
+            self._battery_status +=BATTARY_CHARGE_LITHT_SPEED()
+            if(self._battery_status >BATTARY_CAPACITY()): self._battery_status = BATTARY_CAPACITY
+
         if self._action_time != INFINITY():
             if self._action_time == self._time:
                 self.forwardMessage()
+            return
+        elif(BATTERY_ABOUT_TO_END()*BATTARY_CAPACITY() > self._battery_status): #The battery is about to run out
+
+            if (self._current_zone == WHITE()):
+                print("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot should rest")
                 return
+            Env = self.getEnv()
+            for i in range(0,len(self._private_location_log)):
+                i1 = len(self._private_location_log) - i-1
+                if(self._private_location_log[i1]._zone == WHITE()):
+                    direction = self._private_location.which_direction(self._private_location_log[i1])
+                    if(direction == INFINITY()): continue
+                    if(direction !=INFINITY() and self.try_move_to_constant_direction(direction)== True):
+                        print("Robot " + str(self._id) + " The battery is about to run out ---> The robot go to light on " + str(direction) + "direction - The robot knows the point")
+                        return
+
+            if(self._estimated_location._deviation<BATTARY_CAPACITY()):
+                for i in range(0,len(self._neighbors_loc)):
+                    if(self._neighbors_loc[i] == INFINITY()): continue
+                    if(self._neighbors_loc[i]._deviation >BATTARY_CAPACITY()): continue # Only if the robot can go there
+                    if(Point.airDistancePoints(self._estimated_location, self._neighbors_loc[i])>BATTARY_CAPACITY()): continue # Only if the robot can go there
+                    if(self._neighbors_loc[i]._zone == WHITE()):
+                        direction = self._estimated_location.which_direction(self._neighbors_loc[i])
+                        if (direction == INFINITY()): continue
+                        if(direction !=INFINITY() and self.try_move_to_constant_direction(direction)== True):
+                            print("Robot " + str(self._id) + " The battery is about to run out ---> The robot go to light on " + str(direction) + "direction - The robot knows the point")
+                            return
+                print("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") - ???")
+
+
+
         else: # Robot has no action. He will now get a random one:
             x = randint(1, 3)
             if x == 1: #send new Message.
@@ -46,8 +83,6 @@ class Robot:
                 Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
             elif x == 3:  # get message.
                 self.getMessage()
-
-
 
     #Robot asks 'Arena' in witch directions can he move.
     def getEnv(self):
@@ -64,12 +99,49 @@ class Robot:
         elif direction == LEFT() : x += -1
         elif direction == DOWN() : y += 1
         elif direction == RIGHT() : x += 1
+        else: return #BATTARY_COST_WALK
+        self._battery_status -= BATTARY_COST_GET_MSG()
         #Update _private_location:d
         self._private_location = Point(x,y)
         #Add to robots new _private_location to log:
         self._private_location_log.append(self._private_location)
         #Update real location:
         Robot.static_arena.moveRobot(self._id,direction)
+
+
+    def try_move_to_constant_direction(self,direction):
+        x = self._private_location._x
+        y = self._private_location._y
+        possible_direction = self.getEnv()
+
+        if (possible_direction[direction] == True):
+            if direction == UP() : y += -1
+            elif direction == LEFT() : x += -1
+            elif direction == DOWN() : y += 1
+            elif direction == RIGHT() : x += 1
+            # Update real location:
+            Robot.static_arena.moveRobot(self._id, direction)
+        elif (possible_direction[(direction+1)%4] == True):
+            if (direction+1)%4 == UP() : y += -1
+            elif (direction+1)%4 == LEFT() : x += -1
+            elif (direction+1)%4 == DOWN() : y += 1
+            elif (direction+1)%4 == RIGHT() : x += 1
+            # Update real location:
+            Robot.static_arena.moveRobot(self._id, (direction+1)%4)
+        elif (possible_direction[(direction-1)%4] == True):
+            if (direction-1)%4 == UP() : y += -1
+            elif (direction-1)%4 == LEFT() : x += -1
+            elif (direction-1)%4 == DOWN() : y += 1
+            elif (direction-1)%4 == RIGHT() : x += 1
+            # Update real location:
+            Robot.static_arena.moveRobot(self._id, (direction-1)%4)
+        else: return False
+        self._battery_status -= BATTARY_COST_GET_MSG()
+        #Update _private_location:d
+        self._private_location = Point(x,y)
+        #Add to robots new _private_location to log:
+        self._private_location_log.append(self._private_location)
+        return True
 
 
     #Generates and returns random direction.
@@ -105,12 +177,11 @@ class Robot:
             return
 
         else: #Sending now!
+            self._battery_status -= BATTARY_COST_SEND_MSG()
             self._message_log.append(msg._id_message)
             Robot.static_air.sendMessage(msg, self)
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
-
-
 
 
     def forwardMessage(self):
@@ -125,6 +196,7 @@ class Robot:
             Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message")
             return
         else:
+            self._battery_status -= BATTARY_COST_SEND_MSG()
             Log.addLine("Robot " + str(self._id) + "sent message  " + str(self._currently_sending._id_message))
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
@@ -134,6 +206,7 @@ class Robot:
 
     def getMessage(self):
         msg = Robot.static_air.getMessage(self)
+        self._battery_status -= BATTARY_COST_GET_MSG()
         if(msg == NO_MSG()):
             Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")
             print("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")

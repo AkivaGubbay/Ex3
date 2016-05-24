@@ -67,6 +67,8 @@ def readParameters():
     global __no_msg, __msg_life_time, __msg_max_version,__msg_wait_time
     global __battery_about_to_end
     global __Button_number_1, __Button_number_2, __Button_number_3
+    global __battery_cost_walk, __battery_cost_send_msg, __battery_cost_get_msg, __battery_charge_light_speed
+
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -113,6 +115,12 @@ def readParameters():
     __Button_number_1 = int(getVar("BUTTON_NUMBER_1"))
     __Button_number_2 = int(getVar("BUTTON_NUMBER_2"))
     __Button_number_3 = int(getVar("BUTTON_NUMBER_3"))
+
+    # The cost of battery operation:
+    __battery_cost_walk = float(getVar("BATTARY_COST_WALK"))
+    __battery_cost_send_msg = float(getVar("BATTARY_COST_SEND_MSG"))
+    __battery_cost_get_msg = float(getVar("BATTARY_COST_GET_MSG"))
+    __battery_charge_light_speed = float(getVar("BATTARY_CHARGE_LITHT_SPEED"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
@@ -218,3 +226,17 @@ def BUTTON_NUMBER_2():
 
 def BUTTON_NUMBER_3():
     return __Button_number_3
+
+def BATTARY_COST_WALK():
+    return __battery_cost_walk
+
+def BATTARY_COST_SEND_MSG():
+    return __battery_cost_send_msg
+
+def BATTARY_COST_GET_MSG():
+    return __battery_cost_get_msg
+
+def BATTARY_CHARGE_LITHT_SPEED():
+    return __battery_charge_light_speed
+
+

@@ -189,6 +189,7 @@ class Point:
     def airDistancePoints(p1, p2):
         return math.sqrt((p1._x - p2._x) * (p1._x - p2._x) + (p1._y - p2._y) * (p1._y - p2._y))
 
+    # return Is it logical that a robot will be in this place
     def exists(self):
         bo1 = self._x>=0
         bo2 = self._x<ARENA_X()
@@ -196,12 +197,30 @@ class Point:
         bo4 = self._y<ARENA_Y()
         return (bo1 &bo2) & (bo3 & bo4)
 
+    # return Is it logical that a robot will be in this place
     def existsXY(x1,y1):
         return Point(x1,y1).exists()
 
+    # converter signal to Distance:
     def signalToDistance(signal):
         return int((MAX_MSG_RANGE() - math.sqrt(math.fabs(signal)))*(1+INSTANT_SENDING_CHANCE()))
 
+    # Returns What direction is the point1 relative to self:
+    def which_direction(self, point1):
+
+        if(point1._deviation != INFINITY() and point1._deviation !=0):
+            dis = Point.airDistance(self, point1._x, point1._y)
+            if (self._deviation - dis - point1._deviation >= 0 or point1._deviation - dis - self._deviation >= 0):  # point1 in self or self in point1
+                return INFINITY()
+
+        if(self._x > point1._x):
+            return LEFT()
+        elif (self._x < point1._x):
+            return RIGHT()
+        elif (self._y < point1._y):
+            return DOWN()
+        else:
+            return UP()
 
 
 
