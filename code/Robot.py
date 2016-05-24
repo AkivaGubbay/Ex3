@@ -41,6 +41,8 @@ class Robot:
                 self.move(direction)
                 print("Robot " + str(self._id) + ": Moving randomly.")
             #if x == 3:  # get message.
+                self.getMessage()
+                print("Robot " + str(self._id) + ": Receiving Messages.")
 
 
 
@@ -55,9 +57,9 @@ class Robot:
     def move(self,direction):
         x = self._private_location._x
         y = self._private_location._y
-        if direction == UP() : y += 1
+        if direction == UP() : y += -1
         elif direction == LEFT() : x += -1
-        elif direction == DOWN() : y += -1
+        elif direction == DOWN() : y += 1
         elif direction == RIGHT() : x += 1
         #Update _private_location:d
         self._private_location = Point(x,y)
@@ -130,22 +132,23 @@ class Robot:
         else:
             if msg._version >= MAX_NUM_OF_VERSIONS(): return
             msg._version+= 1
-            self._currently_get_message = msg
+
+            #Updating 'neighbors_loc' with info from recieved message:(location of the last message sender)
             point1 = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
             point1._deviation = Point.signalToDistance(msg._snn)
             point1._zone = msg._sender_estimated_location._zone
             self._neighbors_loc[msg._sender_history[len(msg._sender_history)-1]] =point1
 
-            #.....
+            # Updating 'estimated_location' with info from recieved message:
             self._estimated_location._x -=self._private_location._x
             self._estimated_location._y -= self._private_location._y
             new_point = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
             new_point._deviation = Point.signalToDistance(msg._snn)
-
             self._estimated_location.joint(new_point)
             self._estimated_location._x += self._private_location._x
             self._estimated_location._y += self._private_location._y
 
+            self._currently_get_message = msg
             self._action_time = self.msgRandomWaitTime()
             self._message_log.append(msg._id_message)
 

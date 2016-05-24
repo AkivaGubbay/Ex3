@@ -36,6 +36,7 @@ def globalParametersTest():
 
 
 
+
 #Tests Robot class:
 def RobotTest():
     print("**********************RobotTest*****************************************")
