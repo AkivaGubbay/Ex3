@@ -13,7 +13,7 @@ class Robot:
         self._can_move = True
         self._battery_status = BATTARY_CAPACITY()
         self._private_location = Point(0,0)
-        self.self_sender_history = Point(ARENA_X()/2,ARENA_Y()/2)
+        self._estimated_location = Point(ARENA_X()/2,ARENA_Y()/2)
         self._estimated_location._deviation = ARENA_X()+ARENA_Y()
         self._real_location = Point(0,0) #later put real location.
         self._message_log = []          #All received messages
@@ -137,6 +137,6 @@ class Robot:
         return self._time + randint(0,MSG_WAIT_TIME())
 
     def toString(self):
-        return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,neighbors list:"+str(self._neighbors_list)+" ,can move:"+str(self._can_move)
+        return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,_estimated_location:"+str(self._estimated_location.toString())+" ,can move:"+str(self._can_move)
 
 
