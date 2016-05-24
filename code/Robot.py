@@ -21,9 +21,11 @@ class Robot:
         self._currently_get_message = -1
         self._current_zone = -1
         self._distance_from = [-1]*(ROBOTS_MOVE()+ROBOTS_NOT_MOVE())#I want to fill the whole list with -1 but i dont knot how many neighbors..
+        self.count = 0  # Used in creating message id's.
 
     def doAction(self):
         print("Robot " +str(self._id) + " doAction")
+
 
 
     #Robot asks 'Arena' in witch directions can he move.
@@ -60,8 +62,17 @@ class Robot:
 
 
     def sendNewMessage(self):
-        print("under construction..")
+        msg = Message(self._id,self.creatMessageId(),self._time)
+        #easy random time..
+        while(self.static_air.canSend() == False):
+            print("under construction..")
+            #easy random time..
 
+        #call Air method..
+
+    def creatMessageId(self):
+        self.count+= 1
+        return self._id+self.count
 
     def toString(self):
         return "id:"+str(self._id)+" , battery status:"+str(self._battery_status)+" , message log:"+str(self._message_log)+" ,neighbors list:"+str(self._neighbors_list)+" ,can move:"+str(self._can_move)

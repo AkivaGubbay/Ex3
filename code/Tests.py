@@ -2,6 +2,7 @@ from tkinter import Radiobutton
 
 from code.Point import Point
 from code.Arena import Arena
+from code.Air import *
 from code.Robot import Robot
 from code.Log import Log
 from code.Simulation import Simulation
@@ -38,6 +39,7 @@ def globalParametersTest():
 def RobotTest():
     print("**********************RobotTest*****************************************")
     Robot.static_arena = Arena() #Must give the static_arena a value!!!
+    Robot.static_air = Air()  # Must give the static_air a value!!!
     r1 = Robot(0)
     print(r1._id)
     #Env:
