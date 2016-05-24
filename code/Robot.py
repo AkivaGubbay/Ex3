@@ -2,6 +2,10 @@ from code.Point import *
 from code.Message import *
 #from code.Air import *
 from code.Global_Parameters import *
+from code.Log import Log
+from code.Message import Message
+from code.Global_Parameters import *
+
 from random import randint
 #Life is good!
 class Robot:
@@ -31,17 +35,18 @@ class Robot:
                 self.forwardMessage()
                 return
         else: # Robot has no action. He will now get a random one:
-            print("Robot " + str(self._id) + ": No Action Taken.")
             x = randint(1, 3)
             if x == 1: #send new Message.
+                Log.addLine("Robot " + str(self._id) + ": sending new Message")
                 print("Robot " + str(self._id) + ": sending new Message")
                 self.sendNewMessage()
             elif x == 2: #Move randomly.
                 direction = self.getRandomDirection()
                 self.move(direction)
-                print("Robot " + str(self._id) + ": Moving randomly.")
+                Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
             elif x == 3:  # get message.
                 self.getMessage()
+                Log.addLine("Robot " + str(self._id) + ": Receiving Messages.")
                 print("Robot " + str(self._id) + ": Receiving Messages.")
 
 
@@ -79,7 +84,7 @@ class Robot:
             dir = randint(WHITE(), BLACK())
             count+= 1
         if count == 11:
-            print("Cant move in any direction..")
+            Log.addLine("robot "+str(self._id)+" Cant move in any direction. (There are probably around other robots)")
         else: return direction
 
     #Creats a new message and sends it if possible:
@@ -111,17 +116,18 @@ class Robot:
 
 
     def forwardMessage(self):
-        print("@@@@")
-        print(self._currently_sending)
-        print("@@@@")
+        if(self._currently_sending == NO_MSG()): # hould not happen .. Debugger
+            self._action_time = INFINITY()
+            return
+
         self._currently_sending._sender_history.append(self._id)  # Adds the robots id to message's 'sender_history'.
         was_sent = Robot.static_air.sendMessage(self._currently_sending, self)
         if was_sent == False:
             self._action_time += 1
-            print("Robot " + str(self._id) + ": Is Waiting..")
+            Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message")
             return
         else:
-            print("Robot " + str(self._id) + "sent message  " + str(self._currently_sending._id_message))
+            Log.addLine("Robot " + str(self._id) + "sent message  " + str(self._currently_sending._id_message))
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
             return

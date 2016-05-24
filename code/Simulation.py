@@ -91,6 +91,8 @@ class Simulation:
         size = len (Simulation.__self._Arena._Robots_sort_Random)
         for t in range(0, time):
             self._time += 1
+            Log.addLine("\n\n####    Simulation: Time = " + str(self._time) +"   ####")
+            print("\n\n####    Simulation: Time = " + str(self._time) +"   ####")
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
                 robot = self._Arena._Robots_sort_Random[i]
@@ -100,6 +102,7 @@ class Simulation:
                 robot.doAction()
         self.Messages_mone +=len(Air._messages)
         Air._messages = []
+
         #plt.close()
         self.showGUI()
 

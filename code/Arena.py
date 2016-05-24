@@ -109,18 +109,22 @@ class Arena:
             y = self._Robots[id]._real_location._y
             self._mat_robot_id[x][y]=-1
 
+            tolog = ""
             if(direction == UP()):
-                Log.addLine("move UP the Robot_" + str(id) + "From [" + str(x) + "][" + str(y) + "] to [" + str(x) + "][" + str(y-1) + "]")
+                tolog = ("Robot " + str(id) + ": move UP From [" + str(x) + "][" + str(y) + "] to [" + str(x) + "][" + str(y-1) + "]")
                 y = y - 1
             elif(direction == DOWN()):
-                Log.addLine("move DOWN the Robot_" + str(id) + "From [" + str(x) + "][" + str(y) + "] to [" + str(x) + "][" + str(y+1) + "]")
+                tolog =("Robot " + str(id) + ": move DOWN From [" + str(x) + "][" + str(y) + "] to [" + str(x) + "][" + str(y+1) + "]")
                 y = y + 1
             elif (direction == LEFT()):
-                Log.addLine("move LEFT the Robot_" + str(id) + "From [" + str(x) + "][" + str(y) + "] to [" + str(x-1) + "][" + str(y) + "]")
+                tolog =("Robot " + str(id) + ": move LEFT From [" + str(x) + "][" + str(y) + "] to [" + str(x-1) + "][" + str(y) + "]")
                 x = x - 1
             else:
-                Log.addLine("move RIGHT the Robot_" + str(id) + "From [" + str(x) + "][" + str(y) + "] to [" + str(x+1) + "][" + str(y) + "]")
+                tolog =("Robot " + str(id) + ": move RIGHT From [" + str(x) + "][" + str(y) + "] to [" + str(x+1) + "][" + str(y) + "]")
                 x = x + 1
+
+            Log.addLine(tolog)
+            print(tolog)
             self._mat_robot_id[x][y] = id
             self._Robots[id]._real_location = Point(x,y)
 
