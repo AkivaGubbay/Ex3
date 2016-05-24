@@ -46,8 +46,6 @@ class Robot:
                 Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
             elif x == 3:  # get message.
                 self.getMessage()
-                Log.addLine("Robot " + str(self._id) + ": Receiving Messages.")
-                print("Robot " + str(self._id) + ": Receiving Messages.")
 
 
 
@@ -137,10 +135,14 @@ class Robot:
     def getMessage(self):
         msg = Robot.static_air.getMessage(self)
         if(msg == NO_MSG()):
+            Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")
+            print("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")
             return
         else:
             if msg._version >= MAX_NUM_OF_VERSIONS(): return
             msg._version+= 1
+            Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message!" + msg.toString())
+            print("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message!" + msg.toString())
 
             #Updating 'neighbors_loc' with info from recieved message:(location of the last message sender)
             point1 = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
@@ -150,6 +152,10 @@ class Robot:
             else: self._neighbors_loc[msg._id_source] = point1
 
             # Updating 'estimated_location' with info from recieved message:
+            toLog = "Robot " + str(self._id) +": Estimated_location before the message - "+ self._estimated_location.toString()
+            Log.addLine(toLog)
+            print(toLog)
+
             self._estimated_location._x -=self._private_location._x
             self._estimated_location._y -= self._private_location._y
             new_point = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
@@ -157,6 +163,9 @@ class Robot:
             self._estimated_location.joint(new_point)
             self._estimated_location._x += self._private_location._x
             self._estimated_location._y += self._private_location._y
+            toLog = "Robot " + str(self._id) +": Estimated_location after the message - "+ self._estimated_location.toString()
+            Log.addLine(toLog)
+            print(toLog)
 
             self._currently_get_message = msg
             self._action_time = self.msgRandomWaitTime()

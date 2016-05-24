@@ -10,6 +10,8 @@ class Point:
         self._deviation = 0
 
     def joint(self, point1):
+        if(point1._deviation > TRANSMISSION_RANGE() or point1._deviation == INFINITY()): return
+
         dis = Point.airDistance(self, point1._x, point1._y)
         if (self._deviation - dis - point1._deviation >= 0):  # point1 in self
             self._x = point1._x

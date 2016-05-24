@@ -28,7 +28,10 @@ class Message:
 
 
     def __str__(self):
-        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version)
+        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version) +" ,Snn:" + str(self._snn)
+
+    def toString(self):
+        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version) +" ,Snn:" + str(self._snn)
 
 
 
