@@ -44,8 +44,10 @@ class Arena:
         # Creates a new robot 'that can't move' to variable "Robots"
         for s in range(int(ROBOTS_MOVE()), int(ROBOTS_MOVE())+int(ROBOTS_NOT_MOVE())):
             self._Robots.append(Robot(s))
-            self._Robots_sort_Random.append(Robot(s))
-            self._Robots[s].CanMove = False
+            self._Robots_sort_Random.append(1)
+            self._Robots[s]._can_move = False
+            #self._Robots_sort_Random[s]._can_move = False
+            self._Robots_sort_Random[s] = self._Robots[s]
             Log.addLine("create new Robot- " + self._Robots[s].toString())
 
         #put the robots on Arena:
@@ -67,6 +69,8 @@ class Arena:
             self._Robots.append(Robot(s))
             self._mat_robot_id[x][y] = self._Robots[s]._id
             self._Robots[s]._real_location = Point(x, y)
+            self._Robots[s]._estimated_location = Point(x, y)
+            self._Robots[s]._estimated_location._deviation = 0
             Log.addLine("put Robot_" + str(self._Robots[s]._id) + self._Robots[s]._real_location.toString())
 
         self.sortRandomRobotsArray()
@@ -124,7 +128,7 @@ class Arena:
                 x = x + 1
 
             Log.addLine(tolog)
-            print(tolog)
+            #print(tolog)
             self._mat_robot_id[x][y] = id
             self._Robots[id]._real_location = Point(x,y)
 

@@ -35,16 +35,27 @@ class Robot:
         # charge battery:
         if(self._current_zone == WHITE()):
             self._battery_status +=BATTARY_CHARGE_LITHT_SPEED()
-            if(self._battery_status >BATTARY_CAPACITY()): self._battery_status = BATTARY_CAPACITY
+            if(self._battery_status >BATTARY_CAPACITY()): self._battery_status = BATTARY_CAPACITY()
 
         if self._action_time != INFINITY():
             if self._action_time == self._time:
                 self.forwardMessage()
             return
-        elif(BATTERY_ABOUT_TO_END()*BATTARY_CAPACITY() > self._battery_status): #The battery is about to run out
+
+        if(self._can_move == False): # for static robot:
+            self._battery_status = BATTARY_CAPACITY()
+            x = randint(0, 10)
+            if(x < ROBOT_STATIC_CHANCE_SEND_MSG()*10): # send new Message.
+                self.sendNewMessage()
+            else: # get message.
+                self.getMessage()
+            return
+
+
+        if(BATTERY_ABOUT_TO_END()*BATTARY_CAPACITY() > self._battery_status): #The battery is about to run out
 
             if (self._current_zone == WHITE()):
-                print("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot should rest")
+                Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot should rest")
                 return
             Env = self.getEnv()
             for i in range(0,len(self._private_location_log)):
@@ -53,7 +64,7 @@ class Robot:
                     direction = self._private_location.which_direction(self._private_location_log[i1])
                     if(direction == INFINITY()): continue
                     if(direction !=INFINITY() and self.try_move_to_constant_direction(direction)== True):
-                        print("Robot " + str(self._id) + " The battery is about to run out ---> The robot go to light on " + str(direction) + "direction - The robot knows the point")
+                        Log.addLine("Robot " + str(self._id) + " The battery is about to run out ---> The robot go to light on " + str(direction) + "direction - The robot knows the point")
                         return
 
             if(self._estimated_location._deviation<BATTARY_CAPACITY()):
@@ -65,26 +76,33 @@ class Robot:
                         direction = self._estimated_location.which_direction(self._neighbors_loc[i])
                         if (direction == INFINITY()): continue
                         if(direction !=INFINITY() and self.try_move_to_constant_direction(direction)== True):
-                            print("Robot " + str(self._id) + " The battery is about to run out ---> The robot go to light on " + str(direction) + "direction - The robot knows the point")
+                            Log.addLine("Robot " + str(self._id) + " The battery is about to run out ---> the robot goes towards the robot_" + i + " (to the " + str(direction) + ") is there light!")
                             return
-                print("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") - ???")
 
 
+            x = randint(1, int(BATTERY_ABOUT_TO_END() *10))
+            if(x!=1):
+                Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot rest")
+            else:
+                Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot has decided to continue as usual")
 
-        else: # Robot has no action. He will now get a random one:
+        # Trying to do the activities several times to avoid problems due to battery:
+        for i in range(0, 3):
+            # Robot has no action. He will now get a random:
             x = randint(1, 3)
-            if x == 1: #send new Message.
-                Log.addLine("Robot " + str(self._id) + ": sending new Message")
-                print("Robot " + str(self._id) + ": sending new Message")
+            if x == 1 and self._battery_status > BATTARY_COST_SEND_MSG():  # send new Message.
                 self.sendNewMessage()
-            elif x == 2: #Move randomly.
+                return
+            elif x == 2 and self._battery_status > BATTARY_COST_WALK():  # Move randomly.
                 direction = self.getRandomDirection()
                 self.move(direction)
                 Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
-            elif x == 3:  # get message.
+                return
+            elif x == 3 and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
                 self.getMessage()
+                return
 
-    #Robot asks 'Arena' in witch directions can he move.
+        #Robot asks 'Arena' in witch directions can he move.
     def getEnv(self):
         return Robot.static_arena.getEnv(self._id)
 
@@ -177,6 +195,9 @@ class Robot:
             return
 
         else: #Sending now!
+            Log.addLine("Robot " + str(self._id) + " sent new message  " + str(self._currently_sending.toString()))
+            print("Robot " + str(self._id) + " sent new message  " + str(self._currently_sending.toString()))
+
             self._battery_status -= BATTARY_COST_SEND_MSG()
             self._message_log.append(msg._id_message)
             Robot.static_air.sendMessage(msg, self)
@@ -191,13 +212,15 @@ class Robot:
 
         self._currently_sending._sender_history.append(self._id)  # Adds the robots id to message's 'sender_history'.
         was_sent = Robot.static_air.sendMessage(self._currently_sending, self)
+
         if was_sent == False:
             self._action_time += 1
             Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message")
             return
         else:
             self._battery_status -= BATTARY_COST_SEND_MSG()
-            Log.addLine("Robot " + str(self._id) + "sent message  " + str(self._currently_sending._id_message))
+            Log.addLine("Robot " + str(self._id) + " sent message  " + str(self._currently_sending.toString()))
+            print("Robot " + str(self._id) + " sent message  " + str(self._currently_sending.toString()))
             self._action_time = INFINITY()
             self._currently_sending = NO_MSG()
             return
@@ -209,13 +232,12 @@ class Robot:
         self._battery_status -= BATTARY_COST_GET_MSG()
         if(msg == NO_MSG()):
             Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")
-            print("Robot " + str(self._id) + ": Receiving Messages.  --->  Not received!")
             return
         else:
             if msg._version >= MAX_NUM_OF_VERSIONS(): return
             msg._version+= 1
-            Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message!" + msg.toString())
-            print("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message!" + msg.toString())
+            Log.addLine("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message! " + msg.toString())
+            print("Robot " + str(self._id) + ": Receiving Messages.  --->  Received a new message! " + msg.toString())
 
             #Updating 'neighbors_loc' with info from recieved message:(location of the last message sender)
             point1 = Point(msg._sender_estimated_location._x, msg._sender_estimated_location._y)
@@ -227,7 +249,6 @@ class Robot:
             # Updating 'estimated_location' with info from recieved message:
             toLog = "Robot " + str(self._id) +": Estimated_location before the message - "+ self._estimated_location.toString()
             Log.addLine(toLog)
-            print(toLog)
 
             self._estimated_location._x -=self._private_location._x
             self._estimated_location._y -= self._private_location._y
@@ -238,7 +259,6 @@ class Robot:
             self._estimated_location._y += self._private_location._y
             toLog = "Robot " + str(self._id) +": Estimated_location after the message - "+ self._estimated_location.toString()
             Log.addLine(toLog)
-            print(toLog)
 
             self._currently_get_message = msg
             self._action_time = self.msgRandomWaitTime()

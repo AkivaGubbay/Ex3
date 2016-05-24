@@ -9,6 +9,7 @@ from code.Log import Log
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
+import webbrowser
 
 
 
@@ -58,8 +59,9 @@ class Simulation:
 
         callback = self
 
-        Msg1_loc = plt.axes([0.1, 0.95, 0.85, 0.045])
-        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot moved= "+str(Arena._mone_move) + ",    Messages mone = " + str(self.Messages_mone))
+        Msg1_loc = plt.axes([0.05, 0.95, 0.90, 0.045])
+        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot moved= "+str(Arena._mone_move) + ",    Messages = " + str(self.Messages_mone) +" |  << Click here for details >>")
+        Msg1.on_clicked(callback.actionMsg1)
 
         #button1:
         butt1_loc = plt.axes([0.1, 0.001, 0.25, 0.065])
@@ -77,6 +79,10 @@ class Simulation:
         butt3.on_clicked(callback.actionButton3)
 
         plt.show()
+
+
+    def actionMsg1(self, event):
+        webbrowser.open("LogFile.txt")
 
     def actionButton1(self, event):
         self.action(BUTTON_NUMBER_1())
@@ -97,9 +103,12 @@ class Simulation:
             for i in range(0, size):
                 robot = self._Arena._Robots_sort_Random[i]
                 robot._time = self._time
-                robot._current_zone = self._Arena.getEnv(robot._id)
+                robot._current_zone = self._Arena.getCurrentZone(robot._id)
 
                 robot.doAction()
+
+        for i in range(0, size):
+            Log.addLine(self._Arena._Robots[i].toString())
         self.Messages_mone +=len(Air._messages)
         Air._messages = []
 

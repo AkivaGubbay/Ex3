@@ -14,7 +14,7 @@ class Message:
         self._create_time = Time   #so that we dont pass 'MSG_LIFE_TIME'.
         self._version = 0    #so that we dont pass 'MAX_VERSION'.
         self._real_location = Point(0,0)
-        self._snn = -1
+        self._snn = 0
         self._mat_distance = []
         #Iputing '_mat_distance' distances:
         for i in range(int(float(ARENA_Y()))):

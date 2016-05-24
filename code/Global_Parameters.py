@@ -68,6 +68,8 @@ def readParameters():
     global __battery_about_to_end
     global __Button_number_1, __Button_number_2, __Button_number_3
     global __battery_cost_walk, __battery_cost_send_msg, __battery_cost_get_msg, __battery_charge_light_speed
+    global __robot_static_Chance_send_msg
+
 
 
     # battary_capacity:
@@ -121,6 +123,8 @@ def readParameters():
     __battery_cost_send_msg = float(getVar("BATTARY_COST_SEND_MSG"))
     __battery_cost_get_msg = float(getVar("BATTARY_COST_GET_MSG"))
     __battery_charge_light_speed = float(getVar("BATTARY_CHARGE_LITHT_SPEED"))
+
+    __robot_static_Chance_send_msg = float(getVar("ROBOT_STATIC_CHANCE_SEND_MSG"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
@@ -238,5 +242,8 @@ def BATTARY_COST_GET_MSG():
 
 def BATTARY_CHARGE_LITHT_SPEED():
     return __battery_charge_light_speed
+
+def ROBOT_STATIC_CHANCE_SEND_MSG():
+    return __robot_static_Chance_send_msg
 
 
