@@ -19,6 +19,12 @@ class Message:
         for i in range(int(float(ARENA_Y()))):
             self._mat_distance.append(int(ARENA_X()) * [INFINITY()])
 
+    @staticmethod
+    def equals(self, message):
+        if(self._id_message != message._id_message): return 0
+        elif (self._version > message._version): return 1
+        else: return 2
+
 
     def __str__(self):
         return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version)+ ",Life:"+str(self._lif)

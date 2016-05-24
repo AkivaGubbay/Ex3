@@ -66,7 +66,7 @@ def readParameters():
     global __instant_sending_chance,__max_num_of_versions,__message_life_time, __sending_known_deviation
     global __robot_leanght, __infinity, __min_msg_range, __max_msg_range
     global __no_msg, __msg_life_time, __msg_max_version,__msg_wait_time
-
+    global __battery_about_to_end
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -106,6 +106,8 @@ def readParameters():
     __no_msg, __msg_life_time,__msg_max_version = int(getVar("NO_MSG")),int(getVar("MSG_LIFE_TIME")),int(getVar("MSG_MAX_VERSION"))
     # Range of time a message must wait before being sent:
     __msg_wait_time = int(getVar("MSG_WAIT_TIME"))
+    # battery_about_to_end:
+    __battery_about_to_end = int(getVar("BATTERY_ABOUT_TO_END"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
@@ -199,4 +201,7 @@ def MSG_MAX_VERSION():
 
 def MSG_WAIT_TIME():       # Range of time a new message must waut before being sent:
     return __msg_wait_time
+
+def BATTERY_ABOUT_TO_END():
+    return __battery_about_to_end
 
