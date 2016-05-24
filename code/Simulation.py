@@ -22,6 +22,7 @@ class Simulation:
         self._Arena = Arena()
         Air.static_mat_zone = self._Arena._mat_zone
         Simulation.__self = self
+        self._time = 0
 
     def showGUI(self):
         X = []
@@ -60,19 +61,26 @@ class Simulation:
 
         plt.show()
 
-    def action(self, time):
+
+    """def action(self, time):
         size = len (self._Arena._Robots_sort_Random)
         for t in range(0, time):
             self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
                 self._Arena._Robots_sort_Random[i].doAction()
+        self._Air._messages = []
+        plt.show()"""
 
     def oneAction(self, event):
         size = len (Simulation.__self._Arena._Robots_sort_Random)
+        self._time += 1
         for t in range(0, 1):
+            Simulation.__self._Arena._Robots_sort_Random[i]._time = self._time
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
                 Simulation.__self._Arena._Robots_sort_Random[i].doAction()
+        self._Air._messages = []
+
 
 
 
