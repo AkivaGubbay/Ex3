@@ -3,7 +3,7 @@ from code.Message import *
 #from code.Air import *
 from code.Global_Parameters import *
 from random import randint
-#chnage is good.
+#Life is good!
 class Robot:
     static_arena = -1
     static_air = -1
