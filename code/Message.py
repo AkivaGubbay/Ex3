@@ -6,11 +6,12 @@ from code.Global_Parameters import *
 
 #good day!
 class Message:
-    def __init__(self,Id_Sender,Id_Message,Time,_sender_estimated_location):
+    def __init__(self,Id_Sender,Id_Message,Time,sender_estimated_loc):
         self._id_source = Id_Sender    # Upond creation: source = sender.
         self._id_message = Id_Message  # transmit_Message function (on Simulation) updates that value
         self._sender_history = []  # From here you can also find the latest sender.
-        self._sender_estimated_location = _sender_estimated_location
+        self._sender_estimated_location = sender_estimated_loc
+
         self._create_time = Time   #so that we dont pass 'MSG_LIFE_TIME'.
         self._version = 0    #so that we dont pass 'MAX_VERSION'.
         self._real_location = Point(0,0)
@@ -28,10 +29,10 @@ class Message:
 
 
     def __str__(self):
-        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version) +" ,Snn:" + str(self._snn)
+        return "MSG- id_message:" + str(self._id_message)+", id source:" + str(self._id_source) +" ,Version:" + str(self._version) +" ,Snn:" + str(self._snn)
 
     def toString(self):
-        return ",id_message:" + str(self._id_message)+"id source:" + str(self._id_source) +",Version:" + str(self._version) +" ,Snn:" + str(self._snn)
+        return "MSG- id_message:" + str(self._id_message)+", id source:" + str(self._id_source) +" ,Version:" + str(self._version) +" ,Snn:" + str(self._snn)
 
 
 

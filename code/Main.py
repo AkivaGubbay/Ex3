@@ -18,7 +18,7 @@ Mylog = Log()
 s = Simulation()
 s.showGUI()
 
-
-
 Mylog.close()
+
+webbrowser.open("LogFile.txt")
 

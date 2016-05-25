@@ -203,7 +203,9 @@ class Point:
 
     # converter signal to Distance:
     def signalToDistance(signal):
-        return int((MAX_MSG_RANGE() - math.sqrt(math.fabs(signal)))*(1+INSTANT_SENDING_CHANCE()))
+        dis = (MAX_MSG_RANGE() - math.sqrt(math.fabs(signal)))
+        if(dis<50): return int(50*(1+INSTANT_SENDING_CHANCE()))
+        return int(math.fabs(dis) * (1+INSTANT_SENDING_CHANCE()))
 
     # Returns What direction is the point1 relative to self:
     def which_direction(self, point1):

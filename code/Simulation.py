@@ -41,11 +41,19 @@ class Simulation:
                 if(X[i][j] != -1): continue
 
                 if(self._Arena._mat_robot_id[i][j]!=-1):
-                    X[i][j] = -1000
-                    for i2 in range(i-ROBOT_LEANGHT(), i+ROBOT_LEANGHT()):
-                        for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
-                            if(Point.existsXY(i2,j2)):
-                                X[i2][j2] = -1000
+                    if(self._Arena._Robots[self._Arena._mat_robot_id[i][j]]._can_move):
+                        X[i][j] = ROBOTS_MOVE_COLOR()
+                        for i2 in range(i - ROBOT_LEANGHT(), i + ROBOT_LEANGHT()):
+                            for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
+                                if (Point.existsXY(i2, j2)):
+                                    X[i2][j2] = ROBOTS_MOVE_COLOR()
+                    else:
+                        X[i][j] = ROBOTS_NOT_MOVE_COLOR()
+                        for i2 in range(i - ROBOT_LEANGHT(), i + ROBOT_LEANGHT()):
+                            for j2 in range(j - ROBOT_LEANGHT(), j + ROBOT_LEANGHT()):
+                                if (Point.existsXY(i2, j2)):
+                                    X[i2][j2] = ROBOTS_NOT_MOVE_COLOR()
+
 
                 elif (self._Arena._mat_zone[i][j] == 2):
                     X[i][j] = 1000
@@ -60,8 +68,8 @@ class Simulation:
         callback = self
 
         Msg1_loc = plt.axes([0.05, 0.95, 0.90, 0.045])
-        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot moved= "+str(Arena._mone_move) + ",    Messages = " + str(self.Messages_mone) +" |  << Click here for details >>")
-        Msg1.on_clicked(callback.actionMsg1)
+        Msg1 = Button(Msg1_loc, "Time= "+str(self._time) + ",   Robot moved= "+str(Arena._mone_move) + ",    Messages = " + str(self.Messages_mone))#) +" |  << Click here for details >>")
+        #Msg1.on_clicked(callback.actionMsg1)
 
         #button1:
         butt1_loc = plt.axes([0.1, 0.001, 0.25, 0.065])
@@ -81,8 +89,8 @@ class Simulation:
         plt.show()
 
 
-    def actionMsg1(self, event):
-        webbrowser.open("LogFile.txt")
+    """def actionMsg1(self, event):
+        webbrowser.open("LogFile.txt")"""
 
     def actionButton1(self, event):
         self.action(BUTTON_NUMBER_1())
@@ -101,7 +109,8 @@ class Simulation:
             print("\n\n####    Simulation: Time = " + str(self._time) +"   ####")
             Simulation.__self._Arena.sortRandomRobotsArray()
             for i in range(0, size):
-                robot = self._Arena._Robots_sort_Random[i]
+                #robot = self._Arena._Robots_sort_Random[i]
+                robot = self._Arena._Robots[self._Arena._Robots_sort_Random[i]]
                 robot._time = self._time
                 robot._current_zone = self._Arena.getCurrentZone(robot._id)
 

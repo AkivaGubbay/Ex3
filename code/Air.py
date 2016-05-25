@@ -28,11 +28,13 @@ class Air:
     def getMessage(robot):
         sum_range = 0
         flag = False
-        nearest_messages = Message(INFINITY(), INFINITY(),INFINITY(),INFINITY())
+        if(len(Air._messages) ==0 ): return NO_MSG()
+        nearest_messagesa = Air._messages[0]
         robot_loc = robot._real_location
         r=0
         for i in range(0, len(Air._messages)):
             r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            if(r == INFINITY() or r<=0): continue
             if(r <=MIN_MSG_RANGE()):
                 Air._messages[i]._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)
                 return Air._messages[i] ##################################put distance to msg
@@ -43,14 +45,22 @@ class Air:
                 nearest_mess_loc = nearest_messagesa._real_location
                 messa_i = Air._messages[i]._real_location
                 if(flag == False):
-                    nearest_messagesa = Air._messages[i]
                     flag = True
+                    nearest_messagesa = Air._messages[i]
+                    nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
+                    return nearest_messagesa
                 elif(Point.distance(Air.static_mat_zone, robot_loc,nearest_mess_loc) > Point.distance(Air.static_mat_zone, robot_loc,messa_i)):
                     nearest_messagesa = Air._messages[i]
+                    nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
+        if(flag): return NO_MSG()
+        if(sum_range==0): return NO_MSG()
         if(r==0 or sum_range>= MAX_MSG_RANGE()):
             return NO_MSG()
         else:
-            nearest_messagesa._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)
+            nearest_messagesa._snn = nearest_messagesa._snn - sum_range
+            #print("\n%%%\nnearest_messagesa._snn:: " + str(nearest_messagesa._snn))
+            #print("sum_range:: " + str(sum_range))
+            #print("_snn:: " + str(nearest_messagesa._snn))
             ##################################put distance to msg
             return nearest_messagesa
 
