@@ -88,7 +88,7 @@ class Robot:
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot has decided to continue as usual")
 
         # Robot has no action. He will now get a random:
-        x = randint(1, 3)
+        x = randint(1, 3) ############################################ <<<<<------------------------
         if x == 1 and self._battery_status > BATTARY_COST_SEND_MSG():  # send new Message.
             self.sendNewMessage()
             return
@@ -196,8 +196,8 @@ class Robot:
             return
 
         else: #Sending now!
-            Log.addLine("Robot " + str(self._id) + " sent new message  " + str(self._currently_sending.toString()))
-            print("Robot " + str(self._id) + " sent new message  " + str(self._currently_sending.toString()))
+            Log.addLine("Robot " + str(self._id) + " sent a new message: " + str(self._currently_sending.toString()))
+            print("Robot " + str(self._id) + " sent a new message: " + str(self._currently_sending.toString()))
 
             self._battery_status -= BATTARY_COST_SEND_MSG()
             self._message_log.append(msg._id_message)
@@ -269,6 +269,6 @@ class Robot:
         return self._time + randint(0,MSG_WAIT_TIME())
 
     def toString(self):
-        return "ROBOT- id:"+str(self._id)+" , battery_status:"+str(self._battery_status)+" ,message_log:"+str(self._message_log)+" ,estimated_location:"+str(self._estimated_location.toString())+" ,can_move:"+str(self._can_move)
+        return "ROBOT[id:"+str(self._id)+" , battery_status:"+str(self._battery_status)+" ,message_log:"+str(self._message_log)+" ,estimated_location:"+str(self._estimated_location.toString())+" ,can_move:"+str(self._can_move) +"]"
 
 

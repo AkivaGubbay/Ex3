@@ -48,7 +48,7 @@ class Air:
                     flag = True
                     nearest_messagesa = Air._messages[i]
                     nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
-                    return nearest_messagesa
+                    #return nearest_messagesa
                 elif(Point.distance(Air.static_mat_zone, robot_loc,nearest_mess_loc) > Point.distance(Air.static_mat_zone, robot_loc,messa_i)):
                     nearest_messagesa = Air._messages[i]
                     nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)

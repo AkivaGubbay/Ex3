@@ -32,7 +32,7 @@ class Message:
         return "MSG- id_message:" + str(self._id_message)+", id source:" + str(self._id_source) +" ,Version:" + str(self._version) +" ,Snn:" + str(self._snn)
 
     def toString(self):
-        return "MSG- id_message:" + str(self._id_message)+", id source:" + str(self._id_source) +" ,Version:" + str(self._version) +" ,Snn:" + str(self._snn)
+        return "MSG[id_message:" + str(self._id_message)+", id source:" + str(self._id_source) +" ,Version:" + str(self._version) +" ,Snn:" + str(self._snn) +"]"
 
 
 
