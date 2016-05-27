@@ -27,7 +27,9 @@ class Point:
         else: ###"Circles touching" - need to do Union:###
             # Calculating a straight line out of the two major circuits:
             # y = m1 * x +d1
+            if(self._x-point1._x == 0): return
             m1 = +(0.0 + self._y-point1._y)/(self._x-point1._x)
+
             d1 = point1._y- m1*point1._x
             points1 = Point.getPoints(m1,d1,self._x, self._y,self._deviation)
             points2 = Point.getPoints(m1, d1, point1._x, point1._y, point1._deviation)
@@ -48,6 +50,7 @@ class Point:
             self._y = int((points1[0]._y + points2[0]._y)/2.0)
 
             # Calculating the straight line parallel to and from taking the new circle radius:
+            if(m1 == 0): return
             array = Point.getPoints(1.0/m1, self._x - self._y*1.0/m1,point1._x, point1._y,point1._deviation)
             self._deviation = int(math.fabs(Point.airDistancePoints(array[0], array[1]))/2.0)
 

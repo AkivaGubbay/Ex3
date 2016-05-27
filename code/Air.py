@@ -4,6 +4,7 @@ from code.Arena import Arena
 from code.Message import Message
 from code.Point import Point
 from code.Log import Log
+import math
 
 class Air:
     static_mat_zone = -1
@@ -54,7 +55,7 @@ class Air:
                     flag = True
                     nearest_messagesa = Air._messages[i]
                     nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
-                    #return nearest_messagesa
+                    return nearest_messagesa
                 elif(Point.distance(Air.static_mat_zone, robot_loc,nearest_mess_loc) > Point.distance(Air.static_mat_zone, robot_loc,messa_i)):
                     nearest_messagesa = Air._messages[i]
                     nearest_messagesa._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
@@ -83,7 +84,7 @@ class Air:
 
             if (r < MAX_MSG_RANGE()):
                 sum_range = sum_range + r
-        if (sum_range < MAX_MSG_RANGE()):
+        if (sum_range < math.sqrt(MAX_MSG_RANGE())):
             return True
         else:
             return False

@@ -104,6 +104,7 @@ class Simulation:
     def action(self, time):
         size = len (Simulation.__self._Arena._Robots_sort_Random)
         for t in range(0, time):
+            Air._messages = []
             self._time += 1
             Log.addLine("\n\n####    Simulation: Time = " + str(self._time) +"   ####")
             print("\n\n####    Simulation: Time = " + str(self._time) +"   ####")
@@ -115,11 +116,12 @@ class Simulation:
                 robot._current_zone = self._Arena.getCurrentZone(robot._id)
 
                 robot.doAction()
+            self.Messages_mone += len(Air._messages)
+            Air._messages = []
 
         for i in range(0, size):
             Log.addLine(self._Arena._Robots[i].toString())
-        self.Messages_mone +=len(Air._messages)
-        Air._messages = []
+
 
         #plt.close()
         self.showGUI()

@@ -37,26 +37,29 @@ class Robot:
             self._battery_status +=BATTARY_CHARGE_LITHT_SPEED()
             if(self._battery_status >BATTARY_CAPACITY()): self._battery_status = BATTARY_CAPACITY()
 
+        # forward Message IF Exist:
         if self._action_time != INFINITY():
             if self._action_time == self._time:
                 self.forwardMessage()
-            return
+                return
 
-        if(self._can_move == False): # for static robot:
+        # for static robot:
+        if(self._can_move == False):
             if (BATTERY_ABOUT_TO_END() * BATTARY_CAPACITY() > self._battery_status):  # The battery is about to run out
+                Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(
+                    self._battery_status) + ") ---> The robot should rest")
                 return
 
             self._battery_status = BATTARY_CAPACITY()
             x = randint(0, 10)
-
             if(x < ROBOT_STATIC_CHANCE_SEND_MSG()*10): # send new Message.
                 self.sendNewMessage()
             else: # get message.
                 self.getMessage()
             return
 
-
-        if(BATTERY_ABOUT_TO_END()*BATTARY_CAPACITY() > self._battery_status): #The battery is about to run out
+        # The battery is about to run out
+        if(BATTERY_ABOUT_TO_END()*BATTARY_CAPACITY() > self._battery_status):
 
             if (self._current_zone == WHITE()):
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot should rest")
@@ -89,15 +92,14 @@ class Robot:
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot rest")
             else:
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot has decided to continue as usual")
-
         x = randint(0, 100)
         if (x < ROBOT_CANMOVE_CHANCE_SEND_MSG() * 100 and self._battery_status > BATTARY_COST_SEND_MSG()):  # send new Message.
             self.sendNewMessage()
             return
-        elif x < ROBOT_CANMOVE_CHANCE_GET_MSG() and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
+        elif x < ROBOT_CANMOVE_CHANCE_GET_MSG()+ROBOT_CANMOVE_CHANCE_SEND_MSG() and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
             self.getMessage()
             return
-        elif x >= ROBOT_CANMOVE_CHANCE_GET_MSG() and self._battery_status > BATTARY_COST_WALK(): # Move randomly.
+        elif self._battery_status > BATTARY_COST_WALK(): # Move randomly.
             direction = self.getRandomDirection()
             self.move(direction)
             #Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
@@ -189,13 +191,20 @@ class Robot:
         self._currently_sending = msg
         self._action_time = self.msgRandomWaitTime()
 
-        # checking with 'Air' that robot can send now:
-        if self._time < self._action_time or Robot.static_air.canSend(self) == False:
-            # robot must send another time:
+        if(self._time < self._action_time):
+            Log.addLine("Robot " + str(self._id) + " create a new message and send it soon")
 
-            #Case: 'action time' is now but 'Air' wont let robot send:
+            # Case: 'action time' is now:
             if self._time == self._action_time: self._action_time += 1
+            return
 
+        # checking with 'Air' that robot can send now:
+        if Robot.static_air.canSend(self) == False:
+            # robot must send another time:
+            Log.addLine("Robot " + str(self._id) + " was trying to send a message now ---> Because of congestion notifications will try next time")
+
+            # Case: 'action time' is now but 'Air' wont let robot send:
+            if self._time == self._action_time: self._action_time += 1
             return
 
         else: #Sending now!
@@ -218,14 +227,17 @@ class Robot:
 
         if was_sent == False:
             self._action_time += 1
-            Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message")
+            if(self._action_time > MSG_LIFE_TIME()):
+                self._action_time = INFINITY()
+                self._currently_sending = NO_MSG()
+                Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message (" + str(self._action_time) + ") ---> Went too long ---> throw the message!")
+            else:
+                Log.addLine("Robot " + str(self._id) + ": Is Waiting to forward Message (" + str(self._action_time) + ")")
             return
         else:
             self._battery_status -= BATTARY_COST_SEND_MSG()
             Log.addLine("Robot " + str(self._id) + " sent message  " + str(self._currently_sending.toString()))
             print("Robot " + str(self._id) + " sent message  " + str(self._currently_sending.toString()))
-            self._action_time = INFINITY()
-            self._currently_sending = NO_MSG()
             return
 
     def getMessage(self):
@@ -272,6 +284,6 @@ class Robot:
         return self._time + randint(0,MSG_WAIT_TIME())
 
     def toString(self):
-        return "ROBOT[id:"+str(self._id)+" , battery_status:"+str(self._battery_status)+" ,message_log:"+str(self._message_log)+" ,estimated_location:"+str(self._estimated_location.toString())+" ,can_move:"+str(self._can_move) +"]"
+        return "ROBOT[id:"+str(self._id)+" , battery_status:"+str(self._battery_status)+" ,estimated_location:"+str(self._estimated_location.toString())+" ,can_move:"+str(self._can_move) +" ,message_log:"+str(self._message_log)+"]"
 
 

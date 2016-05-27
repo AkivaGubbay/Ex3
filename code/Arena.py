@@ -83,16 +83,24 @@ class Arena:
         y = self._Robots[id]._real_location._y
         array = [True,True,True,True]
 
-        if(self._mat_robot_id[x][y-1]!=-1 | self._mat_zone[x][y-1]):
+        if (Point.existsXY(x, y-1) == False):
+            array[UP()] = False
+        elif(self._mat_robot_id[x][y-1]!=-1 | self._mat_zone[x][y-1]):
             array[UP()] =False
 
-        if(self._mat_robot_id[x][y+1]!=-1 | self._mat_zone[x][y+1]):
+        if (Point.existsXY(x, y+1) == False):
+            array[DOWN()] = False
+        elif(self._mat_robot_id[x][y+1]!=-1 | self._mat_zone[x][y+1]):
             array[DOWN()] =False
 
-        if(self._mat_robot_id[x-1][y]!=-1 | self._mat_zone[x-1][y]):
+        if (Point.existsXY(x - 1, y) == False):
+            array[LEFT()] = False
+        elif(self._mat_robot_id[x-1][y]!=-1 | self._mat_zone[x-1][y]):
             array[LEFT()] =False
 
-        if(self._mat_robot_id[x+1][y]!=-1 | self._mat_zone[x+1][y]):
+        if(Point.existsXY(x+1, y) == False):
+            array[RIGHT()] = False
+        elif(self._mat_robot_id[x+1][y]!=-1 | self._mat_zone[x+1][y]):
             array[RIGHT()] =False
 
         return array
