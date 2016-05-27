@@ -18,8 +18,10 @@ class Message:
         self._snn = 0
         self._mat_distance = []
         #Iputing '_mat_distance' distances:
-        for i in range(int(float(ARENA_Y()))):
-            self._mat_distance.append(int(ARENA_X()) * [INFINITY()])
+
+        if(bool(ACTIVE_MATDISTANCE())):
+            for i in range(int(float(ARENA_Y()))):
+                self._mat_distance.append(int(ARENA_X()) * [INFINITY()])
 
     @staticmethod
     def equals(self, message):

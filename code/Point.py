@@ -74,6 +74,7 @@ class Point:
         return [p1,p2]
 
     def fillMatDistance(_mat_zone, array, startpoint):
+        if (bool(ACTIVE_MATDISTANCE())==False): return
         QueuePoint = []
         QueuePoint.append(startpoint)
         index = 0
@@ -101,6 +102,9 @@ class Point:
             size = size - 1
 
     def distance(_mat_zone, point1, point2):
+        if (bool(ACTIVE_MATDISTANCE()) == False):
+            return  Point.airDistancePoints(point1, point2)
+
         array = []
         for i in range(int(float(ARENA_Y()))):
             array.append(int(ARENA_X()) * [INFINITY()])

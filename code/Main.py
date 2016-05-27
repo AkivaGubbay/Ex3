@@ -15,6 +15,7 @@ readParameters()
 Mylog = Log()
 
 
+
 s = Simulation()
 s.showGUI()
 

@@ -43,6 +43,9 @@ class Robot:
             return
 
         if(self._can_move == False): # for static robot:
+            if (BATTERY_ABOUT_TO_END() * BATTARY_CAPACITY() > self._battery_status):  # The battery is about to run out
+                return
+
             self._battery_status = BATTARY_CAPACITY()
             x = randint(0, 10)
 
@@ -87,19 +90,19 @@ class Robot:
             else:
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot has decided to continue as usual")
 
-        # Robot has no action. He will now get a random:
-        x = randint(1, 3) ############################################ <<<<<------------------------
-        if x == 1 and self._battery_status > BATTARY_COST_SEND_MSG():  # send new Message.
+        x = randint(0, 100)
+        if (x < ROBOT_CANMOVE_CHANCE_SEND_MSG() * 100 and self._battery_status > BATTARY_COST_SEND_MSG()):  # send new Message.
             self.sendNewMessage()
             return
-        elif x == 2 and self._battery_status > BATTARY_COST_WALK():  # Move randomly.
+        elif x < ROBOT_CANMOVE_CHANCE_GET_MSG() and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
+            self.getMessage()
+            return
+        elif x >= ROBOT_CANMOVE_CHANCE_GET_MSG() and self._battery_status > BATTARY_COST_WALK(): # Move randomly.
             direction = self.getRandomDirection()
             self.move(direction)
             #Log.addLine("Robot " + str(self._id) + ": Moving randomly.")
             return
-        elif x == 3 and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
-            self.getMessage()
-            return
+
 
 
 

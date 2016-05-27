@@ -17,7 +17,9 @@ class Air:
         canSend = Air.canSend(robot)
         if(canSend == True):
             message._real_location = robot._real_location
-            Point.fillMatDistance(Air.static_mat_zone,message._mat_distance, message._real_location)
+            if (bool(ACTIVE_MATDISTANCE())):
+                Point.fillMatDistance(Air.static_mat_zone,message._mat_distance, message._real_location)
+
             #Air._self.Id_message = Air._self.mone*1000 +robot._id
             #Air._self.mone = Air._self.mone+1
             Air._messages.append(message)
@@ -33,7 +35,11 @@ class Air:
         robot_loc = robot._real_location
         r=0
         for i in range(0, len(Air._messages)):
-            r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            r =0
+            if (bool(ACTIVE_MATDISTANCE())):
+                r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            else:
+                r = Point.airDistancePoints(robot_loc, Air._messages[i]._real_location)
             if(r == INFINITY() or r<=0): continue
             if(r <=MIN_MSG_RANGE()):
                 Air._messages[i]._snn = (MAX_MSG_RANGE()-r)*(MAX_MSG_RANGE()-r)
@@ -69,7 +75,12 @@ class Air:
         sum_range = 0
         robot_loc = Robot(robot)._real_location
         for i in range(0, len(Air._messages)):
-            r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            r = 0
+            if (bool(ACTIVE_MATDISTANCE())):
+                r = Air._messages[i]._mat_distance[robot_loc._x][robot_loc._y]
+            else:
+                r = Point.airDistancePoints(robot_loc, Air._messages[i]._real_location)
+
             if (r < MAX_MSG_RANGE()):
                 sum_range = sum_range + r
         if (sum_range < MAX_MSG_RANGE()):

@@ -68,10 +68,9 @@ def readParameters():
     global __battery_about_to_end
     global __Button_number_1, __Button_number_2, __Button_number_3
     global __battery_cost_walk, __battery_cost_send_msg, __battery_cost_get_msg, __battery_charge_light_speed
-    global __robot_static_Chance_send_msg
+    global __robot_static_Chance_send_msg, __robot_canmove_Chance_send_msg, __robot_canmove_Chance_get_msg
     global __robot_not_move_color,__robot_move_color
-
-
+    global __active_matdistance
 
     # battary_capacity:
     __battary_capacity = int(getVar("BATTARY_CAPACITY"))
@@ -126,9 +125,13 @@ def readParameters():
     __battery_charge_light_speed = float(getVar("BATTARY_CHARGE_LITHT_SPEED"))
 
     __robot_static_Chance_send_msg = float(getVar("ROBOT_STATIC_CHANCE_SEND_MSG"))
+    __robot_canmove_Chance_send_msg = float(getVar("ROBOT_CANMOVE_CHANCE_SEND_MSG"))
+    __robot_canmove_Chance_get_msg = float(getVar("ROBOT_CANMOVE_CHANCE_GET_MSG"))
 
     __robot_not_move_color = int(getVar("ROBOTS_NOT_MOVE_COLOR"))
     __robot_move_color = int(getVar("ROBOTS_MOVE_COLOR"))
+
+    __active_matdistance = int(getVar("ACTIVE_MATDISTANCE"))
 
 #Project Constants:
 def BATTARY_CAPACITY():
@@ -250,10 +253,19 @@ def BATTARY_CHARGE_LITHT_SPEED():
 def ROBOT_STATIC_CHANCE_SEND_MSG():
     return __robot_static_Chance_send_msg
 
+def ROBOT_CANMOVE_CHANCE_SEND_MSG():
+    return __robot_canmove_Chance_send_msg
+
+def ROBOT_CANMOVE_CHANCE_GET_MSG():
+    return __robot_canmove_Chance_get_msg
+
 def ROBOTS_NOT_MOVE_COLOR():
     return __robot_not_move_color
 
 def ROBOTS_MOVE_COLOR():
     return __robot_move_color
+
+def ACTIVE_MATDISTANCE():
+    return __active_matdistance
 
 
