@@ -94,10 +94,12 @@ class Robot:
                 Log.addLine("Robot " + str(self._id) + " The battery is about to run out (" + str(self._battery_status) + ") ---> The robot has decided to continue as usual")
         x = randint(0, 100)
         if (x < ROBOT_CANMOVE_CHANCE_SEND_MSG() * 100 and self._battery_status > BATTARY_COST_SEND_MSG()):  # send new Message.
+            if(self._estimated_location._deviation >100): return
             self.sendNewMessage()
             return
-        elif x < ROBOT_CANMOVE_CHANCE_GET_MSG()+ROBOT_CANMOVE_CHANCE_SEND_MSG() and self._battery_status > BATTARY_COST_GET_MSG():  # get message.
-            self.getMessage()
+        elif x < ((ROBOT_CANMOVE_CHANCE_GET_MSG()+ROBOT_CANMOVE_CHANCE_SEND_MSG()*100)):  # get message.
+            if(self._battery_status > BATTARY_COST_GET_MSG()):
+                self.getMessage()
             return
         elif self._battery_status > BATTARY_COST_WALK(): # Move randomly.
             direction = self.getRandomDirection()
@@ -175,9 +177,9 @@ class Robot:
         direction = randint(WHITE(), BLACK()) #white,black,gray
         count = 0 #Case: Robot cant move in any direction.
         while(env[direction] == False and count < 5):
-            direction = randint(WHITE(), BLACK())
+            direction = randint(0, 3)
             count+= 1
-        if count == 11:
+        if count >= 5:
             Log.addLine("robot "+str(self._id)+" Cant move in any direction. (surrounded by other robots)")
         else: return direction
 
@@ -218,6 +220,11 @@ class Robot:
             self._currently_sending = NO_MSG()
 
     def forwardMessage(self):
+        if (self._estimated_location._deviation > 100):
+            self._action_time = INFINITY()
+            self._currently_sending = NO_MSG()
+            return
+
         if(self._currently_sending == NO_MSG()): # hould not happen .. Debugger
             self._action_time = INFINITY()
             return

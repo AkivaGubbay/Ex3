@@ -48,6 +48,10 @@ class Air:
             elif(r >=MAX_MSG_RANGE()):
                 continue
             else:
+                if(Air._messages[i]._sender_estimated_location._deviation<100):
+                    Air._messages[i]._snn = (MAX_MSG_RANGE() - r) * (MAX_MSG_RANGE() - r)
+                    return Air._messages[i]  ##################################put distance to msg
+
                 sum_range = sum_range + r
                 nearest_mess_loc = nearest_messagesa._real_location
                 messa_i = Air._messages[i]._real_location
