@@ -28,7 +28,7 @@ Of course everything is documented action of Hrobtim blog will open at the exit 
 
 As can be seen in comparing performance we did, over time the robot correctly guess the location from deviation of 500 meters to a deviation of 65 meters:
 <p align="center">
-  <img src="https://github.com/AkivaGubbay/Ex3/blob/master/Performance Comparison/graph.jpg?raw=true" width="600"/>
+  <img src="https://github.com/AkivaGubbay/Ex3/blob/master/Performance Comparison/graph.jpg?raw=true" width="800"/>
 </p>
 See the LOG file link: https://drive.google.com/folderview?id=0B3ALaSWJaKjoa1QyYlNUNThYTHM&usp=sharing 
 
