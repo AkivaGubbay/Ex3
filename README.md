@@ -2,7 +2,7 @@ hello!
 
 Welcome to the project "Robot Arean"
 
-Link to the presentation of the project: https://drive.google.com/folderview?id=0B3ALaSWJaKjoRDJkZ0U4SGZiWlU&usp=sharing 
+Link to the presentation of the project: https://github.com/AkivaGubbay/Ex3/blob/master/PerformanceComparison/RobotsArena.pdf
 
 Robots scene simulator project, which can not communicate with each other directly, but only by sending messages to each other.
 When the robot sends a message, to Robots that close to it are the most likely to get them, Robots that far - not necessarily receive the message.
@@ -30,7 +30,7 @@ As can be seen in comparing performance we did, over time the robot correctly gu
 <p align="center">
   <img src="https://github.com/AkivaGubbay/Ex3/blob/master/Performance Comparison/graph.jpg?raw=true" width="800"/>
 </p>
-See the LOG file link: https://drive.google.com/folderview?id=0B3ALaSWJaKjoa1QyYlNUNThYTHM&usp=sharing 
+See the LOG file link: https://github.com/AkivaGubbay/Ex3/tree/master/PerformanceComparison
 
 
 
