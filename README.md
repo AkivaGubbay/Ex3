@@ -1,13 +1,28 @@
-hello!
 
-Welcome to the project "Robot Arean"
+Project "Robot Areana"
 
-Link to the presentation of the project: https://github.com/AkivaGubbay/Ex3/blob/master/PerformanceComparison/RobotsArena.pdf
+Project presentation: https://github.com/AkivaGubbay/Ex3/blob/master/PerformanceComparison/RobotsArena.pdf
 
-Robots scene simulator project, which can not communicate with each other directly, but only by sending messages to each other.
-When the robot sends a message, to Robots that close to it are the most likely to get them, Robots that far - not necessarily receive the message.
-There Robots non-moving (static) and Robots moving (non-static), static robots know the location of the lot but of moving robots do not know.
-The purpose of robots movable discover the location estimated using robots Stats Posts
+General description of the Areana:
+
+Suppose there is a set of "robots" in a defined environment. Each robot has a unique identifier and ability at any point in time to listen to the environment. When a message is transmitted, the transmitting robot does not receive information from the environment. 
+
+Communication model: A robot can only receive one message at a time. If a message is transmitted from a greater distance, the probability of it being received is lower.
+
+Robot attributes:
+
+Some robots are static, others have "voluntary" movement ability or random movement capability.
+
+Each robot has a battery. When battery consumption is linearly dependent on: Quantity, The duration of the movement (assuming a constant speed), and the robot's operating time.
+Each robot has a solar panel that allows it to charge itself when there is a sun around it That the battery is fully charged after 4 hours of sunshine.
+
+The basic operation of each robot is: to listen, to think where to go ahead, to transmit information Relevant to the rest of the robots. A robot knows only position and direction relative to its starting point! (No GPS)
+The areana consists of three colored parts:
+1) White  - It has a "light" for charging, and you can move inside it. 
+2) Gray  - has no light, but allows movement Inside.
+3) Black - an obstacle that can not be entered.
+
+How to run:
 
 When you run the file Main() via python parallel to the next screen:
 <p align="center">
